@@ -10,7 +10,7 @@
                         @foreach($posts as $post)
                             <div class="media">
                                 <a class="pull-left" href="#">
-                                    <img class="media-object" width="64" height="64" src="{{config('avatar.200').$post->User->nickname}}" alt="">
+                                    <img class="media-object" width="64" height="64" src="{{config('avatar.200')}}{{$post->User->nickname}}" alt="">
                                 </a>
 
                                 <div class="media-body">

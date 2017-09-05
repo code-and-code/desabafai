@@ -14,14 +14,13 @@ use Faker\Generator as Faker;
 */
 
 $factory->define(desabafai\domains\User\User::class, function (Faker $faker) {
-    static $password;
 
     return [
         'nickname'  => $faker->unique()->firstName,
         'email'     => $faker->unique()->safeEmail,
         'avatar'    => $faker->firstName,
         'term_use' => 1,
-        'password' => $password ?: $password = bcrypt('secret'),
+        'password' => '$2y$10$b61vKpMt095cFoJN3oJksOFnFHaEQew.FGcVi.rgQMJphbAQqTOEa',
         'remember_token' => str_random(10),
     ];
 });

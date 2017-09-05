@@ -3,6 +3,7 @@
 namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
+use desabafai\domains\Like\Services\LikeService;
 use desabafai\domains\Post\Post;
 use desabafai\domains\User\User;
 use Illuminate\Http\Request;
@@ -14,9 +15,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(LikeService $likeService)
     {
-
+        $this->likeService = $likeService;
     }
 
     /**
@@ -26,6 +27,11 @@ class HomeController extends Controller
      */
     public function index()
     {
+        $post = Post::find(1);
+        $user = User::find(1);
+
+        $this->likeService->addLike($user,$post);
+
         $posts = Post::paginate(5);
         return view('home',compact('posts'));
     }
