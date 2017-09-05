@@ -33094,7 +33094,7 @@ function mergeOptions (
 }
 
 /**
- * Resolve an asset.
+ * Resolve an materialize.
  * This function is used because child instances need access
  * to assets defined in its ancestor chain.
  */
@@ -36116,7 +36116,7 @@ function initExtend (Vue) {
     Sub.mixin = Super.mixin;
     Sub.use = Super.use;
 
-    // create asset registers, so extended classes
+    // create materialize registers, so extended classes
     // can have their private assets too.
     ASSET_TYPES.forEach(function (type) {
       Sub[type] = Super[type];
@@ -36157,7 +36157,7 @@ function initComputed$1 (Comp) {
 
 function initAssetRegisters (Vue) {
   /**
-   * Create asset registration methods.
+   * Create materialize registration methods.
    */
   ASSET_TYPES.forEach(function (type) {
     Vue[type] = function (
