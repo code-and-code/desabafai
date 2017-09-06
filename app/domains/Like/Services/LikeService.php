@@ -2,7 +2,6 @@
 
 namespace desabafai\domains\Like\Services;
 
-
 use desabafai\domains\Like\Like;
 use desabafai\domains\User\User;
 
