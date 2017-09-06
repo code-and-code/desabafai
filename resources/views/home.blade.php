@@ -1,38 +1,42 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="my_card">
+
+<div class="infinite-scroll">
+@foreach($posts as $post)
+
+<div id="my_card_{{$post->id}}">
     <div class="row">
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-image">
-                    <img src="http://www.istockphoto.com/resources/images/PhotoFTLP/img_75929395.jpg">
+                    <img src="{{$post->img}}">
                 </div>
                 <div class="card-content">
-                    <span class="card-title">Card Title</span>
-                    <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
+                    <span class="card-title">{{$post->title}}</span>
+                    <p>{{$post->body}}</p>
                 </div>
                 <div class="card-action">
                     <a class="tooltipped  waves-effect waves-light" title="Curtir" id="like" data-position="bottom" data-delay="50" data-tooltip="Curtir">
                         <i class="material-icons" id="thumb_up">thumb_up</i>
                     </a>
-                    <a class="tooltipped green-text waves-effect waves-light"  title="Comentar" id="comentario" data-position="top" data-delay="50" data-tooltip="Comentar">
+                    <a class="tooltipped green-text waves-effect waves-light add_comment" title="Comentar"   data-form="form_comment_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Comentar">
                         <i class="material-icons">speaker_notes</i>
                     </a>
-                    <a class="tooltipped red-text waves-effect waves-light" title="Comentarios" id="comentarios" data-position="right" data-delay="50" data-tooltip="Comentários">
+                    <a class="tooltipped red-text waves-effect waves-light show_comments" title="Comentarios" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Comentários">
                         <i class="material-icons">question_answer</i>
                     </a>
                     <div class="chip right">
-                        <img src="{{ asset('images/img.jpg') }}" alt="Contact Person">
-                        Cinognato Loko
+                        <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="Contact Person">
+                        {{$post->User->nickname}}
                     </div>
                 </div>
                 <div class="card-action">
-                    33 Curtidas
+                    {{$post->Likes->count()}} Curtidas
                     <a class="modal-trigger right tooltipped" href="#modal2" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
                 </div>
             </div>
-            <div class="row" hidden id="meu_comentario">
+            <div class="row" hidden id="form_comment_{{$post->id}}">
                 <div class="input-field col s12">
                     <i class="material-icons prefix">speaker_notes</i>
                     <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
@@ -40,7 +44,7 @@
                 </div>
             </div>
 
-            <ul class="collection" id="lista_comentarios" hidden>
+            <ul class="collection" id="comments_{{$post->id}}" hidden>
                 <li class="collection-item avatar">
                     <img src="https://www.arteslalu.com.br/wp-content/uploads/2016/10/foto-do-cliente-kayo-morais-depoimento-lalu-50x50.png" alt="" class="circle">
                     <span class="title">Joaozinho</span>
@@ -51,9 +55,9 @@
                             <p> <span class="teal-text accent-3">@Maria </span> Você só precisa de 21 minutos para definir todo seu corpo! ? Teste por 30 dias e veja os resultados XTREME. </p>
 
                             <a href="#">Curtir</a> -
-                            <a href="#" id="responder">Responder</a>
+                            <a href="#" class="reply_comment" data-form="form_replay_comment_{{$post->id}}">Responder</a>
 
-                            <div class="row" hidden id="minha_resposta">
+                            <div class="row" hidden id="form_replay_comment_{{$post->id}}">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">speaker_notes</i>
                                     <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
@@ -104,37 +108,68 @@
     </div>
 </div>
 
+@endforeach
+
+    {{$posts->links()}}
+</div>
+
+
 @endsection
 
 @section('scripts')
+    <script src="{{ asset('js/jscroll/jquery.jscroll.js') }}"></script>
+    <script type="text/javascript">
 
-    <script>
-        $(document).ready(function(){
-            // the "href" attribute of the modal trigger must specify the modal ID that wants to be triggered
-            $('.modal').modal();
+    $('ul.pagination').hide();
 
-            $('#like').click(function(){
+    $(function() {
 
-                $(this).toggleClass("lighten-5");
-                $("#thumb_up").toggleClass("blue-text");
+        $('.modal').modal();
 
-            });
-
-            $('#comentarios').click(function(){
-                $("#lista_comentarios").toggle();
-            });
-
-            $("#responder").click(function(){
-                $("#minha_resposta").toggle();
-            })
-
-            $("#comentario").click(function(){
-                $("#meu_comentario").toggle();
-            })
-
+        $('#like').click(function(){
+            $(this).toggleClass("lighten-5");
+            $("#thumb_up").toggleClass("blue-text");
 
         });
 
-    </script>
+        $('.show_comments').click(function(){
 
+            var comments = $(this).data('comments');
+
+
+            alert(comments);
+
+            $("#"+comments).toggle();
+        });
+
+
+        $(".add_comment").click(function(){
+
+            var form = $(this).data('form');
+            $("#"+form).toggle();
+
+        })
+
+
+        $(".reply_comment").click(function(){
+
+            var form = $(this).data('form');
+            $("#"+form).toggle();
+        })
+
+
+        $('.infinite-scroll').jscroll({
+            autoTrigger: true,
+            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+            padding: 0,
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div.infinite-scroll',
+            callback: function() {
+
+                $('ul.pagination').remove();
+            }
+        });
+
+    });
+    </script>
 @endsection
