@@ -74,4 +74,15 @@
         </div>
     </div>
 </div>
+
+
+
+<div class="row">
+    <div class=" col s6">
+        <div class="switch">
+            <input type="checkbox" id="test5" />
+            <label for="test5">Li e aceito os <a href="#">TERMOS DE USO</a> </label>
+        </div>
+    </div>
+</div>
 @endsection

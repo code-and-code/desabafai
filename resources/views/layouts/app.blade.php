@@ -11,73 +11,95 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="{{ asset('materialize/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
 <body>
-    <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
-            <div class="container">
-                <div class="navbar-header">
+<div id="app" class="grey lighten-4">
 
-                    <!-- Collapsed Hamburger -->
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#app-navbar-collapse">
-                        <span class="sr-only">Toggle Navigation</span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                        <span class="icon-bar"></span>
-                    </button>
+    <nav class="blue accent-3 lighten-1" role="navigation">
+        <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Desabafaí</a>
 
-                    <!-- Branding Image -->
-                    <a class="navbar-brand" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
+            @guest
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="{{ route('login') }}">Login</a>
+                </li>
+                <li>
+                    <a href="{{ route('register') }}">Register</a>
+                </li>
+            </ul>
+            @else
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                        {{ Auth::user()->name }} <span class="caret"></span>
                     </a>
-                </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
-                    </ul>
-
-                    <!-- Right Side Of Navbar -->
-                    <ul class="nav navbar-nav navbar-right">
-                        <!-- Authentication Links -->
-                        @guest
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                        @else
-                            <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu" role="menu">
-                                    <li>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
+                    <ul class="right hide-on-med-and-down dropdown-menu" role="menu">
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
+                                Logout
+                            </a>
 
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @endguest
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
                     </ul>
-                </div>
-            </div>
-        </nav>
+                </li>
+            @endguest
 
-        @yield('content')
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Sair</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li><a href="#">Entrar</a></li>
+            </ul>
+            <ul class="right hide-on-med-and-down">
+                <li>
+                    <a href="#"><img src="https://i.pinimg.com/originals/45/87/fb/4587fbea99ef35e2e61001fa5131f721.gif" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> </a>
+                </li>
+            </ul>
+            <ul id="nav-mobile" class="side-nav">
+                <li><a href="#">Entrar</a></li>
+                <li><a href="#">Menu</a></li>
+            </ul>
+
+            <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
+        </div>
+    </nav>
+
+    <div class="container">
+        <div class="section">
+            <div class="container">
+                @yield('content')
+            </div>
+        </div>
     </div>
 
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-    @section('scripts')
 
-    @show
+</div>
+
+{{--<footer class="page-footer blue lighten-2">--}}
+    {{--<h6 class="center-align"><span>Desabafaí?<span> <a href="" class="pink-text">TERMOS DE USO</a></h6>--}}
+    {{--<div class="footer-copyright">--}}
+        {{--<div class="container center-align">--}}
+            {{--Made by <a class="grey-text text-lighten-3" href="http://materializecss.com"> Desenvolvido por Code&Code</a>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+{{--</footer>--}}
+
+
+<!-- Scripts -->
+
+<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{{ asset('materialize/js/materialize.js') }}"></script>
+<script src="{{ asset('materialize/js/init.js') }}"></script>
+@section('scripts')
+
+@show
 </body>
 </html>
