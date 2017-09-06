@@ -24,15 +24,15 @@
                         </div>
 
 
-                        <div class="row {{ $errors->has('email') ? ' has-error' : '' }}">
+                        <div class="row {{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
-                                <input id="password" type="password" class="validate" value="{{ old('email') }}" name="password" required>
+                                <input id="password" type="password" class="validate" value="{{ old('password') }}" name="password" required>
 
                                 <label for="email">Password</label>
 
-                                @if ($errors->has('email'))
+                                @if ($errors->has('password'))
                                     <span class="help-block">
-                                        <strong class="red-text">{{ $errors->first('email') }}</strong>
+                                        <strong class="red-text">{{ $errors->first('password') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -49,10 +49,10 @@
                 </div>
                 <div class="card-action">
                     <a class="right" href="{{ route('password.request') }}">
-                        Esqueci minha senha
+                       <small>Esqueci minha senha</small>
                     </a>
                     <a class="" href="{{ route('password.request') }}">
-                        Cadastre-se
+                        <small>Cadastre-se</small>
                     </a>
                 </div>
             </div>

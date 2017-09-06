@@ -8,15 +8,15 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name') }}</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('materialize/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
-<body>
-<div id="app" class="grey lighten-4">
+<body class="grey lighten-4">
+<div id="app" >
 
     <nav class="blue accent-3 lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Desabafaí</a>
@@ -40,6 +40,8 @@
                         <li>
                             <a href="{{ route('logout') }}"
                                onclick="event.preventDefault();
+
+
                                                      document.getElementById('logout-form').submit();">
                                 Logout
                             </a>
@@ -66,19 +68,21 @@
             <ul id="nav-mobile" class="side-nav">
                 <li><a href="#">Entrar</a></li>
                 <li><a href="#">Menu</a></li>
+                <li><a href="{{ route('login') }}">Login</a></li>
+                <li><a href="{{ route('register') }}">Register</a></li>
             </ul>
 
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
 
-    <div class="container">
-        <div class="section">
-            <div class="container">
-                @yield('content')
-            </div>
+<div class="container">
+    <div class="section">
+        <div class="container">
+            @yield('content')
         </div>
     </div>
+</div>
 
 
 </div>
