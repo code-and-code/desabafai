@@ -30,47 +30,51 @@
                     <a href="{{ route('register') }}">Register</a>
                 </li>
             </ul>
-            @else
-                <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
-                        {{ Auth::user()->name }} <span class="caret"></span>
-                    </a>
 
-                    <ul class="right hide-on-med-and-down dropdown-menu" role="menu">
-                        <li>
-                            <a href="{{ route('logout') }}"
-                               onclick="event.preventDefault();
-
-
-                                                     document.getElementById('logout-form').submit();">
-                                Logout
-                            </a>
-
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                {{ csrf_field() }}
-                            </form>
-                        </li>
-                    </ul>
-                </li>
-            @endguest
-
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">Sair</a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li><a href="#">Entrar</a></li>
-            </ul>
-            <ul class="right hide-on-med-and-down">
-                <li>
-                    <a href="#"><img src="https://i.pinimg.com/originals/45/87/fb/4587fbea99ef35e2e61001fa5131f721.gif" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> </a>
-                </li>
-            </ul>
             <ul id="nav-mobile" class="side-nav">
-                <li><a href="#">Entrar</a></li>
-                <li><a href="#">Menu</a></li>
                 <li><a href="{{ route('login') }}">Login</a></li>
                 <li><a href="{{ route('register') }}">Register</a></li>
             </ul>
+
+            @else
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Logout
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+                <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="#"><img src="https://i.pinimg.com/originals/45/87/fb/4587fbea99ef35e2e61001fa5131f721.gif" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> </a>
+                    </li>
+                </ul>
+                <ul id="nav-mobile" class="side-nav">
+                    <li class="grey lighten-2 ">
+                        <a href="#">
+                            <img src="https://i.pinimg.com/originals/45/87/fb/4587fbea99ef35e2e61001fa5131f721.gif" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img">
+                            <spam class="flow-text">Cinognato Loko</spam>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ route('logout') }}"
+                           onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                            Sair
+                        </a>
+
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                            {{ csrf_field() }}
+                        </form>
+                    </li>
+                </ul>
+            @endguest
 
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
