@@ -7,7 +7,6 @@
                 <div class="card-content">
                     <div class="card-title center-align">Login</div>
                     <form class="" method="POST" action="{{ route('login') }}">
-                        {{ csrf_field() }}
 
                         <div class="row {{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="input-field col s12">

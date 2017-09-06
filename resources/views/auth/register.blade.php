@@ -7,7 +7,6 @@
                 <div class="card-content">
                     <div class="card-title center-align">Cadastrar</div>
                     <form class="" method="POST" action="{{ route('register') }}">
-                        {{ csrf_field() }}
 
                         <div class="row {{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
@@ -22,7 +21,6 @@
                                 @endif
                             </div>
                         </div>
-
 
                         <div class="row {{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
