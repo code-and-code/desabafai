@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}</title>
+    <title>Desabafaí</title>
 
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
@@ -18,6 +18,7 @@
 </head>
 <body class="grey lighten-4">
 <div id="app" >
+
 
     <nav class="blue accent-3 lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Desabafaí</a>
@@ -38,42 +39,51 @@
             </ul>
 
             @else
+                    <!-- Dropdown Structure -->
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            Logout
-                        </a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown1"><img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> <i class="material-icons right">arrow_drop_down</i></a>
+                    </li>
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
-                    </li>
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="#!">Perfil</a></li>
+                        <li><a href="#!">Meus Posts</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Sair
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
                 </ul>
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="#"><img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> </a>
-                    </li>
-                </ul>
+
                 <ul id="nav-mobile" class="side-nav">
-                    <li class="grey lighten-2 ">
-                        <a href="#">
-                            <img src="https://i.pinimg.com/originals/45/87/fb/4587fbea99ef35e2e61001fa5131f721.gif" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img">
-                            <spam class="flow-text">Cinognato Loko</spam>
-                        </a>
-                    </li>
                     <li>
-                        <a href="{{ route('logout') }}"
-                           onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                            Sair
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                            {{ csrf_field() }}
-                        </form>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown1"><img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> <i class="material-icons right">arrow_drop_down</i> </a>
                     </li>
+
+                    <ul id="dropdown1" class="dropdown-content">
+                        <li><a href="#!">Perfil</a></li>
+                        <li><a href="#!">Meus Posts</a></li>
+                        <li class="divider"></li>
+                        <li>
+                            <a href="{{ route('logout') }}"
+                               onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                                Sair
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                {{ csrf_field() }}
+                            </form>
+                        </li>
+                    </ul>
                 </ul>
             @endguest
 
@@ -88,37 +98,7 @@
             @yield('content')
 
            @auth
-                <div class="fixed-action-btn">
-                    <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="#modal1">
-                        <i class="large material-icons">add</i>
-                    </a>
-                </div>
-
-                <div id="modal1" class="modal">
-                    <div class="modal-content">
-                        <h4>Criar Desabafo</h4>
-                        <div class="row">
-                            <form class="col s12">
-                                <div class="row">
-                                    <div class="input-field col s12">
-                                        <input id="password" type="password" class="validate">
-                                        <label for="password">Título</label>
-                                    </div>
-                                    <div class="input-field col s12">
-                                        <input id="email" type="email" class="validate">
-                                        <label for="email">Desabafo</label>
-                                    </div>
-                                </div>
-                                <button class="btn waves-effect waves-light right" type="submit" name="action">Publicar
-
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                    <div class="modal-footer">
-                        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Fechar</a>
-                    </div>
-                </div>
+                @include('post.create')
             @endauth
         </div>
     </div>
