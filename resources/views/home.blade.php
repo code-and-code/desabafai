@@ -18,13 +18,13 @@
                         <p>{{$post->body}}</p>
                     </div>
                     <div class="card-action">
-                        <a class="tooltipped  waves-effect waves-light" title="Curtir" id="like" >
+                        <a class="waves-effect waves-light" title="Curtir" id="like" >
                             <i class="material-icons" id="thumb_up">thumb_up</i>
                         </a>
-                        <a class="tooltipped green-text waves-effect waves-light add_comment" title="Comentar"   id="{{$post->id}}"  data-form="form_comment_{{$post->id}}" >
+                        <a class="green-text waves-effect waves-light add_comment" title="Comentar"   id="{{$post->id}}"  data-form="form_comment_{{$post->id}}" >
                             <i class="material-icons">speaker_notes</i>
                         </a>
-                        <a class="tooltipped red-text waves-effect waves-light show_comments" title="Comentarios" id="{{$post->id}}" data-comments="comments_{{$post->id}}" >
+                        <a class="red-text waves-effect waves-light show_comments" title="Comentarios" id="{{$post->id}}" data-comments="comments_{{$post->id}}" >
                             <i class="material-icons">question_answer</i>
                         </a>
 

@@ -19,8 +19,12 @@
 <body class="grey lighten-4">
 <div id="app" >
 
-    <div class="navbar-fixed">
-        <nav class="blue accent-3 lighten-1" role="navigation">
+    @mobile
+    <div class="">
+    @elsemobile
+        <div class="navbar-fixed">
+    @endmobile
+    <nav class="blue accent-3 lighten-1 " role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Desabafaí</a>
 
             @guest
@@ -41,12 +45,7 @@
             @else
                     <!-- Dropdown Structure -->
                 <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="badges.html">Comentários <span class="chip red white-text">4</span> </a>
-                    </li>
-                    <li>
-                        <a href="badges.html">Desabafos <span class="chip">4</span> </a>
-                    </li>
+
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">
                             <img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img">
@@ -95,6 +94,7 @@
                                 {{ csrf_field() }}
                             </form>
                         </li>
+
                     </ul>
                 </ul>
             @endguest
