@@ -19,8 +19,8 @@
 <body class="grey lighten-4">
 <div id="app" >
 
-
-    <nav class="blue accent-3 lighten-1" role="navigation">
+    <div class="navbar-fixed">
+        <nav class="blue accent-3 lighten-1" role="navigation">
         <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Desabafaí</a>
 
             @guest
@@ -41,6 +41,12 @@
             @else
                     <!-- Dropdown Structure -->
                 <ul class="right hide-on-med-and-down">
+                    <li>
+                        <a href="badges.html">Comentários <span class="chip red white-text">4</span> </a>
+                    </li>
+                    <li>
+                        <a href="badges.html">Desabafos <span class="chip">4</span> </a>
+                    </li>
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">
                             <img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img">
@@ -96,6 +102,7 @@
             <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">menu</i></a>
         </div>
     </nav>
+    </div>
 
     @mobile
         <div class="section">
