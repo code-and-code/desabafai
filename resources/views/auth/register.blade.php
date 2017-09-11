@@ -10,8 +10,8 @@
 
                         <div class="row {{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
-                                <input type="text" class="validate" name="nickname" value="{{ old('nickname') }}"autofocus>
-                                <label for="email">Apelido</label>
+                                <input type="text" class="validate" name="nickname" value="{{ old('nickname') }}" autofocus id="nickname" required>
+                                <label for="nickname">Apelido</label>
 
                                 @if(!$errors->has('nickaname'))
                                     <span class="help-block">
@@ -23,7 +23,7 @@
 
                         <div class="row {{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
-                                <input type="email" class="validate" value="{{ old('email') }}" name="email">
+                                <input type="email" class="validate" value="{{ old('email') }}" name="email" id="email" required>
                                 <label for="email">E-mail</label>
                                 @if (!$errors->has('email'))
                                     <span class="help-block">
@@ -35,7 +35,7 @@
 
                         <div class="row {{ $errors->has('password') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
-                                <input type="password" class="validate" value="{{ old('password') }}" name="password">
+                                <input type="password" class="validate" value="{{ old('password') }}" name="password" id="password" required>
 
                                 <label for="password">Senha</label>
 
@@ -49,8 +49,8 @@
 
                         <div class="row">
                             <div class="input-field col s12">
-                                <input id="password-confirm" type="password" class="validate" name="password_confirmation">
-                                <label for="email">Confirme a senha</label>
+                                <input id="password-confirm" type="password" class="validate" name="password_confirmation" id="confirm_password" required>
+                                <label for="confirm_password">Confirme a senha</label>
                                 @if (!$errors->has('password'))
                                     <span class="help-block">
                                         <strong class="red-text" id="password" >{{ $errors->first('password') }}</strong>
@@ -62,8 +62,8 @@
                         <div class="row">
                             <div class=" col s12">
                                 <div class="switch">
-                                    <input type="checkbox" name="term_use" value="1"/>
-                                    <label>Li e aceito os <a href="#">TERMOS DE USO</a> </label>
+                                    <input type="checkbox" name="term_use" value="on" id="term_use" />
+                                    <label for="term_use" >Li e aceito os <a href="#">TERMOS DE USO</a> </label>
                                 </div>
                             </div>
                         </div>
