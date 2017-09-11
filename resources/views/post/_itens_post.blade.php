@@ -1,8 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
-
-<div class="infinite-scroll">
 @foreach($posts as $post)
 
 <div id="my_card_{{$post->id}}">
@@ -20,10 +15,10 @@
                     <a class="tooltipped  waves-effect waves-light" title="Curtir" id="like" data-position="bottom" data-delay="50" data-tooltip="Curtir">
                         <i class="material-icons" id="thumb_up">thumb_up</i>
                     </a>
-                    <a class="tooltipped green-text waves-effect waves-light add_comment" title="Comentar"   id="{{$post->id}}"  data-form="form_comment_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Comentar">
+                    <a class="tooltipped green-text waves-effect waves-light add_comment" title="Comentar"   data-form="form_comment_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Comentar">
                         <i class="material-icons">speaker_notes</i>
                     </a>
-                    <a class="tooltipped red-text waves-effect waves-light show_comments" title="Comentarios" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Comentários">
+                    <a class="tooltipped red-text waves-effect waves-light show_comments" title="Comentarios" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Comentários">
                         <i class="material-icons">question_answer</i>
                     </a>
                     <div class="chip right">
@@ -107,60 +102,6 @@
 
     </div>
 </div>
-
 @endforeach
 
-
-    <div id="scroll"></div>
-
-    {{$posts->links()}}
-</div>
-
-
-@endsection
-
-@section('scripts')
-    <script src="{{ asset('js/jscroll/jquery.jscroll.js') }}"></script>
-    <script type="text/javascript">
-
-    $(function() {
-
-        $('ul.pagination').hide();
-
-        jQuery.fn.runScript = function() {
-
-            $.getScript( "js/home.js", function( data, textStatus, jqxhr ) {
-                console.log( textStatus ); // Success
-                console.log( jqxhr.status ); // 200
-                console.log( "Load was performed." );
-            });
-        };
-
-        $(this).runScript();
-
-        $('.infinite-scroll').jscroll({
-
-            autoTrigger: true,
-            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
-            loadingFunction: true,
-            padding: 20,
-            //contentSelector: '.infinite-scroll',
-            nextSelector: '.pagination li.active + li a',
-            contentSelector: 'div.infinite-scroll',
-
-            loadingFunction: function() {
-                $(this).runScript();
-            },
-
-            callback: function() {
-
-                $('ul.pagination').remove();
-                $(this).runScript();
-            }
-
-        });
-
-
-    });
-    </script>
-@endsection
+{{$posts->links()}}

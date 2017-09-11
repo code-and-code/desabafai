@@ -5,6 +5,7 @@ namespace desabafai\core\Http\Controllers\Web;
 use desabafai\core\Http\Controllers\Controller;
 use desabafai\domains\Like\Services\LikeService;
 use desabafai\domains\Post\Post;
+use Illuminate\Support\Facades\View;
 
 class HomeController extends Controller
 {
@@ -25,7 +26,7 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(5);
+        $posts = Post::paginate(3);
         return view('home',compact('posts'));
     }
 }

@@ -14,6 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('materialize/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.css">
 </head>
 <body class="grey lighten-4">
 <div id="app" >
@@ -52,7 +53,7 @@
                 </ul>
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a href="#"><img src="https://i.pinimg.com/originals/45/87/fb/4587fbea99ef35e2e61001fa5131f721.gif" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> </a>
+                        <a href="#"><img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> </a>
                     </li>
                 </ul>
                 <ul id="nav-mobile" class="side-nav">
@@ -136,6 +137,11 @@
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
 <script src="{{ asset('materialize/js/materialize.js') }}"></script>
 <script src="{{ asset('materialize/js/init.js') }}"></script>
+<script src="{{ asset('js/restful.js') }}"></script>
+<script src="{{ asset('js/blockui.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 @section('scripts')
 
 @show
