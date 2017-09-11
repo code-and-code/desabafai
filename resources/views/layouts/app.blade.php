@@ -42,10 +42,13 @@
                     <!-- Dropdown Structure -->
                 <ul class="right hide-on-med-and-down">
                     <li>
-                        <a class="dropdown-button" href="#!" data-activates="dropdown1"><img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> <i class="material-icons right">arrow_drop_down</i></a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">
+                            <img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img">
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
                     </li>
 
-                    <ul id="dropdown1" class="dropdown-content">
+                    <ul id="dropdown_desktop" class="dropdown-content">
                         <li><a href="#!">Perfil</a></li>
                         <li><a href="#!">Meus Posts</a></li>
                         <li class="divider"></li>
@@ -65,10 +68,13 @@
 
                 <ul id="nav-mobile" class="side-nav">
                     <li>
-                        <a class="dropdown-button" href="#!" data-activates="dropdown1"><img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img"> <i class="material-icons right">arrow_drop_down</i> </a>
+                        <a class="dropdown-button" href="#!" data-activates="dropdown_mobile">
+                            <img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle responsive-img">
+                            <i class="material-icons right">arrow_drop_down</i>
+                        </a>
                     </li>
 
-                    <ul id="dropdown1" class="dropdown-content">
+                    <ul id="dropdown_mobile" class="dropdown-content">
                         <li><a href="#!">Perfil</a></li>
                         <li><a href="#!">Meus Posts</a></li>
                         <li class="divider"></li>
@@ -91,18 +97,30 @@
         </div>
     </nav>
 
-<div class="container">
-    <div class="section">
-        <div class="container">
+    @mobile
+        <div class="section">
+            <div class="container">
+                @yield('content')
 
-            @yield('content')
+               @auth
+                    @include('post.create')
+                @endauth
+            </div>
+        </div>
+    @elsemobile
+    <div class="container">
+        <div class="section">
+            <div class="container">
 
-           @auth
+                @yield('content')
+
+                @auth
                 @include('post.create')
-            @endauth
+                @endauth
+            </div>
         </div>
     </div>
-</div>
+    @endmobile
 
 {{--<footer class="page-footer blue lighten-2">--}}
     {{--<h6 class="center-align"><span>Desabafaí?<span> <a href="" class="pink-text">TERMOS DE USO</a></h6>--}}
