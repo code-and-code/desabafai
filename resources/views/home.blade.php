@@ -14,17 +14,18 @@
                         <img src="{{$post->img}}">
                     </div>
                     <div class="card-content">
+                        <p class="secondary-content"> <span class="teal-text">1 min atrás</span></p>
                         <span class="card-title">{{$post->title}} {{$post->id}}</span>
                         <p>{{$post->body}}</p>
                     </div>
                     <div class="card-action">
-                        <a class="waves-effect waves-light" title="Curtir" id="like" >
+                        <a class="  waves-effect waves-light" title="Curtir" id="like" >
                             <i class="material-icons" id="thumb_up">thumb_up</i>
                         </a>
-                        <a class="green-text waves-effect waves-light add_comment" title="Comentar"   id="{{$post->id}}"  data-form="form_comment_{{$post->id}}" >
+                        <a class=" green-text waves-effect waves-light add_comment" title="Comentar"   id="{{$post->id}}"  data-form="form_comment_{{$post->id}}" >
                             <i class="material-icons">speaker_notes</i>
                         </a>
-                        <a class="red-text waves-effect waves-light show_comments" title="Comentarios" id="{{$post->id}}" data-comments="comments_{{$post->id}}" >
+                        <a class="tooltipped red-text waves-effect waves-light show_comments" title="Comentarios" id="{{$post->id}}" data-comments="comments_{{$post->id}}" >
                             <i class="material-icons">question_answer</i>
                         </a>
 
@@ -129,6 +130,7 @@
                             <img src="{{$post->img}}">
                         </div>
                         <div class="card-content">
+                            <p class="secondary-content"> <span class="teal-text">1 min atrás</span></p>
                             <span class="card-title">{{$post->title}} {{$post->id}}</span>
                             <p>{{$post->body}}</p>
                         </div>
@@ -184,22 +186,8 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#!" class="secondary-content">1 min atrás</a>
+                            <p class="secondary-content">1 min atrás</p>
 
-                        </li>
-                        <li class="collection-item avatar">
-                            <img src="http://ggvconsultoria.com.br/wp-content/uploads/2016/01/papa-juan-50x50.png" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br> Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                        </li>
-                        <li class="collection-item avatar">
-                            <img src="http://ggvconsultoria.com.br/wp-content/uploads/2016/01/papa-juan-50x50.png" alt="" class="circle">
-                            <span class="title">Title</span>
-                            <p>First Line <br> Second Line
-                            </p>
-                            <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
                         </li>
                         <li class="collection-item ">
                             <div class="row" id="">
