@@ -12,11 +12,6 @@ class UserController extends Controller
 
     private $user;
 
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
     public function __construct(User $user)
     {
         $this->user = $user;
@@ -27,5 +22,31 @@ class UserController extends Controller
         $user  = $this->user->whereNickname($nickname)->first();
         $posts = Post::whereUserId($user->id)->orWhere('user_from_id',$user->id)->paginate(10);
         return view('home',compact('posts'));
+    }
+
+    public function edit(User $user)
+    {
+        return view('user.edit',compact('user'));
+    }
+
+    public function update(User $user ,Request $request ){
+        try{
+
+            $user->update($request->input());
+            return response()
+                ->json([
+                    'message' => 'Success',
+                    'status' => 200
+                ], 200);
+        }catch (\Exception $e)
+        {
+            return response()
+                ->json([
+                    'message' => $e->getMessage(),
+                    'status' => 400
+                ], 400);
+        }
+
+
     }
 }

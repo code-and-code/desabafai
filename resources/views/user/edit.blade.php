@@ -7,11 +7,11 @@
                 <div class="card-content">
                     <div class="card-title center-align">Editar</div>
 
-                    <form class="" method="POST" action="{{ route('api.register') }}" id="form_register" data-remote="true">
+                    <form class="" method="POST" action="{{ route('user.update', $user) }}" id="form_register" data-remote="true">
 
                         <div class="row {{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
-                                <input type="text" class="validate" name="nickname" value="{{ old('nickname') }}" autofocus id="nickname_id" required>
+                                <input type="text" class="validate" name="nickname" value="{{ $user->nickname }}" autofocus id="nickname_id" required>
                                 <label for="nickname_id">Apelido</label>
 
                                 @if(!$errors->has('nickaname'))
@@ -24,7 +24,7 @@
 
                         <div class="row {{ $errors->has('email') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
-                                <input type="email" class="validate" value="{{ old('email') }}" name="email" id="email_id" required>
+                                <input type="email" class="validate" value="{{ $user->email }}" name="email" id="email_id" required>
                                 <label for="email_id">E-mail</label>
                                 @if (!$errors->has('email'))
                                     <span class="help-block">
@@ -33,7 +33,13 @@
                                 @endif
                             </div>
                         </div>
-
+                        <div class="form-group">
+                            <div class="col-md-8 col-md-offset-4">
+                                <button type="submit" class="btn btn-primary">
+                                    Login
+                                </button>
+                            </div>
+                        </div>
                     </form>
                 </div>
                 <div class="card-action ">
@@ -70,6 +76,7 @@
                         $.each(errors, function( k, v ) {
                             $('#'+k).html(v);
                         });
+
                     });
 
 

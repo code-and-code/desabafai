@@ -14,9 +14,11 @@
 Route::get('/', 'HomeController@index')->name('home');
 
 
-Route::group(['prefix' => 'user', 'as' =>'user'], function () {
+Route::group(['prefix' => 'user', 'as' =>'user.'], function () {
 
-    Route::get('/show/{$slu}','UserController@show')->name('show');
+    Route::get('/show/{$slu}', 'UserController@show')->name('show');
+    Route::get('/{user}/edit',   'UserController@edit')->name('edit');
+    Route::post('/{user}/update',   'UserController@update')->name('update');
 });
 
 
