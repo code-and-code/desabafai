@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    <title>Google Maps API v3: Busca de endereço e Autocomplete - Demo</title>
+    <title>Google Maps API v3: Busca de endereÃ§o e Autocomplete - Demo</title>
 
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:600" type="text/css" rel="stylesheet" />
 
@@ -144,36 +144,58 @@
 
 <body>
 
-<div id="apresentacao">
-
-    <h1>Google Maps API v3: Busca de endereço e Autocomplete - Demo</h1>
-
-    <form method="post" action="index.html">
-        <fieldset>
-
-            <legend>Google Maps API v3: Busca de endereço e Autocomplete - Demo</legend>
-
-            <div class="campos">
-                <label for="txtEndereco">Endereço:</label>
-                <input type="text" id="txtEndereco" name="txtEndereco" />
-                <input type="button" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
-            </div>
-
-            <div id="mapa"></div>
-
-            <input type="submit" value="Enviar" name="btnEnviar" />
-
-            <input type="hidden" id="txtLatitude" name="txtLatitude" />
-            <input type="hidden" id="txtLongitude" name="txtLongitude" />
-
-        </fieldset>
-    </form>
-
-    <div class="autores">
-        <p>Criado por: <a href="http://twitter.com/rodolfoprr" target="_blank">Rodolfo Pereira</a> | Estilizado por: <a href="http://twitter.com/jofelipe_" target="_blank">Jonathan Felipe</a></p>
-    </div>
-
+<div class="fixed-action-btn">
+    <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="#modal1">
+        <i class="large material-icons">add</i>
+    </a>
 </div>
+
+<div id="modal1" class="modal modal-fixed-footer">
+    <div class="modal-content">
+        <h4>Criar Desabafo</h4>
+        <div class="row">
+            <form class="col s12">
+                <div class="row">
+                    <div class="input-field col s12">
+                        <input id="password" type="password" class="validate">
+                        <label for="password">Título</label>
+                    </div>
+                    <div class="input-field col s12">
+                        <input id="email" type="email" class="validate">
+                        <label for="email">Desabafo</label>
+                    </div>
+                </div>
+
+                <fieldset>
+
+                    <legend>Google Maps API v3: Busca de endereÃ§o e Autocomplete - Demo</legend>
+
+                    <div class="campos">
+                        <label for="txtEndereco">EndereÃ§o:</label>
+                        <input type="text" id="txtEndereco" name="txtEndereco" />
+                        <input type="button" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
+                    </div>
+
+                    <div id="mapa"></div>
+
+                    <input type="hidden" id="txtLatitude" name="txtLatitude" />
+                    <input type="hidden" id="txtLongitude" name="txtLongitude" />
+
+                </fieldset>
+
+                <button class="btn waves-effect waves-light right" type="submit" name="action">Publicar
+
+                </button>
+            </form>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat ">Agree</a>
+    </div>
+</div>
+
+
+
 
 </body>
 </html>

@@ -1,7 +1,33 @@
-<div class="fixed-action-btn">
-    <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="#modal1">
-        <i class="large material-icons">add</i>
-    </a>
+
+<div id="apresentacao">
+
+    <h1>Google Maps API v3: Busca de endereço e Autocomplete - Demo</h1>
+
+    <form method="post" action="index.html">
+        <fieldset>
+
+            <legend>Google Maps API v3: Busca de endereço e Autocomplete - Demo</legend>
+
+            <div class="campos">
+                <label for="txtEndereco">Endereço:</label>
+                <input type="text" id="txtEndereco" name="txtEndereco" />
+                <input type="button" id="btnEndereco" name="btnEndereco" value="Mostrar no mapa" />
+            </div>
+
+            <div id="mapa"></div>
+
+
+
+            <input type="hidden" id="txtLatitude" name="txtLatitude" />
+            <input type="hidden" id="txtLongitude" name="txtLongitude" />
+
+        </fieldset>
+    </form>
+
+    <div class="autores">
+        <p>Criado por: <a href="http://twitter.com/rodolfoprr" target="_blank">Rodolfo Pereira</a> | Estilizado por: <a href="http://twitter.com/jofelipe_" target="_blank">Jonathan Felipe</a></p>
+    </div>
+
 </div>
 
 <div id="modal1" class="modal">

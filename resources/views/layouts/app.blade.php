@@ -128,7 +128,7 @@
                 @yield('content')
 
                 @auth
-
+                    @include('post.create')
                 @endauth
             </div>
         </div>
