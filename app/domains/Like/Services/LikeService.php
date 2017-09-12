@@ -3,15 +3,16 @@
 namespace desabafai\domains\Like\Services;
 
 use desabafai\domains\Like\Like;
+use desabafai\domains\Like\LikeRepository;
 use desabafai\domains\User\User;
 
 class LikeService
 {
-     private $like;
+     private $likeRepository;
 
-     public function __construct(Like $like)
+     public function __construct(LikeRepository $likeRepository)
      {
-        $this->like = $like;
+        $this->likeRepository = $likeRepository;
      }
 
      public function addLike(User $user, $model)
@@ -24,7 +25,7 @@ class LikeService
 
      public function removeLike($likeId)
      {
-         $like = $this->like->find($likeId);
+         $like = $this->likeRepository->find($likeId);
          return $like->delete();
      }
 }

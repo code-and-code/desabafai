@@ -2,6 +2,7 @@
 
 namespace desabafai\domains\Post;
 
+use desabafai\domains\Like\Like;
 use desabafai\domains\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
