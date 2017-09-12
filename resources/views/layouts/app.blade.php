@@ -86,7 +86,7 @@
                     </li>
 
                     <ul id="dropdown_mobile" class="dropdown-content">
-                        <li><a href="#!">Perfil</a></li>
+                        <li><a href="{{ route('user.edit', auth()->user()) }}">Perfil</a></li>
                         <li><a href="#!">Meus Posts</a></li>
                         <li class="divider"></li>
                         <li>
