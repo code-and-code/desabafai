@@ -4,18 +4,20 @@ namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
 use desabafai\domains\Post\Post;
+use desabafai\domains\User\Services\UserService;
 use desabafai\domains\User\User;
 use desabafai\domains\User\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-
     private $user;
+    protected $service;
 
-    public function __construct(UserRepository $user)
+    public function __construct(UserRepository $repository, UserService $service)
     {
-        $this->user = $user;
+        $this->user = $repository;
+        $this->service = $service;
     }
 
     public function show($nickname = null)
@@ -33,7 +35,7 @@ class UserController extends Controller
     public function update(User $user , Request $request ){
         try{
 
-            $user->update($request->input());
+            $this->service->update($request->input(), $user->id);
             return response()
                 ->json([
                     'message' => 'Success',
@@ -47,7 +49,5 @@ class UserController extends Controller
                     'status' => 400
                 ], 400);
         }
-
-
     }
 }
