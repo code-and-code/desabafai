@@ -3,18 +3,32 @@
 namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
+use desabafai\domains\Post\Post;
+use desabafai\domains\Post\Requests\PostCreateRequest;
+use desabafai\domains\Post\Services\PostService;
 
 class PostController extends Controller
 {
-    private $auth;
+    protected $postService;
 
-    public function __construct()
+    public function __construct(PostService $postService)
     {
-        $this->auth = auth();
+        $this->middleware('auth');
+        $this->postService = $postService;
     }
 
-    public function index()
+    public function create()
     {
-        dd($this->auth);
+        return view('post.create');
+    }
+
+    public function store(PostCreateRequest $request)
+    {
+
+    }
+
+    public function show(Post $post)
+    {
+
     }
 }

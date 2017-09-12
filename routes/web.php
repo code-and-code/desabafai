@@ -16,9 +16,17 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::group(['prefix' => 'user', 'as' =>'user.'], function () {
 
-    Route::get('/show/{$slu}', 'UserController@show')->name('show');
+    Route::get('/show/{$slu}',   'UserController@show')->name('show');
     Route::get('/{user}/edit',   'UserController@edit')->name('edit');
-    Route::post('/{user}/update',   'UserController@update')->name('update');
+    Route::post('/{user}/update','UserController@update')->name('update');
+});
+
+
+Route::group(['prefix' => 'post', 'as' =>'post.'], function () {
+
+    Route::get('/create',        'PostController@create')->name('create');
+    Route::get('/show/{post}',   'PostController@show')->name('show');
+    Route::post('/store',        'PostController@store')->name('store');
 });
 
 
@@ -30,4 +38,3 @@ Route::get('shared/{shareable_link}', ['middleware' => 'shared'], function (\Sas
 
 Auth::routes();
 Route::get('/{slu}','UserController@show')->name('slug');
-

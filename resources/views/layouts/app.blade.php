@@ -116,7 +116,7 @@
                 @yield('content')
 
                @auth
-                    @include('post.create')
+
                 @endauth
             </div>
         </div>
@@ -128,7 +128,7 @@
                 @yield('content')
 
                 @auth
-                @include('post.create')
+
                 @endauth
             </div>
         </div>
@@ -155,24 +155,56 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCnkmSfh2VXFLCAUDNZyDUvSks_dSIq_XY&amp;sensor=false"></script>
 
-<script class="blockUI">
+<script src="{{ asset('js/mapa.js') }}"></script>
+<script src="{{ asset('js/jquery-ui.custom.min.js') }}"></script>
 
-    $.blockUI.defaults.message = '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>';
-    $.blockUI.defaults.css =
-    {
-        padding:        0,
-        margin:         0,
-        top:            '40%',
-        left:           '50%',
-        textAlign:      'center',
-        color:          '#fff',
-        cursor:         'wait'
-    };
+<script>
+    $(document).ready(function () {
 
+        $.blockUI.defaults.message = '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>';
+        $.blockUI.defaults.css =
+        {
+            padding:        0,
+            margin:         0,
+            top:            '40%',
+            left:           '50%',
+            textAlign:      'center',
+            color:          '#fff',
+            cursor:         'wait'
+        };
+
+        $(":input").bind("keyup change", function(e) {
+            var name = $(this).attr('name')
+            $('#'+name).html('');
+        })
+
+        $('#form_register')
+                .on('ajax:before', function(event, xhr, status, error) {
+
+                    $.blockUI();
+                })
+                .on('ajax:success', function(event, xhr, status, error) {
+
+                    $.unblockUI();
+                    swal(
+                            'Valeu',
+                            'Cadastrado',
+                            'success'
+                    )
+                })
+                .on('ajax:error', function(event, xhr, status, error) {
+
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function( k, v ) {
+                        $('#'+k).html(v);
+                    });
+                    $.unblockUI();
+
+                });
+    });
 </script>
-
-
 @section('scripts')
 
 @show

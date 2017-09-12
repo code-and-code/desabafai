@@ -47,7 +47,5 @@ class UserController extends Controller
                     'status' => 400
                 ], 400);
         }
-
-
     }
 }

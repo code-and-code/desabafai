@@ -98,7 +98,9 @@
             })
 
             $('#form_register')
+
                     .on('ajax:success', function(event, xhr, status, error) {
+
                         swal(
                                 'Valeu',
                                 'Cadastrado',

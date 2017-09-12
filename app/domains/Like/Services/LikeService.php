@@ -12,10 +12,10 @@ class LikeService
 
      public function __construct(LikeRepository $likeRepository)
      {
-        $this->likeRepository = $likeRepository;
+         $this->likeRepository = $likeRepository;
      }
 
-     public function addLike(User $user, $model)
+    public function addLike(User $user, $model)
      {
          if(!$model->Likes()->whereUserId($user->id)->first())
          {
@@ -23,9 +23,11 @@ class LikeService
          }
      }
 
-     public function removeLike($likeId)
+     public function removeLike($id,User $user)
      {
-         $like = $this->likeRepository->find($likeId);
-         return $like->delete();
+         $like = $this->likeRepository->find($id);
+         if (\Gate::forUser($user)->allows('update-post', $like)) {
+             return $like->delete();
+         }
      }
 }
