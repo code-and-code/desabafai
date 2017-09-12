@@ -57,5 +57,6 @@ class Kernel extends HttpKernel
         'can' => \Illuminate\Auth\Middleware\Authorize::class,
         'guest' => \desabafai\core\Http\Middleware\RedirectIfAuthenticated::class,
         'throttle' => \Illuminate\Routing\Middleware\ThrottleRequests::class,
+        'shared' => \Sassnowski\LaravelShareableModel\Http\Middleware\ValidateShareableLink::class,
     ];
 }

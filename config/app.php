@@ -179,6 +179,7 @@ return [
 
 
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
+        Sassnowski\LaravelShareableModel\ShareableLinkServiceProvider::class,
 
     ],
 

@@ -7,7 +7,7 @@ use desabafai\domains\Post\PostPresenter;
 use desabafai\domains\Post\PostRepository;
 use desabafai\domains\Post\Post;
 use Illuminate\Support\Facades\View;
-
+use Sassnowski\LaravelShareableModel\Shareable\ShareableLink;
 class HomeController extends Controller
 {
     /**

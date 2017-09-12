@@ -22,5 +22,12 @@ Route::group(['prefix' => 'user', 'as' =>'user.'], function () {
 });
 
 
+Route::get('shared/{shareable_link}', ['middleware' => 'shared'], function (\Sassnowski\LaravelShareableModel\Shareable\ShareableLink $link) {
+    return $link->shareable;
+})->name('shared');
+
+
+
 Auth::routes();
 Route::get('/{slu}','UserController@show')->name('slug');
+
