@@ -247,7 +247,7 @@
         $('.infinite-scroll').jscroll({
 
             autoTrigger: true,
-            loadingHtml: '<img class="center-block" src="/images/loading.gif" alt="Loading..." />',
+            loadingHtml: '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>',
             loadingFunction: true,
             padding: 20,
             //contentSelector: '.infinite-scroll',

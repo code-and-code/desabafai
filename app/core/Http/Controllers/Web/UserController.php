@@ -32,7 +32,6 @@ class UserController extends Controller
 
     public function update(User $user , Request $request ){
         try{
-
             $user->update($request->input());
             return response()
                 ->json([
@@ -47,7 +46,10 @@ class UserController extends Controller
                     'status' => 400
                 ], 400);
         }
-
-
     }
+
+
+
+
+
 }
