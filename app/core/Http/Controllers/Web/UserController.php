@@ -5,6 +5,7 @@ namespace desabafai\core\Http\Controllers\Web;
 use desabafai\core\Http\Controllers\Controller;
 use desabafai\domains\Post\Post;
 use desabafai\domains\User\User;
+use desabafai\domains\User\UserRepository;
 use Illuminate\Http\Request;
 
 class UserController extends Controller
@@ -12,7 +13,7 @@ class UserController extends Controller
 
     private $user;
 
-    public function __construct(User $user)
+    public function __construct(UserRepository $user)
     {
         $this->user = $user;
     }
@@ -29,7 +30,7 @@ class UserController extends Controller
         return view('user.edit',compact('user'));
     }
 
-    public function update(User $user ,Request $request ){
+    public function update(User $user , Request $request ){
         try{
 
             $user->update($request->input());

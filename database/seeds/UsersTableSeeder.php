@@ -14,8 +14,8 @@ class UsersTableSeeder extends Seeder
 
         \desabafai\domains\User\User::truncate();
         \desabafai\domains\Post\Post::truncate();
-        //$users = factory(App\User::class, 3)->make();
-        //$users = factory(\desabafai\domains\User\User::class, 50)->create();
+        //$users = factory(App\User2::class, 3)->make();
+        //$users = factory(\desabafai\domains\User2\User2::class, 50)->create();
 
 
         factory(\desabafai\domains\User\User::class, 50)->create();
