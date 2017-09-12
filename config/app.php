@@ -163,7 +163,6 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
-        Riverskies\Laravel\MobileDetect\MobileDetectServiceProvider::class,
 
         /*
          * Package Service Providers...
@@ -177,6 +176,9 @@ return [
         // desabafai\Providers\BroadcastServiceProvider::class,
         desabafai\core\Providers\EventServiceProvider::class,
         desabafai\core\Providers\RouteServiceProvider::class,
+
+
+        Prettus\Repository\Providers\RepositoryServiceProvider::class,
 
     ],
 
@@ -226,7 +228,6 @@ return [
         'URL' => Illuminate\Support\Facades\URL::class,
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
-        'MobileDetect' => Riverskies\Laravel\MobileDetect\Facades\MobileDetect::class
 
     ],
 

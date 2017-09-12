@@ -3,7 +3,8 @@
 namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
-use desabafai\domains\Like\Services\LikeService;
+use desabafai\domains\Post\PostPresenter;
+use desabafai\domains\Post\PostRepository;
 use desabafai\domains\Post\Post;
 use Illuminate\Support\Facades\View;
 
@@ -14,9 +15,9 @@ class HomeController extends Controller
      *
      * @return void
      */
-    public function __construct(LikeService $likeService)
+    public function __construct(PostRepository $postRepository)
     {
-        $this->likeService = $likeService;
+        $this->postRepository = $postRepository;
     }
 
     /**
@@ -24,9 +25,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
     public function index()
     {
-        $posts = Post::paginate(3);
+        $posts  = $this->postRepository->orderBy('created_at','desk')->paginate(3);
         return view('home',compact('posts'));
     }
 }

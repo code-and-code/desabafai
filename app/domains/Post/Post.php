@@ -2,14 +2,15 @@
 
 namespace desabafai\domains\Post;
 
-use desabafai\domains\Comment\Comment;
-use desabafai\domains\Denunciation\Denunciation;
-use desabafai\domains\Like\Like;
 use desabafai\domains\User\User;
 use Illuminate\Database\Eloquent\Model;
+use Prettus\Repository\Contracts\Transformable;
+use Prettus\Repository\Traits\TransformableTrait;
 
-class Post extends Model
+class Post extends Model implements Transformable
 {
+    use TransformableTrait;
+
     protected $fillable = [
         'title','body','img','user_from_id','user_id',
     ];
