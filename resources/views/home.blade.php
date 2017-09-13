@@ -14,8 +14,8 @@
                         <img src="{{$post->img}}">
                     </div>
                     <div class="card-content">
-                        <p class="secondary-content"> <span class="teal-text">1 min atrás</span></p>
-                        <span class="card-title">{{$post->title}} {{$post->id}}</span>
+                        <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
+                        <span class="card-title">{{$post->title}}</span>
                         <p>{{$post->body}}</p>
                     </div>
                     <div class="card-action">
@@ -130,8 +130,8 @@
                             <img src="{{$post->img}}">
                         </div>
                         <div class="card-content">
-                            <p class="secondary-content"> <span class="teal-text">1 min atrás</span></p>
-                            <span class="card-title">{{$post->title}} {{$post->id}}</span>
+                            <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
+                            <span class="card-title">{{$post->title}}</span>
                             <p>{{$post->body}}</p>
                         </div>
                         <div class="card-action">

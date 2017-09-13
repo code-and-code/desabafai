@@ -26,6 +26,8 @@ $(document).ready(function () {
 
     initialize();
 
+    //$("#mapa").hide();
+
     function carregarNoMapa(endereco) {
         geocoder.geocode({ 'address': endereco + ', Brasil', 'region': 'BR' }, function (results, status) {
             if (status == google.maps.GeocoderStatus.OK) {
@@ -38,6 +40,7 @@ $(document).ready(function () {
                     $('#txtLongitude').val(longitude);
 
                     var location = new google.maps.LatLng(latitude, longitude);
+                    map.setStreetView(location);
                     marker.setPosition(location);
                     map.setCenter(location);
                     map.setZoom(16);
@@ -89,17 +92,23 @@ $(document).ready(function () {
             marker.setPosition(location);
             map.setCenter(location);
             map.setZoom(16);
+
         }
     });
 
-    $("form").submit(function(event) {
-        event.preventDefault();
+    /*
+    $("#txtEndereco").click(function(e) {
 
-        var endereco = $("#txtEndereco").val();
-        var latitude = $("#txtLatitude").val();
-        var longitude = $("#txtLongitude").val();
+        $("#mapa").show();
 
-        alert("Endereço: " + endereco + "\nLatitude: " + latitude + "\nLongitude: " + longitude);
-    });
+        if($(this).val() == '')
+        {
+            initialize();
 
+        }else
+        {
+            carregarNoMapa($(this).val());
+        }
+    })
+    */
 });

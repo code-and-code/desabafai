@@ -24,7 +24,22 @@ class PostController extends Controller
 
     public function store(PostCreateRequest $request)
     {
+        try{
+            $this->postService->create($request->input(),auth()->user());
+            return response()
+                ->json([
+                    'message' => 'Success',
+                    'status' => 200
+                ], 200);
 
+        }catch (\Exception $e)
+        {
+            return response()
+                ->json([
+                    'message' => $e->getMessage(),
+                    'status' => 400
+                ], 400);
+        }
     }
 
     public function show(Post $post)

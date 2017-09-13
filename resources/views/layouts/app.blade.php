@@ -34,7 +34,7 @@
         <div class="navbar-fixed">
     @endmobile
     <nav class="blue accent-3 lighten-1 " role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">Desabafaí</a>
+        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">DesabaFAÍ</a>
 
             @guest
             <ul class="right hide-on-med-and-down">
@@ -118,8 +118,12 @@
             <div class="container">
                 @yield('content')
 
-               @auth
-
+                @auth
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="{{ route('post.create') }}">
+                        <i class="large material-icons">add</i>
+                    </a>
+                </div>
                 @endauth
             </div>
         </div>
@@ -155,17 +159,17 @@
 <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="{{ asset('js/restful.js') }}"></script>
+<script src="{{ asset('js/blockui.js') }}"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
+<!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
 @section('scripts')
 @show
 
 <script src="{{ asset('materialize/js/materialize.js') }}"></script>
 <script src="{{ asset('materialize/js/init.js') }}"></script>
-<script src="{{ asset('js/restful.js') }}"></script>
-<script src="{{ asset('js/blockui.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
-<!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
 <script>
     $(document).ready(function () {
@@ -181,35 +185,6 @@
             color:          '#fff',
             cursor:         'wait'
         };
-
-        $(":input").bind("keyup change", function(e) {
-            var name = $(this).attr('name')
-            $('#'+name).html('');
-        })
-
-        $('#form_register')
-                .on('ajax:before', function(event, xhr, status, error) {
-
-                    $.blockUI();
-                })
-                .on('ajax:success', function(event, xhr, status, error) {
-
-                    $.unblockUI();
-                    swal(
-                            'Valeu',
-                            'Cadastrado',
-                            'success'
-                    )
-                })
-                .on('ajax:error', function(event, xhr, status, error) {
-
-                    var errors = xhr.responseJSON.errors;
-                    $.each(errors, function( k, v ) {
-                        $('#'+k).html(v);
-                    });
-                    $.unblockUI();
-
-                });
     });
 </script>
 

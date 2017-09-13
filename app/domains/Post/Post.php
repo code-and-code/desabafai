@@ -15,7 +15,7 @@ class Post extends Model implements Transformable,ShareableInterface
     use TransformableTrait,Shareable;
 
     protected $fillable = [
-        'title','body','img','user_from_id','user_id',
+        'title','body','img','user_from_id','user_id', 'address','latitude','longitude',
     ];
 
     public function User()

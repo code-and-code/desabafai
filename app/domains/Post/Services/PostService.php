@@ -4,21 +4,22 @@ namespace desabafai\domains\Post\Services;
 
 
 use desabafai\domains\Post\Post;
+use desabafai\domains\Post\PostRepository;
 use Illuminate\Foundation\Auth\User;
 
 class PostService
 {
-     private $post;
+     private $postRepository;
 
-     public function __construct(Post $post)
+     public function __construct(PostRepository $postRepository)
      {
-        $this->post = $post;
+        $this->postRepository = $postRepository;
      }
 
      public function create(array $data,User $user,$userFrom = null)
      {
          $newPost = array_add($data,'user_id',$user->id);
-         return $this->post->create($newPost);
+         return $this->postRepository->create($newPost);
      }
 
      public function find($id)

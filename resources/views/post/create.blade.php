@@ -1,11 +1,5 @@
 @extends('layouts.app')
 
-@section('scripts')
-    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false"></script>
-    <script src="{{ asset('js/maps/mapa.js') }}"></script>
-    <script src="{{ asset('js/maps/jquery-ui.custom.min.js') }}"></script>
-@endsection
-
 @section('content')
 
     <style type="text/css">
@@ -47,29 +41,39 @@
                 <div class="card-title center-align">Desabafa Aí</div>
 
                     <div class="row">
-                        <form class="col s12">
+                        <form class="col s12" action="{{route('post.store')}}" method="POST" data-remote="true" id="form_post_create">
                             <div class="row">
                                 <div class="input-field col s12">
-                                    <input id="password" type="password" class="validate">
-                                    <label for="password">Título</label>
+                                    <input id="title_id" type="text" name="title" class="validate">
+                                    <label for="title_id">Título</label>
+                                    @if(!$errors->has('title'))
+                                        <span class="help-block">
+                                        <strong class="red-text" id="title" >{{ $errors->first('title') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                                 <div class="input-field col s12">
-                                    <input id="email" type="email" class="validate">
-                                    <label for="email">Desabafo</label>
+                                    <textarea id="body_id" class="materialize-textarea" name="body"></textarea>
+                                    <label for="body_id">Desabafo</label>
+                                    @if(!$errors->has('body'))
+                                        <span class="help-block">
+                                        <strong class="red-text" id="body" >{{ $errors->first('body') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
 
                                 <div class="input-field col s12">
                                     <label for="txtEndereco">Onde Aconteceu </label>
-                                    <input type="text" id="txtEndereco" name="txtEndereco" />
+                                    <input type="text" id="txtEndereco" name="address" />
                                 </div>
 
                                 <div id="mapa"></div>
 
-                                <input type="hidden" id="txtLatitude" name="txtLatitude" />
-                                <input type="hidden" id="txtLongitude" name="txtLongitude" />
+                                <input type="hidden" id="txtLatitude"  name="latitude" />
+                                <input type="hidden" id="txtLongitude" name="longitude" />
 
                             </div>
-                            <button class="btn waves-effect waves-light right" type="submit" name="action">Ufa!!<i class="material-icons right">send</i>
+                            <button class="btn waves-effect waves-light right" type="submit">Desabafei!!
 
                             </button>
                         </form>
@@ -79,6 +83,41 @@
         </div>
     </div>
 </div>
-
 @endsection
 
+@section('scripts')
+    <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false"></script>
+    <script src="{{ asset('js/maps/mapa.js') }}"></script>
+    <script src="{{ asset('js/maps/jquery-ui.custom.min.js') }}"></script>
+
+    <script>
+
+        $( document ).ajaxStart($.blockUI).ajaxStop($.unblockUI).ready(function() {
+
+            $(":input").bind("keyup change", function(e) {
+                var name = $(this).attr('name')
+                $('#'+name).html('');
+            })
+
+            $('#form_post_create')
+
+                    .on('ajax:success', function(event, xhr, status, error) {
+                        swal(
+                                'Valeu',
+                                'já foi....',
+                                'success'
+                        )
+                        $(location).attr('href','/');
+                    })
+                    .on('ajax:error', function(event, xhr, status, error) {
+
+                        var errors = xhr.responseJSON.errors;
+                        $.each(errors, function( k, v ) {
+                            $('#'+k).html(v);
+                        });
+                    });
+        });
+
+    </script>
+
+@endsection

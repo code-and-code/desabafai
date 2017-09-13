@@ -35,6 +35,5 @@ Route::get('shared/{shareable_link}', ['middleware' => 'shared'], function (\Sas
 })->name('shared');
 
 
-
 Auth::routes();
 Route::get('/{slu}','UserController@show')->name('slug');

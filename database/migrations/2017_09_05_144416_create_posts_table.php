@@ -18,6 +18,9 @@ class CreatePostsTable extends Migration
             $table->string('title',100);
             $table->longText('body');
             $table->string('img',255)->nullable();
+            $table->string('address',255)->nullable();
+            $table->string('latitude',255)->nullable();
+            $table->string('longitude',255)->nullable();
             $table->integer('user_id')->unsigned();
             $table->integer('user_from_id')->nullable();
             $table->timestamps();

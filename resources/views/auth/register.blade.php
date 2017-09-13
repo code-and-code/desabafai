@@ -64,6 +64,11 @@
                                 <div class="switch">
                                     <input type="checkbox" name="term_use" value="1" id="term_use_id" />
                                     <label for="term_use_id" >Li e aceito os <a href="#">TERMOS DE USO</a> </label>
+                                    @if (!$errors->has('term_use'))
+                                        <span class="help-block">
+                                        <strong class="red-text" id="term_use" >{{ $errors->first('term_use') }}</strong>
+                                    </span>
+                                    @endif
                                 </div>
                             </div>
                         </div>
@@ -106,6 +111,7 @@
                                 'Cadastrado',
                                 'success'
                         )
+                        $(location).attr('href','/login');
                     })
                     .on('ajax:error', function(event, xhr, status, error) {
 
@@ -114,8 +120,6 @@
                             $('#'+k).html(v);
                         });
                     });
-
-
         });
 
     </script>
