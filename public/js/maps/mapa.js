@@ -69,8 +69,8 @@ $(document).ready(function () {
     });
 
     $("#txtEndereco").autocomplete({
-        source: function (request, response) {
 
+        source: function (request, response) {
             geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
                 response($.map(results, function (item) {
                     return {

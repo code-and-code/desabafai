@@ -1,5 +1,5 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html lang="{{ app()->getLocale() }}"  xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -10,14 +10,11 @@
 
     <title>Desabafaí</title>
 
-
-
     <!-- Styles -->
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('materialize/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.css">
-
 
     <link href="{{ asset('css/loading.css') }}" type="text/css" rel="stylesheet" />
 
@@ -128,7 +125,11 @@
                 @yield('content')
 
                 @auth
-                    @include('post.create')
+                <div class="fixed-action-btn">
+                    <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="{{ route('post.create') }}">
+                        <i class="large material-icons">add</i>
+                    </a>
+                </div>
                 @endauth
             </div>
         </div>
@@ -155,15 +156,11 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
 <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-<script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCnkmSfh2VXFLCAUDNZyDUvSks_dSIq_XY&amp;sensor=false"></script>
-
-<script src="{{ asset('js/mapa.js') }}"></script>
-<script src="{{ asset('js/jquery-ui.custom.min.js') }}"></script>
 
 <script>
     $(document).ready(function () {
 
-        $.blockUI.defaults.message = '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>';
+        $.blockUI.defaults.message = "<div class='loader'><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div></div><div class='circle_loading'></div>";
         $.blockUI.defaults.css =
         {
             padding:        0,
