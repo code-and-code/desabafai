@@ -5,9 +5,9 @@
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-content">
-                    <div class="card-title center-align">Editar</div>
+                    <div class="card-title center-align"></div>
 
-                    <form class="" method="POST" action="{{ route('user.update', $user) }}" id="form_register" data-remote="true">
+                    <form class="" method="POST" action="{{ route('user.update', $user) }}" id="form_user_update" data-remote="true">
 
                         <div class="row {{ $errors->has('name') ? ' has-error' : '' }}">
                             <div class="input-field col s12">
@@ -55,26 +55,24 @@
             $(":input").bind("keyup change", function(e) {
                 var name = $(this).attr('name')
                 $('#'+name).html('');
-            })
+            });
 
-            $('#form_register')
-                    .on('ajax:success', function(event, xhr, status, error) {
-                        swal(
-                                'Valeu',
-                                'Cadastrado',
-                                'success'
-                        )
-                    })
-                    .on('ajax:error', function(event, xhr, status, error) {
+            $('#form_user_update')
+                .on('ajax:success', function(event, xhr, status, error) {
+                    swal(
+                            'Agora Sim',
+                            'Atualizado',
+                            'success'
+                    )
+                })
+                .on('ajax:error', function(event, xhr, status, error) {
 
-                        var errors = xhr.responseJSON.errors;
-                        $.each(errors, function( k, v ) {
-                            $('#'+k).html(v);
-                        });
-
+                    var errors = xhr.responseJSON.errors;
+                    $.each(errors, function( k, v ) {
+                        $('#'+k).html(v);
                     });
 
-
+                });
         });
 
     </script>

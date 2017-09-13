@@ -4,6 +4,7 @@ namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
 use desabafai\domains\Post\Post;
+use desabafai\domains\User\Requests\UserUpdateRequest;
 use desabafai\domains\User\Services\UserService;
 use desabafai\domains\User\User;
 use desabafai\domains\User\UserRepository;
@@ -29,12 +30,14 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
-        return view('user.edit',compact('user'));
+        if (\Gate::forUser(auth()->user())->allows('authorize-user', $user)) {
+            return view('user.edit',compact('user'));
+        }
+        abort(404);
     }
 
-    public function update(User $user , Request $request ){
+    public function update(User $user , UserUpdateRequest $request ){
         try{
-
             $this->service->update($request->input(), $user->id);
             return response()
                 ->json([

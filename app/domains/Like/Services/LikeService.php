@@ -26,7 +26,7 @@ class LikeService
      public function removeLike($id,User $user)
      {
          $like = $this->likeRepository->find($id);
-         if (\Gate::forUser($user)->allows('update-post', $like)) {
+         if (\Gate::forUser($user)->allows('remove-like', $like)) {
              return $like->delete();
          }
      }

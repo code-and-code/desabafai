@@ -30,5 +30,14 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('remove-like', function ($user, $like) {
             return $user->id == $like->user_id;
         });
+
+        Gate::define('authorize', function ($user, $model) {
+            dd($model);
+            return $user->id == $model->user_id;
+        });
+
+        Gate::define('authorize-user', function ($user, $model) {
+            return $user->id == $model->id;
+        });
     }
 }
