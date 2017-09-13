@@ -44,7 +44,7 @@
     <div class="col s12 m12">
         <div class="card">
             <div class="card-content">
-                <div class="card-title center-align">Criar Desabafo</div>
+                <div class="card-title center-align">Desabafa Aí</div>
 
                     <div class="row">
                         <form class="col s12">
@@ -69,7 +69,7 @@
                                 <input type="hidden" id="txtLongitude" name="txtLongitude" />
 
                             </div>
-                            <button class="btn waves-effect waves-light right" type="submit" name="action">Vamos lá
+                            <button class="btn waves-effect waves-light right" type="submit" name="action">Ufa!!<i class="material-icons right">send</i>
 
                             </button>
                         </form>
