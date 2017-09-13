@@ -11,6 +11,12 @@
     <title>Desabafaí</title>
 
     <!-- Styles -->
+    @section('css')
+
+        @show
+
+
+
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('materialize/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
@@ -149,6 +155,10 @@
 <!-- Scripts -->
 
 <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+@section('scripts')
+@show
+
 <script src="{{ asset('materialize/js/materialize.js') }}"></script>
 <script src="{{ asset('materialize/js/init.js') }}"></script>
 <script src="{{ asset('js/restful.js') }}"></script>
@@ -202,8 +212,6 @@
                 });
     });
 </script>
-@section('scripts')
 
-@show
 </body>
 </html>
