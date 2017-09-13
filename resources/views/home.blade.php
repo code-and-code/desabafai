@@ -133,6 +133,7 @@
                             <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
                             <span class="card-title">{{$post->title}}</span>
                             <p>{{$post->body}}</p>
+                            <small>{{$post->address}}</small>
                         </div>
                         <div class="card-action">
                             <a class="tooltipped  waves-effect waves-light" title="Curtir" id="like" data-position="bottom" data-delay="50" data-tooltip="Curtir">

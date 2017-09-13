@@ -5,7 +5,7 @@
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-content">
-                    <div class="card-title center-align"></div>
+                    <div class="center-align responsive-img"><img class="circle" src="{{ config('avatar.150')}}{{$user->nickname}}"></div>
 
                     <form class="" method="POST" action="{{ route('user.update', $user) }}" id="form_user_update" data-remote="true">
 
