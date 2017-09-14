@@ -157,36 +157,19 @@
 
 
 <!-- Scripts -->
+<script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
 
-<script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="{{ asset('js/restful.js') }}"></script>
-<script src="{{ asset('js/blockui.js') }}"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
-<!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-
+ {{--
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script src="{{ asset('js/restful.js') }}"></script>
+    <script src="{{ asset('js/blockui.js') }}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
+    <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
+--}}
 @section('scripts')
 @show
 
-<script src="{{ asset('materialize/js/materialize.js') }}"></script>
-<script src="{{ asset('materialize/js/init.js') }}"></script>
-
-<script>
-    $(document).ready(function () {
-
-        $.blockUI.defaults.message = "<div class='loader'><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div></div><div class='circle_loading'></div>";
-        $.blockUI.defaults.css =
-        {
-            padding:        0,
-            margin:         0,
-            top:            '40%',
-            left:           '50%',
-            textAlign:      'center',
-            color:          '#fff',
-            cursor:         'wait'
-        };
-    });
-</script>
 
 </body>
 </html>

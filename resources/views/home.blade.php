@@ -237,46 +237,12 @@
 
 @endsection
 
-@section('scripts')
-    <script src="{{ asset('js/jscroll/jquery.jscroll.js') }}"></script>
+@section('script')
+
     <script type="text/javascript">
 
     $(function() {
 
-        $('ul.pagination').hide();
-
-        jQuery.fn.runScript = function() {
-
-            $.getScript( "js/home.js", function( data, textStatus, jqxhr ) {
-                console.log( textStatus ); // Success
-                console.log( jqxhr.status ); // 200
-                console.log( "Load was performed." );
-            });
-        };
-
-        $(this).runScript();
-
-        $('.infinite-scroll').jscroll({
-
-            autoTrigger: true,
-            loadingHtml: '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>',
-            loadingFunction: true,
-            padding: 20,
-            //contentSelector: '.infinite-scroll',
-            nextSelector: '.pagination li.active + li a',
-            contentSelector: 'div.infinite-scroll',
-
-            loadingFunction: function() {
-                $(this).runScript();
-            },
-
-            callback: function() {
-
-                $('ul.pagination').remove();
-                $(this).runScript();
-            }
-
-        });
 
     });
     </script>
