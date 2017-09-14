@@ -16,4 +16,9 @@ class UserService {
         return $this->repository->update($data, $id);
     }
 
+    public function getUserProfile($nickname)
+    {
+        return $this->repository->findByField('nickname',$nickname)->first();
+    }
+
 }
