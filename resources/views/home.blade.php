@@ -66,7 +66,7 @@
                                     <div class="input-field col s12">
                                         <i class="material-icons prefix">speaker_notes</i>
                                         <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                        <label for="icon_prefix2">Escreva uma resposta...</label>
+                                        <label for="icon_prefix2">Escreva um consenho...</label>
                                     </div>
                                 </div>
                             </div>
@@ -137,68 +137,74 @@
                             <small>{{$post->address}}</small>
                         </div>
                         <div class="card-action">
-                            <a class="tooltipped  waves-effect waves-light" title="Curtir" id="like" data-position="bottom" data-delay="50" data-tooltip="Curtir">
+
+                            <a class="tooltipped  waves-effect waves-light" title="Curtir" data-tooltip="Curtir" id="like" data-position="bottom" data-delay="50" href="{{route('post.like',$post)}}" data-remote="true" data-method="get" data-like="like_{{$post->id}}">
                                 <i class="material-icons" id="thumb_up">thumb_up</i>
                             </a>
-                            <a class="tooltipped green-text waves-effect waves-light add_comment" title="Comentar"   id="{{$post->id}}"  data-form="form_comment_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Comentar">
-                                <i class="material-icons">speaker_notes</i>
-                            </a>
-                            <a class="tooltipped red-text waves-effect waves-light show_comments" title="Comentarios" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Comentários">
+
+                            <a class="tooltipped red-text waves-effect waves-light  show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Conselhos">
                                 <i class="material-icons">question_answer</i>
                             </a>
+
                             <div class="chip right">
-                                <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="Contact Person">
+                                <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
                                 {{$post->User->nickname}}
                             </div>
+
                         </div>
                         <div class="card-action">
 
-                            {{$post->Likes->count()}} Curtidas
+                            <div id="like_{{$post->id}}">{{$post->Likes->count()}}</div> Curtidas
 
                             <a class="modal-trigger right tooltipped" href="#modal2" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
                         </div>
                     </div>
-                    <div class="row" hidden id="form_comment_{{$post->id}}">
-                        <div class="input-field col s12">
-                            <i class="material-icons prefix">speaker_notes</i>
-                            <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                            <label for="icon_prefix2">Escreva um comentário...</label>
-                        </div>
-                    </div>
+
+                    <!-- form create comment -->
+                    <!-- and form create comment -->
 
                     <ul class="collection" id="comments_{{$post->id}}" hidden>
-                        <li class="collection-item avatar">
-                            <img src="https://www.arteslalu.com.br/wp-content/uploads/2016/10/foto-do-cliente-kayo-morais-depoimento-lalu-50x50.png" alt="" class="circle">
-                            <span class="title">Joaozinho</span>
-                            <p>First Line</p>
-                            <div class="row " id="respostas">
-                                <div class="col s11 offset-s0">
 
-                                    <p> <span class="teal-text accent-3">@Maria </span> Você só precisa de 21 minutos para definir todo seu corpo! ? Teste por 30 dias e veja os resultados XTREME. </p>
+                        <div id="new_comment_{{$post->id}}"></div>
+
+                        @foreach($post->comments->take(3) as $comment)
+
+                        <li class="collection-item avatar">
+                            <img src="{{ config('avatar.150')}}{{$comment->User->nickname}}" alt="" class="circle">
+                            <span class="title">{{$comment->User->nickname}}</span>
+                            <p></p>
+                            <div class="row " id="respostas">
+                                <div class="col s11">
+                                    <p> <span class="teal-text accent-3"></span>{{$comment->body}} </p>
 
                                     <a href="#">Curtir</a> -
-                                    <a href="#" class="reply_comment" data-form="form_replay_comment_{{$post->id}}">Responder</a>
 
-                                    <div class="row" hidden id="form_replay_comment_{{$post->id}}">
+                                    <a href="#" class="reply_comment" data-form="form_replay_comment_{{$comment->id}}">Responder</a>
+
+                                    <div class="row" hidden id="form_replay_comment_{{$comment->id}}">
                                         <div class="input-field col s12">
                                             <i class="material-icons prefix">speaker_notes</i>
                                             <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                            <label for="icon_prefix2">Escreva uma resposta...</label>
+                                            <label for="icon_prefix2">Escreva um consenho..</label>
                                         </div>
                                     </div>
+
                                 </div>
                             </div>
-                            <p class="secondary-content">1 min atrás</p>
-
+                            <p class="secondary-content">{{$comment->created_at->diffForHumans()}}</p>
                         </li>
-                        <li class="collection-item ">
-                            <div class="row" id="">
+                        @endforeach
+
+                        <li class="collection-item">
+                            <form class="form_create_comment" method="POST" action="{{route('post.comment',$post)}}" data-remote="true" data-post="{{$post->id}}">
                                 <div class="input-field col s12">
                                     <i class="material-icons prefix">speaker_notes</i>
-                                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                    <label for="icon_prefix2">Escreva um comentário...</label>
+                                    <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
+                                    <label for="icon_prefix2">Escreva um conselho...</label>
                                 </div>
-                            </div>
+                                <input type="submit" value="gravar">
+                            </form>
+
                         </li>
                     </ul>
                 </div>
@@ -267,7 +273,6 @@
             }
 
         });
-
 
     });
     </script>

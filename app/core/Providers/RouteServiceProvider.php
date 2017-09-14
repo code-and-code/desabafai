@@ -2,6 +2,9 @@
 
 namespace desabafai\core\Providers;
 
+use desabafai\domains\Comment\Comment;
+use desabafai\domains\Post\Post;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Foundation\Support\Providers\RouteServiceProvider as ServiceProvider;
 
@@ -25,7 +28,6 @@ class RouteServiceProvider extends ServiceProvider
     public function boot()
     {
         //
-
         parent::boot();
     }
 

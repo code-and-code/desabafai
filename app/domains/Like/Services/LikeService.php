@@ -17,10 +17,15 @@ class LikeService
 
     public function addLike(User $user, $model)
      {
-         if(!$model->Likes()->whereUserId($user->id)->first())
-         {
-             return $model->Likes()->create(['user_id' => $user->id]);
+
+         if(method_exists($model,'Likes')){
+
+             if(!$model->Likes()->whereUserId($user->id)->first())
+             {
+                 return $model->Likes()->create(['user_id' => $user->id]);
+             }
          }
+         return false;
      }
 
      public function removeLike($id,User $user)

@@ -18,8 +18,8 @@ class UsersTableSeeder extends Seeder
         //$users = factory(\desabafai\domains\User2\User2::class, 50)->create();
 
 
-        factory(\desabafai\domains\User\User::class, 50)->create();
-        factory(\desabafai\domains\Post\Post::class, 200)->create();
+        factory(\desabafai\domains\User\User::class, 10)->create();
+        factory(\desabafai\domains\Post\Post::class, 10)->create();
 
     }
 }

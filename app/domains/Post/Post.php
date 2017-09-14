@@ -2,6 +2,7 @@
 
 namespace desabafai\domains\Post;
 
+use desabafai\domains\Comment\Comment;
 use desabafai\domains\Like\Like;
 use desabafai\domains\User\User;
 use Illuminate\Database\Eloquent\Model;
@@ -25,7 +26,7 @@ class Post extends Model implements Transformable,ShareableInterface
 
     public function comments()
     {
-        return $this->morphMany(Comment::class, 'commentable');
+        return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at','DESC');
     }
 
     public function Denunciations()

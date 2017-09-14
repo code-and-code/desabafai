@@ -3,13 +3,13 @@
 namespace desabafai\domains\Comment;
 
 use desabafai\domains\Denunciation\Denunciation;
+use desabafai\domains\User\User;
 use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
-
     protected $fillable = [
-        'body',
+        'body','user_id',
     ];
 
     /**
@@ -33,5 +33,10 @@ class Comment extends Model
     public function Likes()
     {
         return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function User()
+    {
+        return $this->belongsTo(User::class);
     }
 }

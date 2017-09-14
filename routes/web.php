@@ -27,7 +27,16 @@ Route::group(['prefix' => 'post', 'as' =>'post.'], function () {
     Route::get('/create',        'PostController@create')->name('create');
     Route::get('/show/{post}',   'PostController@show')->name('show');
     Route::post('/store',        'PostController@store')->name('store');
+    Route::post('/comment/{post}', 'PostController@addComment')->name('comment');
+    Route::get('/like/{post}',   'PostController@like')->name('like');
 });
+
+Route::group(['prefix' => 'like', 'as' =>'like.'], function () {
+   
+    Route::get('/store/{model}',   'likeController@store')->name('store');
+
+});
+
 
 
 Route::get('shared/{shareable_link}', ['middleware' => 'shared'], function (\Sassnowski\LaravelShareableModel\Shareable\ShareableLink $link) {
