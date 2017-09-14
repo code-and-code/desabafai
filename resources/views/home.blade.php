@@ -2,9 +2,9 @@
 
 @section('content')
 
-    @if(isset($user))
+    @if(!isset($user))
 
-        @include('user._profile',['user' =>$user])
+        @include('user._profile_mobile')
 
     @endif
 @mobile
