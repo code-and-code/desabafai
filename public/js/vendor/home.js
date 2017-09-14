@@ -1,4 +1,4 @@
-//$('.modal').modal();
+$('.modal').modal();
 
 $('#like').click(function(){
     $(this).toggleClass("lighten-5");
