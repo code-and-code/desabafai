@@ -25,25 +25,25 @@
             <img class="activator" src="http://wallscollection.net/wp-content/uploads/2017/02/Hd-Background-Wallpaper-For-Laptop.jpg">
         </div>
         <figure class="card-profile-image">
-            <img class="circle z-depth-2 responsive-img activator" src="{{ config('avatar.150')}}Adriano">
+            <img class="circle z-depth-2 responsive-img activator" src="{{config('avatar.150')}}{{$user->nickname}}">
         </figure>
         <div class="card-content">
             <div class="row">
                 <div class="col s3 offset-s2">
-                    <h4 class="card-title grey-text text-darken-4">Roger Waters</h4>
-                    <p class="medium-small grey-text">roger.manager@gmail.com</p>
+                    <h4 class="card-title grey-text text-darken-4">{{$user->nickname}}</h4>
+                    <p class="medium-small grey-text">entrou {{$user->created_at->diffForHumans()}}</p>
                 </div>
                 <div class="col s2 center-align">
-                    <h4 class="card-title grey-text text-darken-4">10+</h4>
+                    <h4 class="card-title grey-text text-darken-4">{{$user->Posts->count()}}</h4>
                     <p class="medium-small grey-text">Desabafos</p>
                 </div>
                 <div class="col s2 center-align">
-                    <h4 class="card-title grey-text text-darken-4">6</h4>
+                    <h4 class="card-title grey-text text-darken-4">{{$user->Comments->count()}}</h4>
                     <p class="medium-small grey-text">Concelhos Dados</p>
                 </div>
                 <div class="col s2 center-align">
-                    <h4 class="card-title grey-text text-darken-4">153</h4>
-                    <p class="medium-small grey-text">Aconcelhado</p>
+                    <h4 class="card-title grey-text text-darken-4">{{$user->Likes->count()}}</h4>
+                    <p class="medium-small grey-text">Likes</p>
                 </div>
                 <div class="col s1 right-align">
                     <a class="btn-floating activator waves-effect waves-light darken-2 right">

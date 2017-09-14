@@ -4,7 +4,7 @@
 
     @if(isset($user))
 
-        @include('user._profile')
+        @include('user._profile',['user' =>$user])
 
     @endif
 @mobile
@@ -152,7 +152,7 @@
 
                             <div class="chip right">
                                 <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
-                                {{$post->User->nickname}}
+                                <a href="/{{$post->User->nickname}}"> {{$post->User->nickname}}</a>
                             </div>
 
                         </div>

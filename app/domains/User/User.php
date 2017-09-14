@@ -2,6 +2,8 @@
 
 namespace desabafai\domains\User;
 
+use desabafai\domains\Comment\Comment;
+use desabafai\domains\Like\Like;
 use desabafai\domains\Post\Post;
 use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
@@ -34,6 +36,11 @@ class User extends Authenticatable implements Transformable
     public function Likes()
     {
         return $this->morphMany(Like::class, 'likeable');
+    }
+
+    public function Comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 
 }
