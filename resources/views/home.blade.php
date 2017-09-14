@@ -2,7 +2,11 @@
 
 @section('content')
 
-@include('user._profile')
+    @if(isset($user))
+
+        @include('user._profile')
+
+    @endif
 @mobile
     <div class="infinite-scroll">
     @foreach($posts as $post)

@@ -20,7 +20,6 @@
 
 </style>
 
-
     <div id="profile-page-header" class="card">
         <div class="card-image waves-effect waves-block waves-light">
             <img class="activator" src="http://wallscollection.net/wp-content/uploads/2017/02/Hd-Background-Wallpaper-For-Laptop.jpg">
