@@ -31,4 +31,15 @@ class HomeController extends Controller
         $posts  = $this->postRepository->orderBy('created_at','desk')->paginate(3);
         return view('home',compact('posts'));
     }
+
+    public function posts()
+    {
+        $posts  = $this->postRepository->orderBy('created_at','desk')->paginate(3);
+        $html   = view('post.posts',compact('posts'))->render();
+        return response()
+            ->json([
+                'items' => $html,
+                'status' => 200
+            ], 200);
+    }
 }

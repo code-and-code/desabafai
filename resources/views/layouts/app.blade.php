@@ -7,13 +7,15 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <!-- Scripts -->
+    <script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
 
     <title>Desabafaí</title>
 
     <!-- Styles -->
     @section('css')
 
-        @show
+    @show
 
 
 
@@ -156,8 +158,7 @@
 {{--</footer>--}}
 
 
-<!-- Scripts -->
-<script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
+
 
  {{--
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>

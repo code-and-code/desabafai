@@ -18,8 +18,6 @@
             ],
 
 
-
-
             home: 'vendor/home',
             restful:'vendor/restful',
             blockui:'vendor/blockui',
@@ -50,12 +48,15 @@
     });
     */
 
-    require(['jquery','materialize','restful'], function( $, _ ) {
+    require(['jquery','velocity','materialize'], function( $, _ ) {
 
     });
 
+    require(['restful'], function( $, _ ) {
 
-    require([ 'blockui',], function( $, _ ) {
+    });
+
+    require(['jquery','blockui'], function( $, _ ) {
 
         $.blockUI.defaults.message = "<div class='loader'><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div></div><div class='circle_loading'></div>";
         $.blockUI.defaults.css =
@@ -70,35 +71,51 @@
         };
     });
 
-    /*
+    require(['jquery','scroll'],function( $, _ ) {
 
-    requirejs([ 'jquery','scroll','home'], function( $, _ ) {
+        require(['Home']);
 
-            $('ul.pagination').hide();
+        $('ul.pagination').hide();
 
-            $('.infinite-scroll').jscroll({
+        $('.infinite-scroll').jscroll({
 
-                autoTrigger: true,
-                loadingHtml: '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>',
-                padding: 20,
-                //contentSelector: '.infinite-scroll',
-                nextSelector: '.pagination li.active + li a',
-                contentSelector: 'div.infinite-scroll',
+            autoTrigger: true,
+            loadingHtml: '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>',
+            padding: 20,
+            //contentSelector: '.infinite-scroll',
+            nextSelector: '.pagination li.active + li a',
+            contentSelector: 'div.infinite-scroll',
 
-                loadingFunction: function() {
-                    //$(this).runScript();
-                },
+            loadingFunction: function() {
 
-                callback: function() {
+            },
 
-                    $('ul.pagination').remove();
-                    //$(this).runScript();
-                }
+            callback: function() {
+                $('ul.pagination').remove();
+            }
 
-            });
+        });
 
+        /*
+        $(window).on('scroll', function(e){
+
+            //$('ul.pagination').hide();
+
+            if  ($(window).scrollTop() == $(document).height() - $(window).height()){
+
+                var href = $('.pagination li.active + li a').attr('href');
+
+                $('.pagination').remove();
+
+                $.get(href, function( data ) {
+
+                    console.log(data);
+                    $('.infinite-scroll').append(data.items);
+                });
+
+            }
+        });
+        */
     });
-    */
-
 
 })();
