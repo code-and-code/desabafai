@@ -55,7 +55,7 @@ class PostController extends Controller
             $likeService->addLike(auth()->user(),$post);
             return response()
                 ->json([
-                    'message' => 'Success',
+                    'data' => ['post'=>$post->id,'likes'=> $post->likes->count()] ,
                     'status' => 200
                 ], 200);
 

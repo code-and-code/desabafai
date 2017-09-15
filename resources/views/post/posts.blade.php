@@ -17,8 +17,8 @@
                     </div>
                     <div class="card-action">
 
-                        <a class="tooltipped  waves-effect waves-light" title="Curtir" data-tooltip="Curtir" id="like" data-position="bottom" data-delay="50" href="{{route('post.like',$post)}}" data-remote="true" data-method="get" data-like="like_{{$post->id}}">
-                            <i class="material-icons" id="thumb_up">thumb_up</i>
+                        <a class="tooltipped  waves-effect waves-light like" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('post.like',$post)}}">
+                            <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
                         </a>
 
                         <a class="tooltipped red-text waves-effect waves-light show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Conselhos">
@@ -33,7 +33,7 @@
                     </div>
                     <div class="card-action">
 
-                        <div id="like_{{$post->id}}">{{$post->Likes->count()}}</div> Curtidas
+                        <div id="like_count_{{$post->id}}">{{$post->Likes->count()}}</div> Curtidas
 
                         <a class="modal-trigger right tooltipped" href="#modal2" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
                     </div>

@@ -17,7 +17,6 @@ class LikeService
 
     public function addLike(User $user, $model)
      {
-
          if(method_exists($model,'Likes')){
 
              if(!$model->Likes()->whereUserId($user->id)->first())
