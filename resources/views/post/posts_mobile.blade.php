@@ -30,7 +30,7 @@
                             {{$post->Likes->count()}} Curtidas
                             <div class="chip ">
                                 <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="Contact Person">
-                                {{$post->User->nickname}}
+                                <a href="/{{$post->User->nickname}}"> {{$post->User->nickname}}</a>
                             </div>
                             <a class="modal-trigger right tooltipped" href="#modal2" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
                         </div>

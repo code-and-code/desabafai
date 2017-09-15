@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col s3 offset-s2">
                     <h4 class="card-title grey-text text-darken-4">{{$user->nickname}}</h4>
-                    <p class="medium-small grey-text">entrou {{$user->created_at->diffForHumans()}}</p>
+                    <p class="medium-small grey-text">Cadastrado há {{$user->created_at->diffForHumans()}}</p>
                 </div>
                 <div class="col s2 center-align">
                     <h4 class="card-title grey-text text-darken-4">{{$user->Posts->count()}}</h4>

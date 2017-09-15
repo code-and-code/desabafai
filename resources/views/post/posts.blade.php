@@ -76,12 +76,12 @@
 
                     <li class="collection-item">
                         <form class="form_create_comment" method="POST" action="{{route('post.comment',$post)}}" data-remote="true" data-post="{{$post->id}}">
-                            <div class="input-field col s12">
+                            <div class="input-field ">
                                 <i class="material-icons prefix">speaker_notes</i>
                                 <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
                                 <label for="icon_prefix2">Escreva um conselho...</label>
                             </div>
-                            <input type="submit" value="gravar">
+                            <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
                         </form>
                     </li>
                 </ul>
