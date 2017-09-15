@@ -1,3 +1,5 @@
+<div class="infinite-scroll">
+
 @foreach($posts as $post)
 
     <div id="my_card_{{$post->id}}">
@@ -103,3 +105,5 @@
 <div id="scroll"></div>
 
 {{$posts->links()}}
+
+</div>
