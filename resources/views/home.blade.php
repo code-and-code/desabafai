@@ -137,16 +137,10 @@
 @endsection
 
 @section('script')
-
     <script type="text/javascript">
-
-        function showComments() {
-
-            alert($(this));
-            //document.getElementById("demo").innerHTML = "Hello World";
-        }
-
-
-
+        ;(function( undefined ) {
+            'use strict';
+                require(['home']);
+        })();
     </script>
 @endsection

@@ -17,105 +17,39 @@
                  'vendor/sweetalert'
             ],
 
-
             home: 'vendor/home',
             restful:'vendor/restful',
             blockui:'vendor/blockui',
             velocity:'vendor/velocity',
-            scroll:'vendor/jscroll/jquery.jscroll',
+            jqueryscroll:'vendor/jscroll/jquery.jscroll',
 
         },
         shim: {
-            velocity:{
-                deps: ['jquery']
-            },
+            jquery:         { exports: '$' },
+            home:           { deps: ['jquery'] },
+            hovelocityme:   { deps: ['jquery'] },
+            materialize:    { deps: ['jquery','velocity'] },
+            blockui:        { deps: ['jquery'] },
+            sweetalert:     { deps: ['jquery'] },
+            jqueryscroll:   { deps: ['jquery'] },
+        },
 
-            materialize: {
-                deps: ['velocity']
-            },
-
-            blockui: {
-                deps: ['jquery']
-            }
-        }
+        waitSeconds: 15
     });
 
+        // Chamando módulo principal para iniciar a aplicação
+        require(['jquery'], function ($) {
+            require(['materialize','sweetalert','restful']);
+        });
 
-    /*
-    require([ 'jquery','sweetalert'], function( $, _ ) {
+        require(['jquery','blockui'], function($) {
+            require(['BlockConfig']);
+        });
 
-        require([ 'App' ]);
-    });
-    */
-
-    require(['jquery','velocity','materialize'], function( $, _ ) {
-
-    });
-
-    require(['restful'], function( $, _ ) {
-
-    });
-
-    require(['jquery','blockui'], function( $, _ ) {
-
-        $.blockUI.defaults.message = "<div class='loader'><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div><div class='bar'></div></div><div class='circle_loading'></div>";
-        $.blockUI.defaults.css =
-        {
-            padding:        0,
-            margin:         0,
-            top:            '40%',
-            left:           '50%',
-            textAlign:      'center',
-            color:          '#fff',
-            cursor:         'wait'
+        requirejs.onError = function (err) {
+            console.log(err.requireType);
+            console.log('modules: ' + err.requireModules);
+            throw err;
         };
-    });
-
-    require(['jquery','scroll'],function( $, _ ) {
-
-        require(['Home']);
-
-        $('ul.pagination').hide();
-
-        $('.infinite-scroll').jscroll({
-
-            autoTrigger: true,
-            loadingHtml: '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>',
-            padding: 20,
-            //contentSelector: '.infinite-scroll',
-            nextSelector: '.pagination li.active + li a',
-            contentSelector: 'div.infinite-scroll',
-
-            loadingFunction: function() {
-
-            },
-
-            callback: function() {
-                $('ul.pagination').remove();
-            }
-
-        });
-
-        /*
-        $(window).on('scroll', function(e){
-
-            //$('ul.pagination').hide();
-
-            if  ($(window).scrollTop() == $(document).height() - $(window).height()){
-
-                var href = $('.pagination li.active + li a').attr('href');
-
-                $('.pagination').remove();
-
-                $.get(href, function( data ) {
-
-                    console.log(data);
-                    $('.infinite-scroll').append(data.items);
-                });
-
-            }
-        });
-        */
-    });
 
 })();

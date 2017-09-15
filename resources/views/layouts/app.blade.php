@@ -7,9 +7,6 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <!-- Scripts -->
-    <script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
-
     <title>Desabafaí</title>
 
     <!-- Styles -->
@@ -168,6 +165,10 @@
     <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 --}}
+
+    <!-- Scripts -->
+<script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
+
 @section('scripts')
 @show
 
