@@ -7,13 +7,12 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <title>Desabafaí</title>
 
     <!-- Styles -->
     @section('css')
 
-        @show
+    @show
 
 
 
@@ -156,8 +155,7 @@
 {{--</footer>--}}
 
 
-<!-- Scripts -->
-<script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
+
 
  {{--
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
@@ -167,6 +165,10 @@
     <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 --}}
+
+    <!-- Scripts -->
+<script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
+
 @section('scripts')
 @show
 

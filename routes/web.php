@@ -11,7 +11,8 @@
 |
 */
 
-Route::get('/', 'HomeController@index')->name('home');
+Route::get('/',     'HomeController@index')->name('home');
+Route::get('/more', 'HomeController@posts')->name('more');
 
 
 Route::group(['prefix' => 'user', 'as' =>'user.'], function () {
