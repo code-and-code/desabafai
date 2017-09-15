@@ -1,4 +1,4 @@
-define(['jquery','jqueryscroll'], function($) {
+define(['jquery','jqueryscroll', 'init'], function($) {
     'use strict';
 
     $(document).on("click", ".like", function(e) {
