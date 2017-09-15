@@ -16,11 +16,15 @@
                 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min',
                  'vendor/sweetalert'
             ],
+            googlemapkey: [
+                'http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false',
+            ],
 
             restful:'vendor/restful',
             blockui:'vendor/blockui',
             velocity:'vendor/velocity',
             jqueryscroll:'vendor/jscroll/jquery.jscroll',
+            jqueryuicustom:'vendor/maps/jquery-ui.custom.min',
 
         },
         shim: {
@@ -30,10 +34,11 @@
             blockui:        { deps: ['jquery'] },
             sweetalert:     { deps: ['jquery'] },
             jqueryscroll:   { deps: ['jquery'] },
+            jqueryuicustom: { deps: ['jquery'] },
         },
         waitSeconds: 15
     });
-        // Chamando módulo principal para iniciar a aplicação
+        // Chamando módulos principais para iniciar a aplicação
         require(['jquery'], function ($) {
             require(['materialize','sweetalert','restful']);
         });

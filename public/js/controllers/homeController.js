@@ -67,8 +67,5 @@ define(['jquery','jqueryscroll'], function($) {
         }
 
     });
-
-
-
-     console.log( 'Carregou Home.js' );
+     console.log( 'Carregou homeController.js' );
 });

@@ -134,6 +134,6 @@
 
 @section('scripts')
     <script>
-        require(['./home']);
+        require(['./controllers/homeController']);
     </script>
 @endsection
