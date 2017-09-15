@@ -1,4 +1,4 @@
-;(function( undefined ) {
+(function( undefined ) {
     'use strict';
 
     require.config({
@@ -37,7 +37,7 @@
         waitSeconds: 15
     });
 
-        // Chamando módulo principal para iniciar a aplicação
+        // Chamando mÃ³dulo principal para iniciar a aplicaÃ§Ã£o
         require(['jquery'], function ($) {
             require(['materialize','sweetalert','restful']);
         });
