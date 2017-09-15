@@ -1,8 +1,8 @@
-(function( undefined ) {
+;(function( undefined ) {
     'use strict';
 
     require.config({
-        baseUrl: './js',
+        baseUrl: '/js/',
         paths: {
             jquery: [
                 'https://code.jquery.com/jquery-2.1.1.min',
@@ -17,7 +17,6 @@
                  'vendor/sweetalert'
             ],
 
-            home: 'vendor/home',
             restful:'vendor/restful',
             blockui:'vendor/blockui',
             velocity:'vendor/velocity',
@@ -26,25 +25,20 @@
         },
         shim: {
             jquery:         { exports: '$' },
-            home:           { deps: ['jquery'] },
             hovelocityme:   { deps: ['jquery'] },
             materialize:    { deps: ['jquery','velocity'] },
             blockui:        { deps: ['jquery'] },
             sweetalert:     { deps: ['jquery'] },
             jqueryscroll:   { deps: ['jquery'] },
         },
-
         waitSeconds: 15
     });
-
-        // Chamando mÃ³dulo principal para iniciar a aplicaÃ§Ã£o
+        // Chamando módulo principal para iniciar a aplicação
         require(['jquery'], function ($) {
             require(['materialize','sweetalert','restful']);
         });
 
-        require(['jquery','blockui'], function($) {
-            require(['BlockConfig']);
-        });
+        require(['block']);
 
         requirejs.onError = function (err) {
             console.log(err.requireType);
