@@ -4,7 +4,11 @@
 
     @if(isset($user))
 
-        @include('user._profile',['user' =>$user])
+        @mobile
+            @include('user._profile_mobile', ['user' => $user])
+        @elsemobile
+            @include('user._profile',['user' =>$user])
+        @endmobile
 
     @endif
 
