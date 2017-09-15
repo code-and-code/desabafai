@@ -52,7 +52,7 @@ define(['jquery','jqueryscroll'], function($) {
     $('.infinite-scroll').jscroll({
 
         autoTrigger: true,
-        loadingHtml: '<div class="loader"><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div><div class="bar"></div></div><div class="circle_loading"></div>',
+        loadingHtml: '',
         padding: 20,
         //contentSelector: '.infinite-scroll',
         nextSelector: '.pagination li.active + li a',

@@ -230,12 +230,12 @@
         /*--------------------------------------------FrameWork------------------------*/
     </style>
 
-    <link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
 
 </head>
 
 <body>
 <!-- Error Page -->
+<link href='https://fonts.googleapis.com/css?family=Anton|Passion+One|PT+Sans+Caption' rel='stylesheet' type='text/css'>
 <div class="error">
     <div class="container-floud">
         <div class="col-xs-12 ground-color text-center">
