@@ -1,4 +1,4 @@
-define([ 'jquery'], function($) {
+define(['jquery','blockui'], function($) {
 
     'use strict';
 

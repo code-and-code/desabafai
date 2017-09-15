@@ -125,22 +125,15 @@
 </div>
 @elsemobile
 <div class="infinite-scroll">
-
-
     @include('post.posts')
-
-
 </div>
 @endmobile
 
 
 @endsection
 
-@section('script')
-    <script type="text/javascript">
-        ;(function( undefined ) {
-            'use strict';
-                require(['home']);
-        })();
+@section('scripts')
+    <script>
+        require(['./home']);
     </script>
 @endsection

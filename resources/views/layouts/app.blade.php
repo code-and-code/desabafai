@@ -167,7 +167,10 @@
 --}}
 
     <!-- Scripts -->
-<script data-main="js/boot" src="{{ asset('js/require.js')}}"></script>
+<script data-main="{{ asset('js/boot.js')}}" src="{{ asset('js/require.js')}}">
+
+
+</script>
 
 @section('scripts')
 @show
