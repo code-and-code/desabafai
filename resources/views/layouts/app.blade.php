@@ -155,8 +155,6 @@
 {{--</footer>--}}
 
 
-
-
  {{--
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
     <script src="{{ asset('js/restful.js') }}"></script>
@@ -167,10 +165,8 @@
 --}}
 
     <!-- Scripts -->
-<script data-main="{{ asset('js/boot.js')}}" src="{{ asset('js/require.js')}}">
-
-
-</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
+<script data-main="{{ asset('js/boot.js')}}" src="{{ asset('js/require.js')}}"></script>
 
 @section('scripts')
 @show

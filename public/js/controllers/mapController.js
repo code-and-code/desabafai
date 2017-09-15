@@ -98,6 +98,29 @@ define(['jquery','googlemapkey','jqueryuicustom'], function($) {
             }
         });
     });
+
+    $(":input").bind("keyup change", function(e) {
+        var name = $(this).attr('name')
+        $('#'+name).html('');
+    })
+
+    $('#form_post_create')
+
+        .on('ajax:success', function(event, xhr, status, error) {
+            swal(
+                'Valeu',
+                'já foi....',
+                'success'
+            )
+            $(location).attr('href','/');
+        })
+        .on('ajax:error', function(event, xhr, status, error) {
+
+            var errors = xhr.responseJSON.errors;
+            $.each(errors, function( k, v ) {
+                $('#'+k).html(v);
+            });
+        });
     console.log( 'Carregou mapController.js' );
 });
 

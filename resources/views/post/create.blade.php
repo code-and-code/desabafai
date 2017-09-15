@@ -89,37 +89,5 @@
     <script>
         require(['./controllers/mapController']);
     </script>
-    {{--
-     <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false"></script>
-    <script>
-
-        $( document ).ajaxStart($.blockUI).ajaxStop($.unblockUI).ready(function() {
-
-            $(":input").bind("keyup change", function(e) {
-                var name = $(this).attr('name')
-                $('#'+name).html('');
-            })
-
-            $('#form_post_create')
-
-                    .on('ajax:success', function(event, xhr, status, error) {
-                        swal(
-                                'Valeu',
-                                'já foi....',
-                                'success'
-                        )
-                        $(location).attr('href','/');
-                    })
-                    .on('ajax:error', function(event, xhr, status, error) {
-
-                        var errors = xhr.responseJSON.errors;
-                        $.each(errors, function( k, v ) {
-                            $('#'+k).html(v);
-                        });
-                    });
-        });
-
-    </script>
-     --}}
 
 @endsection

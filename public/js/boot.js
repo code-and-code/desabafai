@@ -8,10 +8,12 @@
                 'https://code.jquery.com/jquery-2.1.1.min',
                  'vendor/jquery'
             ],
-            sweetalert: [
+            /*
+            swal: [
                 'https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min',
                  'vendor/sweetalert'
             ],
+            */
             materialize: [
                 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min',
                  'vendor/sweetalert'
@@ -32,7 +34,7 @@
             hovelocityme:   { deps: ['jquery'] },
             materialize:    { deps: ['jquery','velocity'] },
             blockui:        { deps: ['jquery'] },
-            sweetalert:     { deps: ['jquery'] },
+            //swal:     { deps: ['jquery'] },
             jqueryscroll:   { deps: ['jquery'] },
             jqueryuicustom: { deps: ['jquery'] },
         },
@@ -40,7 +42,7 @@
     });
         // Chamando módulos principais para iniciar a aplicação
         require(['jquery'], function ($) {
-            require(['materialize','sweetalert','restful']);
+            require(['materialize','restful']);
         });
 
         require(['block']);

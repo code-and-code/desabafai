@@ -14,5 +14,5 @@ define(['jquery','blockui'], function($) {
         cursor:         'wait'
     };
 
-     console.log( 'Carregou BlockConfig.js' );
+     console.log( 'Carregou block.js' );
 });
