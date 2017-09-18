@@ -26,9 +26,9 @@ class DenunciationDelete
     public function handle(DenunciationCreate $event)
     {
         $model = $event->denunciation->denunciationable;
-        if($model->Denunciations->count() > 3)
+        if($model->Denunciations->count() >= 2)
         {
-            $model->delete();
+            return $model->delete();
         }
     }
 }

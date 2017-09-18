@@ -88,9 +88,9 @@
                                     <div class="col s11">
                                         <p> <span class="teal-text accent-3"></span>{{$answer->body}} </p>
 
-                                        <a class="like blue-text tooltipped" href="{{route('like.store.comment',$answer)}}" data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons tiny">thumb_up</i></a>
+                                        <a class="like blue-text tooltipped" href="{{route('like.store.comment',$answer)}}"         data-remote="true" data-type="json" data-method="POST"         data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons tiny">thumb_up</i></a>
 
-                                        <a class="like red-text tooltipped" href="{{route('denunciation.store.comment',$answer)}}"  data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
+                                        <a class="like red-text tooltipped"  href="{{route('denunciation.store.comment',$answer)}}"  data-remote="true" data-type="json" data-confirm="Sério mesmo?" data-method="POST" data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
 
                                         <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
                                     </div>
