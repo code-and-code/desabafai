@@ -61,7 +61,11 @@
 
                                     <a class="like red-text tooltipped" href="{{route('denunciation.store.comment',$comment)}}"  data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
 
-                                    <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
+                                    @auth
+                                        @if($comment->User->id === auth()->user()->id)
+                                            <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
+                                        @endif
+                                    @endauth
 
                                     <div class="row" hidden id="form_replay_comment_{{$comment->id}}">
                                         <form class="form_comment_create_comment" method="POST" action="{{route('comment.store.comment',$comment)}}" data-post="{{$post->id}}">
@@ -121,7 +125,12 @@
             <div class="collection center-align">
                 <a href="{{route('post.show',$post)}}" class="collection-item">Vizualizar</a>
                 <a href="{{route('denunciation.store.post',$post)}}" data-remote="true" data-confirm="Sério mesmo?" data-method="POST" class="collection-item">Denunciar</a>
-                <a href="#!" class="modal-action modal-close collection-item">Cancelar</a>
+
+                @auth
+                    @if($comment->User->id === auth()->user()->id)
+                        <a href="#" class="modal-action modal-close collection-item">Excluir</a>
+                    @endif
+                @endauth
             </div>
 
         </div>
