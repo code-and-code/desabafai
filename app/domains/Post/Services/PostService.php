@@ -16,33 +16,17 @@ class PostService
         $this->postRepository = $postRepository;
      }
 
-     public function create(array $data,User $user,$userFrom = null)
+     public function store(array $data,User $user,$userFrom = null)
      {
          $newPost = array_add($data,'user_id',$user->id);
          return $this->postRepository->create($newPost);
      }
 
-     public function addComment(array $data,Post $post,User $user)
+     public function destroy($id,User $user)
      {
-         $newComment = array_add($data,'user_id',$user->id);
-         return $post->Comments()->create($newComment);
+         $post = $this->postRepository->find($id);
+         if (\Gate::forUser($user)->allows('authorize', $post)) {
+             return $post->delete();
+         }
      }
-
-     public function find($id)
-     {
-        return $this->post->find($id);
-     }
-
-     public function update(array $data,User $user,Post $post)
-     {
-        return $post->update($data);
-     }
-
-     public function delete(User $user, Post $post)
-     {
-        return $post->delete();
-     }
-
-
-    
 }

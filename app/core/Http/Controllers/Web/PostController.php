@@ -27,7 +27,7 @@ class PostController extends Controller
     public function store(PostCreateRequest $request)
     {
         try{
-            $this->postService->create($request->input(),auth()->user());
+            $this->postService->store($request->input(),auth()->user());
             return response()
                 ->json([
                     'message' => 'Success',
@@ -49,8 +49,23 @@ class PostController extends Controller
 
     }
 
-    public function like(Post $post,LikeService $likeService)
+    public function destroy(Post $post)
     {
-       
+        try{
+            $this->postService->destroy($post->id,auth()->user());
+            return response()
+                ->json([
+                    'message' => 'Success',
+                    'status' => 200
+                ], 200);
+
+        }catch (\Exception $e)
+        {
+            return response()
+                ->json([
+                    'message' => $e->getMessage(),
+                    'status' => 400
+                ], 400);
+        }
     }
 }
