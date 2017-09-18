@@ -16,17 +16,19 @@
             */
             materialize: [
                 'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min',
-                 'vendor/sweetalert'
             ],
             googlemapkey: [
                 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false',
             ],
 
+            init: 'vendor/materialize/init',
             restful:'vendor/restful',
             blockui:'vendor/blockui',
             velocity:'vendor/velocity',
             jqueryscroll:'vendor/jscroll/jquery.jscroll',
             jqueryuicustom:'vendor/maps/jquery-ui.custom.min',
+
+
 
         },
         shim: {
@@ -37,6 +39,7 @@
             //swal:     { deps: ['jquery'] },
             jqueryscroll:   { deps: ['jquery'] },
             jqueryuicustom: { deps: ['jquery'] },
+            init: { deps: ['jquery'] },
         },
         waitSeconds: 15
     });
