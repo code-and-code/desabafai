@@ -9,7 +9,7 @@ define(['jquery','jqueryscroll','materialize'], function($) {
         var id     = $(this).data('like');
         var action = $(this).attr('href');
 
-        $.get(action, function() {
+        $.post(action, function() {
                 $('#'+id).addClass("blue-text");
             })
             .done(function(xhr) {

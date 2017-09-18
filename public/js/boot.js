@@ -28,8 +28,6 @@
             jqueryuicustom:'vendor/maps/jquery-ui.custom.min',
             hammer:'vendor/hammer',
 
-
-
         },
         shim: {
             jquery:         { exports: '$' },

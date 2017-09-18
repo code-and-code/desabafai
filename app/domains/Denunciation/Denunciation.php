@@ -2,6 +2,7 @@
 
 namespace desabafai\domains\Denunciation;
 
+use desabafai\domains\Denunciation\Events\DenunciationCreate;
 use Illuminate\Database\Eloquent\Model;
 
 class Denunciation extends Model
@@ -10,7 +11,11 @@ class Denunciation extends Model
         'user_id'
     ];
 
-    public function denunciationble()
+    protected $dispatchesEvents = [
+        'saved' => DenunciationCreate::class,
+    ];
+
+    public function denunciationable()
     {
         return $this->morphTo();
     }

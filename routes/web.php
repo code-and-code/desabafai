@@ -21,23 +21,22 @@ Route::group(['prefix' => 'user', 'as' =>'user.'], function () {
     Route::post('/{user}/update','UserController@update')->name('update');
 });
 
-
 Route::group(['prefix' => 'post', 'as' =>'post.'], function () {
-    Route::get('/create',        'PostController@create')->name('create');
-    Route::get('/show/{post}',   'PostController@show')->name('show');
-    Route::post('/store',        'PostController@store')->name('store');
-    Route::get('/like/{post}',   'PostController@like')->name('like');
+    Route::get('/create',           'PostController@create')->name('create');
+    Route::post('/store',           'PostController@store')->name('store');
+    Route::get('/show/{post}',      'PostController@show')->name('show');
+    Route::delete('/destroy/{post}','PostController@destroy')->name('destroy');
 });
 
 Route::group(['prefix' => 'like', 'as' =>'like.'], function () {
-    Route::get('/store/user/{user}',       'LikeController@storeForUser')->name('store.user');
-    Route::get('/store/post/{post}',       'LikeController@storeForPost')->name('store.post');
-    Route::get('/store/comment/{comment}', 'LikeController@storeForComment')->name('store.comment');
+    Route::post('/store/user/{user}',       'LikeController@storeForUser')->name('store.user');
+    Route::post('/store/post/{post}',       'LikeController@storeForPost')->name('store.post');
+    Route::post('/store/comment/{comment}', 'LikeController@storeForComment')->name('store.comment');
 });
 
 Route::group(['prefix' => 'denunciation', 'as' =>'denunciation.'], function () {
     Route::post('/store/user/{user}',       'DenunciationController@storeForUser')->name('store.user');
-    Route::post('/store/post/{post}',       'DenunciationController@storeForPost')->name('store.post');
+    Route::get('/store/post/{post}',       'DenunciationController@storeForPost')->name('store.post');
     Route::post('/store/comment/{comment}', 'DenunciationController@storeForComment')->name('store.comment');
 });
 
