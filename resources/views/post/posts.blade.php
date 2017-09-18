@@ -35,7 +35,7 @@
 
                         <div id="like_count_{{$post->id}}">{{$post->Likes->count()}}</div> Curtidas
 
-                        <a class="modal-trigger right tooltipped" href="#modal2" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
+                        <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
                     </div>
                 </div>
 
@@ -90,7 +90,7 @@
         </div>
     </div>
 
-    <div id="modal2" class="modal">
+    <div id="post_modal_{{$post->id}}" class="modal">
         <div class="modal-content">
             <div class="collection center-align">
                 <a href="#!" class="collection-item">Vizualizar</a>

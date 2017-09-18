@@ -21,12 +21,12 @@
                 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false',
             ],
 
-            init: 'vendor/materialize/init',
             restful:'vendor/restful',
             blockui:'vendor/blockui',
             velocity:'vendor/velocity',
             jqueryscroll:'vendor/jscroll/jquery.jscroll',
             jqueryuicustom:'vendor/maps/jquery-ui.custom.min',
+            hammer:'vendor/hammer',
 
 
 
@@ -34,18 +34,18 @@
         shim: {
             jquery:         { exports: '$' },
             hovelocityme:   { deps: ['jquery'] },
-            materialize:    { deps: ['jquery','velocity'] },
+            materialize:    { deps: ['jquery','velocity','hammer'] },
             blockui:        { deps: ['jquery'] },
             //swal:     { deps: ['jquery'] },
             jqueryscroll:   { deps: ['jquery'] },
             jqueryuicustom: { deps: ['jquery'] },
-            init: { deps: ['jquery'] },
         },
         waitSeconds: 15
     });
         // Chamando módulos principais para iniciar a aplicação
         require(['jquery'], function ($) {
-            require(['materialize','restful']);
+            require(['materialize']);
+            require(['restful']);
         });
 
         require(['block']);

@@ -1,6 +1,8 @@
-define(['jquery','jqueryscroll', 'init'], function($) {
+define(['jquery','jqueryscroll','materialize'], function($) {
     'use strict';
 
+    $('.modal').modal();
+    
     $(document).on("click", ".like", function(e) {
 
         e.preventDefault();
@@ -8,7 +10,7 @@ define(['jquery','jqueryscroll', 'init'], function($) {
         var action = $(this).attr('href');
 
         $.get(action, function() {
-                $('#'+id).classad("blue-text");
+                $('#'+id).addClass("blue-text");
             })
             .done(function(xhr) {
                 $('#like_count_'+xhr.data.id).html(xhr.data.likes);
@@ -102,8 +104,6 @@ define(['jquery','jqueryscroll', 'init'], function($) {
 
             });
     });
-
-
 
     $('ul.pagination').hide();
 
