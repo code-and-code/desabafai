@@ -36,7 +36,7 @@ Route::group(['prefix' => 'like', 'as' =>'like.'], function () {
 
 Route::group(['prefix' => 'denunciation', 'as' =>'denunciation.'], function () {
     Route::post('/store/user/{user}',       'DenunciationController@storeForUser')->name('store.user');
-    Route::post('/store/post/{post}',       'DenunciationController@storeForPost')->name('store.post');
+    Route::get('/store/post/{post}',       'DenunciationController@storeForPost')->name('store.post');
     Route::post('/store/comment/{comment}', 'DenunciationController@storeForComment')->name('store.comment');
 });
 

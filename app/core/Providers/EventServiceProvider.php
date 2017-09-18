@@ -2,6 +2,8 @@
 
 namespace desabafai\core\Providers;
 
+use desabafai\domains\Denunciation\Events\DenunciationCreate;
+use desabafai\domains\Denunciation\Listeners\DenunciationDelete;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
 
@@ -13,9 +15,8 @@ class EventServiceProvider extends ServiceProvider
      * @var array
      */
     protected $listen = [
-        'desabafai\core\Events\Event' => [
-            'desabafai\core\Listeners\EventListener',
-        ],
+
+        DenunciationCreate::class => [ DenunciationDelete::class ]
         
     ];
 
