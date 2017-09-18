@@ -20,7 +20,7 @@ class Comment extends Model
         return $this->morphTo();
     }
 
-    public function comments()
+    public function Comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
     }

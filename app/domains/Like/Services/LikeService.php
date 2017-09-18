@@ -2,7 +2,6 @@
 
 namespace desabafai\domains\Like\Services;
 
-use desabafai\domains\Like\Like;
 use desabafai\domains\Like\LikeRepository;
 use desabafai\domains\User\User;
 
@@ -15,7 +14,7 @@ class LikeService
          $this->likeRepository = $likeRepository;
      }
 
-    public function addLike(User $user, $model)
+    public function store(User $user, $model)
      {
          if(method_exists($model,'Likes')){
 
@@ -24,13 +23,13 @@ class LikeService
                  return $model->Likes()->create(['user_id' => $user->id]);
              }
          }
-         return false;
+         throw new \Exception('There is no relationship, Comments');
      }
 
-     public function removeLike($id,User $user)
+     public function destroy($id,User $user)
      {
          $like = $this->likeRepository->find($id);
-         if (\Gate::forUser($user)->allows('remove-like', $like)) {
+         if (\Gate::forUser($user)->allows('authorize', $like)) {
              return $like->delete();
          }
      }

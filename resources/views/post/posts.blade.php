@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-action">
 
-                        <a class="tooltipped  waves-effect waves-light like" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('post.like',$post)}}">
+                        <a class="tooltipped  waves-effect waves-light like" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('like.store.post',$post)}}">
                             <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
                         </a>
 
@@ -47,7 +47,6 @@
                     <div id="new_comment_{{$post->id}}"></div>
 
                     @foreach($post->comments->take(3) as $comment)
-
                         <li class="collection-item avatar">
                             <img src="{{ config('avatar.150')}}{{$comment->User->nickname}}" alt="" class="circle">
                             <span class="title">{{$comment->User->nickname}}</span>
@@ -61,13 +60,15 @@
                                     <a href="#" class="reply_comment" data-form="form_replay_comment_{{$comment->id}}">Responder</a>
 
                                     <div class="row" hidden id="form_replay_comment_{{$comment->id}}">
-                                        <div class="input-field col s12">
-                                            <i class="material-icons prefix">speaker_notes</i>
-                                            <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                            <label for="icon_prefix2">Escreva um consenho..</label>
-                                        </div>
+                                        <form class="form_comment_create_comment" method="POST" action="{{route('comment.store.comment',$comment)}}" data-post="{{$post->id}}">
+                                            <div class="input-field ">
+                                                <i class="material-icons prefix">speaker_notes</i>
+                                                <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
+                                                <label for="icon_prefix2">Escreva um conselho...</label>
+                                            </div>
+                                            <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
+                                        </form>
                                     </div>
-
                                 </div>
                             </div>
                             <p class="secondary-content">{{$comment->created_at->diffForHumans()}}</p>
@@ -75,7 +76,7 @@
                     @endforeach
 
                     <li class="collection-item">
-                        <form class="form_create_comment" method="POST" action="{{route('post.comment',$post)}}" data-remote="true" data-post="{{$post->id}}">
+                        <form class="form_post_create_comment" method="POST" action="{{route('comment.store.post',$post)}}" data-post="{{$post->id}}">
                             <div class="input-field ">
                                 <i class="material-icons prefix">speaker_notes</i>
                                 <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>

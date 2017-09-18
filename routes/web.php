@@ -28,21 +28,21 @@ Route::group(['prefix' => 'post', 'as' =>'post.'], function () {
     Route::get('/create',        'PostController@create')->name('create');
     Route::get('/show/{post}',   'PostController@show')->name('show');
     Route::post('/store',        'PostController@store')->name('store');
-    Route::post('/comment/{post}', 'PostController@addComment')->name('comment');
     Route::get('/like/{post}',   'PostController@like')->name('like');
 });
 
 Route::group(['prefix' => 'like', 'as' =>'like.'], function () {
    
-    Route::get('/store/{model}',   'likeController@store')->name('store');
-
+    Route::get('/store/user/{user}',       'likeController@storeForUser')->name('store.user');
+    Route::get('/store/post/{post}',       'likeController@storeForPost')->name('store.post');
+    Route::get('/store/comment/{comment}', 'likeController@storeForComment')->name('store.comment');
 });
 
+Route::group(['prefix' => 'comment', 'as' =>'comment.'], function () {
+    Route::post('/store/post/{post}',   'commentController@storeForPost')->name('store.post');
+    Route::post('/store/comment/{comment}','commentController@storeForComment')->name('store.comment');
+});
 
-
-Route::get('shared/{shareable_link}', ['middleware' => 'shared'], function (\Sassnowski\LaravelShareableModel\Shareable\ShareableLink $link) {
-    return $link->shareable;
-})->name('shared');
 
 
 Auth::routes();

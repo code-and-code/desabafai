@@ -27,10 +27,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
         Passport::routes();
 
-        Gate::define('remove-like', function ($user, $like) {
-            return $user->id == $like->user_id;
-        });
-
         Gate::define('authorize', function ($user, $model) {
             dd($model);
             return $user->id == $model->user_id;

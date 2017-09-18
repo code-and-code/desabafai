@@ -22,6 +22,12 @@ class PostService
          return $this->postRepository->create($newPost);
      }
 
+     public function addComment(array $data,Post $post,User $user)
+     {
+         $newComment = array_add($data,'user_id',$user->id);
+         return $post->Comments()->create($newComment);
+     }
+
      public function find($id)
      {
         return $this->post->find($id);
@@ -36,5 +42,7 @@ class PostService
      {
         return $post->delete();
      }
+
+
     
 }
