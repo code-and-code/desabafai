@@ -3,6 +3,7 @@
 namespace desabafai\domains\Comment;
 
 use desabafai\domains\Denunciation\Denunciation;
+use desabafai\domains\Like\Like;
 use desabafai\domains\User\User;
 use Illuminate\Database\Eloquent\Model;
 

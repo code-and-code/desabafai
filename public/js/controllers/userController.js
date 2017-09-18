@@ -22,5 +22,26 @@ define(['jquery'], function($) {
             });
 
         });
+
+    $(document).on("click", ".like", function(e) {
+
+        e.preventDefault();
+        var action = $(this).attr('href');
+
+        $.get(action, function() {
+                
+            })
+            .done(function(xhr) {
+                $('#likes_count_'+xhr.data.id).html(xhr.data.likes);
+            })
+            .fail(function() {
+                var errors = xhr.responseJSON.errors;
+                console.log(errors)
+            })
+            .always(function(xhr) {
+
+            });
+    });
+
        console.log( 'Carregou userController.js' );
 });

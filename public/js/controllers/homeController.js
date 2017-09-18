@@ -8,10 +8,9 @@ define(['jquery','jqueryscroll', 'init'], function($) {
         var action = $(this).attr('href');
 
         $.get(action, function() {
-                $('#'+id).toggleClass("blue-text");
+                $('#'+id).classad("blue-text");
             })
             .done(function(xhr) {
-
                 $('#like_count_'+xhr.data.id).html(xhr.data.likes);
             })
             .fail(function() {

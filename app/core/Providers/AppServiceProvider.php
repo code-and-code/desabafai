@@ -8,6 +8,7 @@ use desabafai\domains\Like\LikeRepositoryEloquent;
 use desabafai\domains\Post\Post;
 use desabafai\domains\Post\PostRepository;
 use desabafai\domains\Post\PostRepositoryEloquent;
+use desabafai\domains\User\User;
 use desabafai\domains\User\UserRepository;
 use desabafai\domains\User\UserRepositoryEloquent;
 use Illuminate\Support\ServiceProvider;
@@ -27,6 +28,7 @@ class AppServiceProvider extends ServiceProvider
         Relation::morphMap([
             'posts'    => Post::class,
             'comments' => Comment::class,
+            'users'    => User::class
         ]);
     }
 

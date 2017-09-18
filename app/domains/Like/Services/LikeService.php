@@ -22,8 +22,11 @@ class LikeService
              {
                  return $model->Likes()->create(['user_id' => $user->id]);
              }
+             {
+                 return false;
+             }
          }
-         throw new \Exception('There is no relationship, Comments');
+         throw new \Exception('There is no relationship, User');
      }
 
      public function destroy($id,User $user)

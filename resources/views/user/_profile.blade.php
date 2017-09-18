@@ -31,7 +31,7 @@
             <div class="row">
                 <div class="col s3 offset-s2">
                     <h4 class="card-title grey-text text-darken-4">{{$user->nickname}}</h4>
-                    <p class="medium-small grey-text">Cadastrado há {{$user->created_at->diffForHumans()}}</p>
+                    <p class="medium-small grey-text">Cadastrado  {{$user->created_at->diffForHumans()}}</p>
                 </div>
                 <div class="col s2 center-align">
                     <h4 class="card-title grey-text text-darken-4">{{$user->Posts->count()}}</h4>
@@ -42,28 +42,17 @@
                     <p class="medium-small grey-text">Concelhos Dados</p>
                 </div>
                 <div class="col s2 center-align">
-                    <h4 class="card-title grey-text text-darken-4">{{$user->Likes->count()}}</h4>
+                    <h4 class="card-title grey-text text-darken-4" id="likes_count">{{$user->Likes->count()}}</h4>
                     <p class="medium-small grey-text">Likes</p>
                 </div>
                 <div class="col s1 right-align">
-                    <a class="btn-floating activator waves-effect waves-light darken-2 right">
+                    <a class="btn-floating activator waves-effect waves-light darken-2 right like" href="{{route('like.store.user',$user)}}">
                         <i class="mdi-action-perm-identity material-icons">thumb_up</i>
                     </a>
                 </div>
             </div>
         </div>
         <div class="card-reveal">
-            <p>
-                <span class="card-title grey-text text-darken-4">Roger Waters <i class="mdi-navigation-close right"></i></span>
-                <span><i class="mdi-action-perm-identity cyan-text text-darken-2"></i> Project Manager</span>
-            </p>
-
-            <p>I am a very simple card. I am good at containing small bits of information. I am convenient because I require little markup to use effectively.</p>
-
-            <p><i class="mdi-action-perm-phone-msg cyan-text text-darken-2"></i> +1 (612) 222 8989</p>
-            <p><i class="mdi-communication-email cyan-text text-darken-2"></i> mail@domain.com</p>
-            <p><i class="mdi-social-cake cyan-text text-darken-2"></i> 18th June 1990</p>
-            <p><i class="mdi-device-airplanemode-on cyan-text text-darken-2"></i> BAR - AUS</p>
         </div>
     </div>
 

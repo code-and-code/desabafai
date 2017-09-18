@@ -55,7 +55,7 @@
                                 <div class="col s11">
                                     <p> <span class="teal-text accent-3"></span>{{$comment->body}} </p>
 
-                                    <a href="#">Curtir</a> -
+                                    <a class="like" href="{{route('like.store.comment',$comment)}}">Curtir</a> -
 
                                     <a href="#" class="reply_comment" data-form="form_replay_comment_{{$comment->id}}">Responder</a>
 

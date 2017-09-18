@@ -43,4 +43,4 @@ class User extends Authenticatable implements Transformable
         return $this->hasMany(Comment::class);
     }
 
-}
+} 
