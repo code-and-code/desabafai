@@ -96,7 +96,12 @@
 
                                         <a class="like red-text tooltipped"  href="{{route('denunciation.store.comment',$answer)}}"  data-remote="true" data-type="json" data-confirm="Sério mesmo?" data-method="POST" data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
 
-                                        <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
+                                        @auth
+                                            @if($comment->User->id === auth()->user()->id)
+                                                <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
+                                            @endif
+                                        @endauth
+
                                     </div>
                                 </div>
                                 <p class="secondary-content">{{$answer->created_at->diffForHumans()}}</p>
