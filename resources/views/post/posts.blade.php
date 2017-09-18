@@ -17,7 +17,7 @@
                     </div>
                     <div class="card-action">
 
-                        <a class="tooltipped  waves-effect waves-light like" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('like.store.post',$post)}}">
+                        <a class="tooltipped  waves-effect waves-light like blue-text" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('like.store.post',$post)}}">
                             <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
                         </a>
 
@@ -27,7 +27,7 @@
 
                         <div class="chip right">
                             <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
-                            <a href="/{{$post->User->nickname}}"> {{$post->User->nickname}}</a>
+                            <a href="/{{$post->User->nickname}}" class="black-text"> {{$post->User->nickname}}</a>
                         </div>
 
                     </div>
@@ -49,15 +49,19 @@
                     @foreach($post->comments->take(3) as $comment)
                         <li class="collection-item avatar">
                             <img src="{{ config('avatar.150')}}{{$comment->User->nickname}}" alt="" class="circle">
-                            <span class="title">{{$comment->User->nickname}}</span>
+                            <span class="title"><a href="/{{$comment->User->nickname}}"> {{$comment->User->nickname}}</a></span>
                             <p></p>
                             <div class="row " id="respostas">
                                 <div class="col s11">
                                     <p> <span class="teal-text accent-3"></span>{{$comment->body}} </p>
 
-                                    <a class="like" href="{{route('like.store.comment',$comment)}}">Curtir</a> -
+                                    <a class="like blue-text tooltipped" href="{{route('like.store.comment',$comment)}}" data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons tiny">thumb_up</i></a>
 
-                                    <a href="#" class="reply_comment" data-form="form_replay_comment_{{$comment->id}}">Responder</a>
+                                    <a href="#" class="reply_comment green-text tooltipped" data-form="form_replay_comment_{{$comment->id}}" data-position="bottom" data-delay="50" data-tooltip="Responder"><i class=" material-icons tiny">chat_bubble</i></a>
+
+                                    <a class="like red-text tooltipped" href="{{route('like.store.comment',$comment)}}"  data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
+
+                                    <a class="like grey-text tooltipped" href="{{route('like.store.comment',$comment)}}" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
 
                                     <div class="row" hidden id="form_replay_comment_{{$comment->id}}">
                                         <form class="form_comment_create_comment" method="POST" action="{{route('comment.store.comment',$comment)}}" data-post="{{$post->id}}">
