@@ -6,17 +6,23 @@
         <div class="col s11">
             <p> <span class="teal-text accent-3"></span>{{$comment->body}} </p>
 
-            <a href="#">Curtir</a> -
+            <a class="blue-text tooltipped" href="#"         data-remote="true" data-type="json" data-method="POST"         data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons tiny">thumb_up</i></a>
 
-            <a href="#" class="reply_comment" data-form="form_replay_comment_{{$comment->id}}">Responder</a>
+            @if($answer)
+                <a href="#" class="reply_comment green-text tooltipped" data-form="form_replay_comment_{{$comment->id}}" data-position="bottom" data-delay="50" data-tooltip="Responder"><i class=" material-icons tiny">chat_bubble</i></a>
+            @endif
 
-            <div class="row" hidden id="form_replay_comment_{{$comment->id}}">
-                <div class="input-field col s12">
-                    <i class="material-icons prefix">speaker_notes</i>
-                    <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                    <label for="icon_prefix2">Escreva um consenho..</label>
-                </div>
-            </div>
+            <a class="red-text tooltipped"  href="#"  data-remote="true" data-type="json" data-confirm="Sério mesmo?" data-method="POST" data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
+
+            @auth
+                @if($comment->User->id === auth()->user()->id)
+                    <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
+                @endif
+            @endauth
+
+            @if($answer)
+                @include('comment.create_answer', ['comment' => $comment])
+            @endif
 
         </div>
     </div>

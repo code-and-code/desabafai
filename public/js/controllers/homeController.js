@@ -77,9 +77,11 @@ define(['jquery','jqueryscroll','materialize'], function($) {
     $(document).on("submit",'.form_comment_create_comment', function (e) {
 
         e.preventDefault();
-        var id     = $(this).data('post');
+        var id     = $(this).data('comment');
         var data   = $(this).serialize();
         var action = $(this).attr('action')
+
+        console.log(id);
 
         $('#form_comment_' + id).hide();
         $('#comments_' + id).show();
@@ -100,7 +102,7 @@ define(['jquery','jqueryscroll','materialize'], function($) {
                 });
             })
             .always(function(xhr) {
-                $('#new_comment_' + id).append(xhr.data);
+                $('#new_answer_' + id).append(xhr.data);
 
             });
     });
