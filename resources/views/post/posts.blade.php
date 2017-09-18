@@ -59,9 +59,9 @@
 
                                     <a href="#" class="reply_comment green-text tooltipped" data-form="form_replay_comment_{{$comment->id}}" data-position="bottom" data-delay="50" data-tooltip="Responder"><i class=" material-icons tiny">chat_bubble</i></a>
 
-                                    <a class="like red-text tooltipped" href="{{route('like.store.comment',$comment)}}"  data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
+                                    <a class="like red-text tooltipped" href="{{route('denunciation.store.comment',$comment)}}"  data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
 
-                                    <a class="like grey-text tooltipped" href="{{route('like.store.comment',$comment)}}" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
+                                    <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
 
                                     <div class="row" hidden id="form_replay_comment_{{$comment->id}}">
                                         <form class="form_comment_create_comment" method="POST" action="{{route('comment.store.comment',$comment)}}" data-post="{{$post->id}}">
@@ -77,6 +77,28 @@
                             </div>
                             <p class="secondary-content">{{$comment->created_at->diffForHumans()}}</p>
                         </li>
+
+                        @foreach($comment->comments->take(3) as $answer)
+
+                            <li class="collection-item avatar" style="margin-left: 60px">
+                                <img src="{{ config('avatar.150')}}{{$comment->User->nickname}}" alt="" class="circle">
+                                <span class="title"><a href="/{{$comment->User->nickname}}"> {{$comment->User->nickname}}</a></span>
+                                <p></p>
+                                <div class="row " id="respostas">
+                                    <div class="col s11">
+                                        <p> <span class="teal-text accent-3"></span>{{$comment->body}} </p>
+
+                                        <a class="like blue-text tooltipped" href="{{route('like.store.comment',$comment)}}" data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons tiny">thumb_up</i></a>
+
+                                        <a class="like red-text tooltipped" href="{{route('denunciation.store.comment',$comment)}}"  data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
+
+                                        <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
+                                    </div>
+                                </div>
+                                <p class="secondary-content">{{$comment->created_at->diffForHumans()}}</p>
+                            </li>
+
+                        @endforeach
                     @endforeach
 
                     <li class="collection-item">
