@@ -64,7 +64,7 @@
                                             <div class="input-field ">
                                                 <i class="material-icons prefix">speaker_notes</i>
                                                 <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
-                                                <label for="icon_prefix2">Escreva um conselho...</label>
+                                                <label for="icon_prefix2">Responda o concelho...</label>
                                             </div>
                                             <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
                                         </form>

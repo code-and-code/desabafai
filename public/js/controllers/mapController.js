@@ -109,7 +109,7 @@ define(['jquery','googlemapkey','jqueryuicustom'], function($) {
         .on('ajax:success', function(event, xhr, status, error) {
             swal(
                 'Valeu',
-                'já foi....',
+                'jÃ¡ foi....',
                 'success'
             )
             $(location).attr('href','/');
