@@ -1,6 +1,6 @@
 <li class="collection-item avatar">
     <img src="{{ config('avatar.150')}}{{$comment->User->nickname}}" alt="" class="circle">
-    <span class="title">{{$comment->User->nickname}}</span>
+    <span class="title"><a href="/{{$comment->User->nickname}}"> {{$comment->User->nickname}}</a></span>
     <p></p>
     <div class="row " id="respostas">
         <div class="col s11">
