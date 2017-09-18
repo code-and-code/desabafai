@@ -40,7 +40,7 @@ class CommentController extends Controller
         }
     }
 
-    public function storeForComment(Request $request,Comment $comment)
+    public function storeForComment(CommentCreateRequest $request,Comment $comment)
     {
         try{
             $comment = $this->commentService->store($request->input(),$comment,auth()->user());

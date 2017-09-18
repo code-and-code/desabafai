@@ -3,6 +3,7 @@
 namespace desabafai\domains\User;
 
 use desabafai\domains\Comment\Comment;
+use desabafai\domains\Denunciation\Denunciation;
 use desabafai\domains\Like\Like;
 use desabafai\domains\Post\Post;
 use Prettus\Repository\Contracts\Transformable;
