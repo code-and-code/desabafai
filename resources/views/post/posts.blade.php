@@ -38,8 +38,6 @@
                         <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
                     </div>
                 </div>
-
-
                 <!-- form create comment -->
                 <!-- and form create comment -->
 
@@ -54,6 +52,7 @@
                             <p></p>
                             <div class="row " id="respostas">
                                 <div class="col s11">
+
                                     <p> <span class="teal-text accent-3"></span>{{$comment->body}} </p>
 
                                     <a class="like blue-text tooltipped" href="{{route('like.store.comment',$comment)}}" data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons tiny">thumb_up</i></a>
