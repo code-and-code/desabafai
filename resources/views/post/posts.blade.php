@@ -55,6 +55,7 @@
                         <div  style="margin-left: 60px" class="answer" >
                             @foreach($comment->comments->take(3) as $answer)
                                 @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
+                                <div class="divider"></div>
                             @endforeach
                         </div>
                         <!-- repostas -->
@@ -62,18 +63,33 @@
                     @endforeach
 
                     @auth
-                    <li class="collection-item">
+
+
                         <form class="form_post_create_comment" method="POST" action="{{route('comment.store.post',$post)}}" data-post="{{$post->id}}">
-                            <div class="input-field ">
-                                <i class="material-icons prefix">speaker_notes</i>
-                                <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
-                                <label for="icon_prefix2">Escreva um conselho...</label>
+                            <div class="card">
+                                <div class="card-image waves-effect waves-block waves-light container">
+                                    <div class="input-field ">
+                                        <i class="material-icons prefix">speaker_notes</i>
+                                        <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
+                                        <label for="icon_prefix2">Escreva um conselho...</label>
+                                    </div>
+                                    <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
+                                </div>
+                                <div class="card-content">
+                                    <span class="card-title activator grey-text text-darken-4">MEMES<i class="material-icons right">image</i></span>
+                                </div>
+                                <div class="card-reveal">
+                                    <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                    <a class="fast" data-params="f.jpg"    data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">
+                                        <img src="{{ asset('images/memes/f.jpg') }}" width="160px" height="130px">
+                                    </a>
+                                    <a class="fast" data-params="haha.jpg" data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">
+                                        <img src="{{ asset('images/memes/haha.jpg') }}" width="160px" height="130px">
+                                    </a>
+                                </div>
                             </div>
-                            <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
                         </form>
-                        <a class="fast" data-params="f.jpg"    data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">Fod..</a>
-                        <a class="fast" data-params="haha.jpg" data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">KKKKk</a>
-                    </li>
+
                     @endauth
                 </ul>
             </div>
