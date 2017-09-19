@@ -2,76 +2,120 @@
 
 @section('content')
 
-    <div class="row">
+    <div id="post_id_{{$post->id}}">
+        <div class="row">
+            <div class="col s12 m12">
+                <div class="card">
+                    <div class="card-image">
+                        <img src="{{$post->img}}">
+                    </div>
+                    <div class="card-content">
+                        <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
+                        <span class="card-title">{{$post->title}}</span>
+                        <p>{{$post->body}}</p>
+                        <a href="https://www.google.com.br/maps/search/{{$post->address}}" target="_blank"><small>{{$post->address}}</small></a>
+                    </div>
+                    <div class="card-action">
 
-        <div class="card">
-            <div class="card-image waves-effect waves-block waves-light">
-                <img class="activator" src="http://www.istockphoto.com/resources/images/PhotoFTLP/img_75929395.jpg">
-            </div>
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">Titulo<i class="material-icons right">question_answer</i></span>
-                <p>Desabafo ..............................</p>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <ul class="collection" id="lista_comentarios">
-                    <li class="collection-item avatar">
-                        <img src="https://www.arteslalu.com.br/wp-content/uploads/2016/10/foto-do-cliente-kayo-morais-depoimento-lalu-50x50.png" alt="" class="circle">
-                        <span class="title">Joaozinho</span>
-                        <p>First Line</p>
-                        <div class="row " id="respostas">
-                            <div class="col s11 offset-s0">
+                        <a class="tooltipped  waves-effect waves-light like blue-text" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('like.store.post',$post)}}">
+                            <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
+                        </a>
 
-                                <p> <span class="teal-text accent-3">@Maria </span> Você só precisa de 21 minutos para definir todo seu corpo! → Teste por 30 dias e veja os resultados XTREME. </p>
+                        <a class="tooltipped red-text waves-effect waves-light show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Conselhos">
+                            <i class="material-icons">question_answer</i>
+                        </a>
 
-                                <a href="#">Curtir</a> -
-                                <a href="#" id="responder">Responder</a>
+                        <div class="chip right">
+                            <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
+                            <a href="/{{$post->User->nickname}}" class="black-text"> {{$post->User->nickname}}</a>
+                        </div>
 
-                                <div class="row" hidden id="minha_resposta">
-                                    <div class="input-field col s12">
-                                        <i class="material-icons prefix">speaker_notes</i>
-                                        <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                        <label for="icon_prefix2">Escreva uma resposta...</label>
-                                    </div>
+                    </div>
+                    <div class="card-action">
+
+                        <div id="like_count_{{$post->id}}">{{$post->Likes->count()}}</div> Curtidas
+
+                        <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
+                    </div>
+                </div>
+                <!-- form create comment -->
+                <!-- and form create comment -->
+
+                <ul class="collection">
+
+                    <div id="new_comment_{{$post->id}}"></div>
+
+                    @foreach($post->comments->take(3) as $comment)
+
+                            <!-- comentarios -->
+                    @include('comment.item_comment', ['comment' => $comment, 'answer' => true])
+                            <!-- comentarios -->
+
+                    <!-- repostas -->
+                    <div  style="margin-left: 60px" class="answer" >
+                        @foreach($comment->comments->take(3) as $answer)
+                            @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
+                            <div class="divider"></div>
+                        @endforeach
+                    </div>
+                    <!-- repostas -->
+                    <div id="new_answer_{{ $comment->id }}"></div>
+                    @endforeach
+
+                    @auth
+
+
+                    <form class="form_post_create_comment" method="POST" action="{{route('comment.store.post',$post)}}" data-post="{{$post->id}}">
+                        <div class="card">
+                            <div class="card-image waves-effect waves-block waves-light container">
+                                <div class="input-field ">
+                                    <i class="material-icons prefix">speaker_notes</i>
+                                    <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
+                                    <label for="icon_prefix2">Escreva um conselho...</label>
                                 </div>
+                                <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
+                            </div>
+                            <div class="card-content">
+                                <span class="card-title activator grey-text text-darken-4">MEMES<i class="material-icons right">image</i></span>
+                            </div>
+                            <div class="card-reveal">
+                                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
+                                <a class="fast" data-params="f.jpg"    data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">
+                                    <img src="{{ asset('images/memes/f.jpg') }}" width="160px" height="130px">
+                                </a>
+                                <a class="fast" data-params="haha.jpg" data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">
+                                    <img src="{{ asset('images/memes/haha.jpg') }}" width="160px" height="130px">
+                                </a>
                             </div>
                         </div>
-                        <a href="#!" class="secondary-content">1 min atrás</a>
+                    </form>
 
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="http://ggvconsultoria.com.br/wp-content/uploads/2016/01/papa-juan-50x50.png" alt="" class="circle">
-                        <span class="title">Title</span>
-                        <p>First Line <br> Second Line
-                        </p>
-                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <img src="http://ggvconsultoria.com.br/wp-content/uploads/2016/01/papa-juan-50x50.png" alt="" class="circle">
-                        <span class="title">Title</span>
-                        <p>First Line <br> Second Line
-                        </p>
-                        <a href="#!" class="secondary-content"><i class="material-icons">grade</i></a>
-                    </li>
-                    <li class="collection-item avatar">
-                        <div class="row" id="">
-                            <div class="input-field col s12">
-                                <i class="material-icons prefix">speaker_notes</i>
-                                <textarea id="icon_prefix2" class="materialize-textarea"></textarea>
-                                <label for="icon_prefix2">Escreva um comentário...</label>
-                            </div>
-                        </div>
-                    </li>
+                    @endauth
                 </ul>
             </div>
         </div>
-
-
     </div>
 
+    <div id="post_modal_{{$post->id}}" class="modal">
+        <div class="modal-content">
+            <div class="collection center-align">
+                <a href="{{route('post.show',$post)}}" class="collection-item">Vizualizar</a>
+                <a href="{{route('denunciation.store.post',$post)}}" data-remote="true" data-confirm="Sério mesmo?" data-method="POST" class="collection-item">Denunciar</a>
+
+                @auth
+                @if($post->User->id === auth()->user()->id)
+                    <a href="{{route('post.destroy',$post)}}" data-remove="post_id_{{$post->id}}" data-confirm="Tem certeza" class="modal-action modal-close collection-item destroy">Excluir</a>
+                @endif
+                @endauth
+            </div>
+
+        </div>
+    </div>
 
 @endsection
 
 @section('scripts')
-
+    <script>
+        require(['./controllers/homeController']);
+    </script>
 @endsection
