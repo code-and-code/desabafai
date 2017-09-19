@@ -13,15 +13,15 @@
     @section('css')
 
     @show
-
-
-
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <link href="{{ asset('materialize/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.css">
 
     <link href="{{ asset('css/loading.css') }}" type="text/css" rel="stylesheet" />
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
+    <script data-main="{{ asset('js/boot.js')}}" src="{{ asset('js/require.js')}}"></script>
 
 </head>
 <body class="grey lighten-4">
@@ -165,8 +165,7 @@
 --}}
 
     <!-- Scripts -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
-<script data-main="{{ asset('js/boot.js')}}" src="{{ asset('js/require.js')}}"></script>
+
 
 @section('scripts')
 @show

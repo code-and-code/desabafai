@@ -24,6 +24,31 @@ define(['jquery','jqueryscroll','materialize'], function($) {
             });
      });
 
+    $(document).on("click", ".destroy", function(e) {
+
+        e.preventDefault();
+        var id     = $(this).data('remove');
+        var action = $(this).attr('href');
+
+        $.ajax({
+                type: "DELETE",
+                 url: action,
+                success: function (xhr) {}
+
+        }).done(function(xhr) {
+
+            $('#'+id).remove();
+
+        }).fail(function(xhr) {
+
+                var errors = xhr.responseJSON.errors;
+                console.log(errors)
+            })
+            .always(function(xhr) {
+
+            });
+    });
+
     $(document).on("click", ".show_comments", function(e) {
            e.preventDefault();
            var comments = $(this).data('comments');

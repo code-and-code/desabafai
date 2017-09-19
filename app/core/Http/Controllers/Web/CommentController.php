@@ -63,6 +63,21 @@ class CommentController extends Controller
 
     public function destroy(Comment $comment)
     {
+        try{
+            $this->commentService->destroy($comment->id,auth()->user());
+            return response()
+                ->json([
+                    'message' => 'Success',
+                    'status' => 200
+                ], 200);
 
+        }catch (\Exception $e)
+        {
+            return response()
+                ->json([
+                    'message' => $e->getMessage(),
+                    'status' => 400
+                ], 400);
+        }
     }
 }

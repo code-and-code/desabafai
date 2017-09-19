@@ -15,7 +15,7 @@ class DenunciationService
                  return $model->Denunciations()->create(['user_id' => $user->id]);
              }
              {
-                 return false;
+                 return 'user already talked';
              }
          }
          throw new \Exception('There is no relationship, Denunciation');

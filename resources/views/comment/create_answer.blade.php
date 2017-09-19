@@ -1,3 +1,4 @@
+@auth
 <div class="row" hidden id="form_replay_comment_{{$comment->id}}">
     <form class="form_comment_create_comment" method="POST" action="{{route('comment.store.comment',$comment)}}" data-comment="{{$comment->id}}">
         <div class="input-field ">
@@ -8,4 +9,5 @@
         <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">subdirectory_arrow_right</i></button>
     </form>
 </div>
+@endauth
 

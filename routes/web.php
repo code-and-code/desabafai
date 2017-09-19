@@ -43,6 +43,7 @@ Route::group(['prefix' => 'denunciation', 'as' =>'denunciation.'], function () {
 Route::group(['prefix' => 'comment', 'as' =>'comment.'], function () {
     Route::post('/store/post/{post}',      'commentController@storeForPost')->name('store.post');
     Route::post('/store/comment/{comment}','commentController@storeForComment')->name('store.comment');
+    Route::delete('/destroy/{comment}',    'commentController@destroy')->name('destroy');
 });
 
 Auth::routes();

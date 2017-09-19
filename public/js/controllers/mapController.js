@@ -42,7 +42,6 @@ define(['jquery','googlemapkey','jqueryuicustom'], function($) {
                         $('#txtLongitude').val(longitude);
 
                         var location = new google.maps.LatLng(latitude, longitude);
-                        map.setStreetView(location);
                         marker.setPosition(location);
                         map.setCenter(location);
                         map.setZoom(16);
@@ -109,7 +108,7 @@ define(['jquery','googlemapkey','jqueryuicustom'], function($) {
         .on('ajax:success', function(event, xhr, status, error) {
             swal(
                 'Valeu',
-                'jÃ¡ foi....',
+                'Já foi....',
                 'success'
             )
             $(location).attr('href','/');

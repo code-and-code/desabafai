@@ -2,7 +2,7 @@
 
 @foreach($posts as $post)
 
-    <div id="my_card_{{$post->id}}">
+    <div id="post_id_{{$post->id}}">
         <div class="row">
             <div class="col s12 m12">
                 <div class="card">
@@ -13,7 +13,7 @@
                         <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
                         <span class="card-title">{{$post->title}}</span>
                         <p>{{$post->body}}</p>
-                        <small>{{$post->address}}</small>
+                        <a href="https://www.google.com.br/maps/search/{{$post->address}}" target="_blank"><small>{{$post->address}}</small></a>
                     </div>
                     <div class="card-action">
 
@@ -46,50 +46,23 @@
                     <div id="new_comment_{{$post->id}}"></div>
 
                     @foreach($post->comments->take(3) as $comment)
-                        <li class="collection-item avatar">
-                            <img src="{{ config('avatar.150')}}{{$comment->User->nickname}}" alt="" class="circle">
-                            <span class="title"><a href="/{{$comment->User->nickname}}"> {{$comment->User->nickname}}</a></span>
-                            <p></p>
-                            <div class="row " id="respostas">
-                                <div class="col s11">
 
-                                    <p> <span class="teal-text accent-3"></span>{{$comment->body}} </p>
+                        <!-- comentarios -->
+                        @include('comment.item_comment', ['comment' => $comment, 'answer' => true])
+                        <!-- comentarios -->
 
-                                    <a class="like blue-text tooltipped" href="{{route('like.store.comment',$comment)}}" data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons tiny">thumb_up</i></a>
-
-                                    <a href="#" class="reply_comment green-text tooltipped" data-form="form_replay_comment_{{$comment->id}}" data-position="bottom" data-delay="50" data-tooltip="Responder"><i class=" material-icons tiny">chat_bubble</i></a>
-
-                                    <a class="like red-text tooltipped" href="{{route('denunciation.store.comment',$comment)}}"  data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons tiny">do_not_disturb_alt</i></a>
-
-                                    @auth
-                                        @if(isset($comment->User->id))
-                                            @if($comment->User->id === auth()->user()->id)
-                                                <a class="like grey-text tooltipped" href="#" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
-                                            @endif
-                                        @endif
-                                    @endauth
-
-
-                                    @include('comment.create_answer', ['comment' => $comment])
-
-                                </div>
-                            </div>
-                            <p class="secondary-content">{{$comment->created_at->diffForHumans()}}</p>
-                        </li>
-
-
+                        <!-- repostas -->
                         <div  style="margin-left: 60px" class="answer" >
                             @foreach($comment->comments->take(3) as $answer)
 
                                 @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
-
                             @endforeach
-
-                                <div id="new_answer_{{ $comment->id }}"></div>
                         </div>
-
+                        <!-- repostas -->
+                    <div id="new_answer_{{ $comment->id }}"></div>
                     @endforeach
 
+                    @auth
                     <li class="collection-item">
                         <form class="form_post_create_comment" method="POST" action="{{route('comment.store.post',$post)}}" data-post="{{$post->id}}">
                             <div class="input-field ">
@@ -100,6 +73,7 @@
                             <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
                         </form>
                     </li>
+                    @endauth
                 </ul>
             </div>
         </div>
@@ -112,17 +86,14 @@
                 <a href="{{route('denunciation.store.post',$post)}}" data-remote="true" data-confirm="Sério mesmo?" data-method="POST" class="collection-item">Denunciar</a>
 
                 @auth
-                    @if(isset($comment->User->id))
-                        @if($comment->User->id === auth()->user()->id)
-                            <a href="#" class="modal-action modal-close collection-item">Excluir</a>
+                        @if($post->User->id === auth()->user()->id)
+                        <a href="{{route('post.destroy',$post)}}" data-remove="post_id_{{$post->id}}" data-confirm="Tem certeza" class="modal-action modal-close collection-item destroy">Excluir</a>
                         @endif
-                    @endif
                 @endauth
             </div>
 
         </div>
     </div>
-
 @endforeach
 
 <div id="scroll"></div>

@@ -28,5 +28,6 @@ class PostService
          if (\Gate::forUser($user)->allows('authorize', $post)) {
              return $post->delete();
          }
+         throw new \Exception('Could not delete');
      }
 }
