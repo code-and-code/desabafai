@@ -54,7 +54,6 @@
                         <!-- repostas -->
                         <div  style="margin-left: 60px" class="answer" >
                             @foreach($comment->comments->take(3) as $answer)
-
                                 @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
                             @endforeach
                         </div>
@@ -72,6 +71,8 @@
                             </div>
                             <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
                         </form>
+                        <a class="fast" data-params="f.jpg"    data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">Fod..</a>
+                        <a class="fast" data-params="haha.jpg" data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">KKKKk</a>
                     </li>
                     @endauth
                 </ul>

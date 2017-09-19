@@ -24,6 +24,32 @@ define(['jquery','jqueryscroll','materialize'], function($) {
             });
      });
 
+    $(document).on("click", ".fast", function(e) {
+
+        e.preventDefault();
+        var meme   = $(this).data('params');
+        var target = $(this).data('target');
+        var action = $(this).attr('href');
+
+        console.log(target);
+        var img = "<img src='/images/memes/"+meme+"'>";
+
+        $.post(action,{body:img}, function() {
+
+            })
+            .done(function(xhr) {
+                $('#'+target).append(xhr.data);
+            })
+            .fail(function() {
+                var errors = xhr.responseJSON.errors;
+                console.log(errors)
+            })
+            .always(function(xhr) {
+                $('#'+target).append(xhr.data);
+            });
+    });
+
+
     $(document).on("click", ".destroy", function(e) {
 
         e.preventDefault();
