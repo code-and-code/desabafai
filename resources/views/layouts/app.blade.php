@@ -53,10 +53,12 @@
 
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">
+                            <span style="padding: 0px 40px"></span>
                             <img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px" class="circle circle_avatar responsive-img">
                             <i class="material-icons right">arrow_drop_down</i>
                         </a>
                     </li>
+
 
                     <ul id="dropdown_desktop" class="dropdown-content">
                         <li><a href="{{ route('user.edit', auth()->user()) }}">Perfil</a></li>

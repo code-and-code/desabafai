@@ -1,8 +1,9 @@
 @extends('layouts.app')
 
+
 @section('content')
 
-    <style type="text/css">
+    <style>
         #mapa {
             width: 100%;
             height: 300px;
@@ -35,10 +36,10 @@
     </style>
 
     <div class="row">
-    <div class="col s12 m12">
-        <div class="card">
-            <div class="card-content">
-                <div class="card-title center-align">Desabafa Aí</div>
+        <div class="col s12 m12">
+            <div class="card">
+                <div class="card-content">
+                    <div class="card-title center-align">Desabafa Aí</div>
 
                     <div class="row">
                         <form class="col s12" action="{{route('post.store')}}" method="POST" data-remote="true" id="form_post_create">
@@ -82,7 +83,7 @@
             </div>
         </div>
     </div>
-</div>
+
 @endsection
 
 @section('add')
@@ -91,6 +92,7 @@
 
 @section('scripts')
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false"></script>
-    <script src="{{ asset('js/vendor/maps/jquery-ui.custom.min.js') }}"></script>
     <script src="{{ asset('js/controllers/mapController.js') }}"></script>
+    <script src="{{ asset('js/vendor/maps/jquery-ui.custom.min.js') }}"></script>
+
 @endsection
