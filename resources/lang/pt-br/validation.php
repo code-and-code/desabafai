@@ -96,9 +96,26 @@ return [
     */
 
     'custom' => [
-        'company.email' => [
-            'required' => 'O campo E-mail é obrigatório',
+        'nickname' => [
+            'required'  => 'O campo Apelido é obrigatório.',
+            'alpha_num' => 'O campo Apelido deve conter somente letras e números.',
+            'unique'    => 'Apelido já está em uso.',
         ],
+        'password' => [
+            'required'  => 'O campo Senha é obrigatório.',
+            'confirmed' => 'A confirmação de Senha não confere.',
+        ],
+        'term_use' => [
+            'required' => 'O campo Termo de Uso é obrigatório.',
+        ],
+        'title' => [
+            'required' => 'O campo Título é obrigatório.',
+        ],
+        'body' => [
+            'required' => 'O campo Mensagem é obrigatório.',
+        ],
+
+
     ],
 
     /*

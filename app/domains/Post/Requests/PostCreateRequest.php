@@ -16,7 +16,6 @@ class PostCreateRequest extends Request
     {
         return [
             'title' => 'required',
-            'body'  => 'required',
         ];
     }
 }
