@@ -1,5 +1,5 @@
 $(function($) {
-    'use strict';
+    //'use strict';
 
     var geocoder;
     var map;
@@ -28,7 +28,6 @@ $(function($) {
     $(document).ready(function () {
 
         initialize();
-        //$("#mapa").hide();
 
         function carregarNoMapa(endereco) {
             geocoder.geocode({ 'address': endereco + ', Brasil', 'region': 'BR' }, function (results, status) {

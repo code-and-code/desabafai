@@ -162,11 +162,6 @@
 </div>
 
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-
-        @section('scripts')
-
-        @show
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
@@ -174,12 +169,11 @@
     <script src="{{ asset('js/vendor/blockui.js') }}"></script>
     <script src="{{ asset('js/vendor/restful.js') }}"></script>
 
-    <script src="{{ asset('js/vendor/materialize/materialize.min.js') }}"></script>
+    @section('scripts')
+    @show
 
-    <script src="{{ asset('js/init.js') }}"></script>
-
-
-
+    <script src="{{ asset('materialize/js/materialize.js') }}"></script>
+    <script src="{{ asset('materialize/js/init.js') }}"></script>
 
 </body>
 </html>

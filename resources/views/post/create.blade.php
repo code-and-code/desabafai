@@ -2,7 +2,6 @@
 
 
 @section('content')
-
     <style>
         #mapa {
             width: 100%;
@@ -91,8 +90,7 @@
 
 
 @section('scripts')
-    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false"></script>
-    <script src="{{ asset('js/controllers/mapController.js') }}"></script>
+    <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp"></script>
     <script src="{{ asset('js/vendor/maps/jquery-ui.custom.min.js') }}"></script>
-
+    <script src="{{ asset('js/controllers/mapController.js') }}"></script>
 @endsection
