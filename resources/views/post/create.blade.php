@@ -84,6 +84,11 @@
     </div>
 </div>
 @endsection
+
+@section('add')
+@show
+
+
 @section('scripts')
     <script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false"></script>
     <script src="{{ asset('js/vendor/maps/jquery-ui.custom.min.js') }}"></script>

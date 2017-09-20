@@ -49,6 +49,28 @@ class PostController extends Controller
         return view('post.show',compact('post'));
     }
 
+    public function edit(Post $post){
+        return view('post.edit', compact('post'));
+    }
+
+    public function update(PostCreateRequest $request, Post $post){
+        try{
+            $post->update($request->input());
+            return response()
+                ->json([
+                    'message' => 'Success',
+                    'status' => 200
+                ], 200);
+
+        }catch (\Exception $e){
+            return response()
+                ->json([
+                    'message' => $e->getMessage(),
+                    'status' => 400
+                ], 400);
+        }
+    }
+
     public function destroy(Post $post)
     {
         try{
