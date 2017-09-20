@@ -1,4 +1,4 @@
-$(function($) {
+$(document).ready(function() {
     //'use strict';
 
     var geocoder;
@@ -75,6 +75,7 @@ $(function($) {
 
             source: function (request, response) {
                 geocoder.geocode({ 'address': request.term + ', Brasil', 'region': 'BR' }, function (results, status) {
+
                     response($.map(results, function (item) {
                         return {
                             label: item.formatted_address,

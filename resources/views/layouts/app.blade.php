@@ -14,16 +14,10 @@
 
     @show
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-
     <link href="{{ asset('materialize/css/materialize.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
-
     <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.css">
-
     <link href="{{ asset('css/loading.css') }}" type="text/css" rel="stylesheet" />
-
-
 
 </head>
 <body class="grey lighten-4">
@@ -164,22 +158,19 @@
     <!-- Scripts -->
 </div>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
-
+    <script src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 
-    <script src="{{ asset('js/vendor/blockui.js') }}"></script>
-    <script src="{{ asset('js/vendor/restful.js') }}"></script>
-
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js') }}"></script>
-    <script src="{{ asset('materialize/js/init.js') }}"></script>
-
-
+    <script src="{{ asset('js/init.js') }}"></script>
     @section('scripts')
-    @show
 
+    @show
+    <script src="{{ asset('js/vendor/blockui.js') }}"></script>
+    <script src="{{ asset('js/block.js') }}"></script>
+    <script src="{{ asset('js/vendor/restful.js') }}"></script>
 
 </body>
 </html>
