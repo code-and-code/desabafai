@@ -1,4 +1,4 @@
-define(['jquery'], function($) {
+$(function($) {
     'use strict';
 
     $(":input").bind("keyup change", function (e) {

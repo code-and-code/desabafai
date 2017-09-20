@@ -20,9 +20,6 @@
 
     <link href="{{ asset('css/loading.css') }}" type="text/css" rel="stylesheet" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
-    <script data-main="{{ asset('js/boot.js')}}" src="{{ asset('js/require.js')}}"></script>
-
 </head>
 <body class="grey lighten-4">
 <div id="app" >
@@ -148,29 +145,30 @@
     </div>
     @endmobile
 
-{{--<footer class="page-footer blue lighten-2">--}}
-    {{--<h6 class="center-align"><span>Desabafaí?<span> <a href="" class="pink-text">TERMOS DE USO</a></h6>--}}
-    {{--<div class="footer-copyright">--}}
-        {{--<div class="container center-align">--}}
-            {{--Made by <a class="grey-text text-lighten-3" href="http://materializecss.com"> Desenvolvido por Code&Code</a>--}}
+    {{--<footer class="page-footer blue lighten-2">--}}
+        {{--<h6 class="center-align"><span>Desabafaí?<span> <a href="" class="pink-text">TERMOS DE USO</a></h6>--}}
+        {{--<div class="footer-copyright">--}}
+            {{--<div class="container center-align">--}}
+                {{--Made by <a class="grey-text text-lighten-3" href="http://materializecss.com"> Desenvolvido por Code&Code</a>--}}
+            {{--</div>--}}
         {{--</div>--}}
-    {{--</div>--}}
-{{--</footer>--}}
+    {{--</footer>--}}
 
-
- {{--
+    <!-- Scripts -->
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-    <script src="{{ asset('js/restful.js') }}"></script>
-    <script src="{{ asset('js/blockui.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
---}}
 
-    <!-- Scripts -->
+    <script src="{{ asset('js/vendor/blockui.js') }}"></script>
+    <script src="{{ asset('js/vendor/restful.js') }}"></script>
 
+    <script src="{{ asset('js/vendor/materialize/materialize.min.js') }}"></script>
+
+    <script src="{{ asset('js/init.js') }}"></script>
 
 @section('scripts')
+
 @show
 
 

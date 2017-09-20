@@ -93,8 +93,5 @@
 @endsection
 
 @section('scripts')
-    <script>
-        require(['./controllers/registerController']);
-    </script>
-
+    <script src="{{ asset('js/controllers/registerController.js') }}"></script>
 @endsection

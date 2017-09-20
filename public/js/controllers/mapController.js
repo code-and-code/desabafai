@@ -1,4 +1,4 @@
-define(['jquery','googlemapkey','jqueryuicustom'], function($) {
+$(function($) {
     'use strict';
 
     var geocoder;
