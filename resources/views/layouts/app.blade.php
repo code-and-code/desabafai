@@ -133,13 +133,16 @@
 
                 @yield('content')
 
-                @auth
-                <div class="fixed-action-btn">
-                    <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="{{ route('post.create') }}">
-                        <i class="large material-icons">add</i>
-                    </a>
-                </div>
-                @endauth
+
+                @section('add')
+                    @auth
+                        <div class="fixed-action-btn">
+                            <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="{{ route('post.create') }}">
+                                <i class="large material-icons">add</i>
+                            </a>
+                        </div>
+                    @endauth
+                @show
             </div>
         </div>
     </div>

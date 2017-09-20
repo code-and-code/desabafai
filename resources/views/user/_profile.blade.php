@@ -54,3 +54,6 @@
         </div>
     </div>
 
+@section('add')
+    @parent
+@endsection

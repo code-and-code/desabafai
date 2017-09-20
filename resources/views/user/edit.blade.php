@@ -47,6 +47,9 @@
     </div>
 @endsection
 
+@section('add')
+@show
+
 @section('scripts')
     <script>
         require(['./controllers/userController']);

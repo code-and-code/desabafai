@@ -83,12 +83,7 @@
         </div>
     </div>
 </div>
-
-@section('add')
-@show
-
 @endsection
-
 
 @section('scripts')
     <script>
