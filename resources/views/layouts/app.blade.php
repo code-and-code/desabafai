@@ -27,10 +27,10 @@
     @mobile
     <div class="">
     @elsemobile
-        <div class="navbar-fixed">
+    <div class="navbar-fixed">
     @endmobile
     <nav class="blue accent-3 lighten-1 " role="navigation">
-        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">DesabaFAÍ</a>
+        <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">DesabafAÍ</a>
 
             @guest
             <ul class="right hide-on-med-and-down">
@@ -60,7 +60,7 @@
 
                     <ul id="dropdown_desktop" class="dropdown-content">
                         <li><a href="{{ route('user.edit', auth()->user()) }}">Perfil</a></li>
-                        <li><a href="#!">Meus Posts</a></li>
+                        <li><a href="/{{auth()->user()->nickname}}" >Meus Posts</a></li>
                         <li class="divider"></li>
                         <li>
                             <a href="{{ route('logout') }}"
@@ -109,18 +109,21 @@
     </nav>
     </div>
 
+
     @mobile
         <div class="section">
             <div class="container">
                 @yield('content')
 
-                @auth
-                <div class="fixed-action-btn">
-                    <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="{{ route('post.create') }}">
-                        <i class="large material-icons">add</i>
-                    </a>
-                </div>
-                @endauth
+                @section('add')
+                    @auth
+                        <div class="fixed-action-btn">
+                            <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse" href="{{ route('post.create') }}">
+                                <i class="large material-icons">add</i>
+                            </a>
+                        </div>
+                    @endauth
+                @show
             </div>
         </div>
     @elsemobile
@@ -129,7 +132,6 @@
             <div class="container">
 
                 @yield('content')
-
 
                 @section('add')
                     @auth
@@ -155,7 +157,14 @@
     {{--</footer>--}}
 
     <!-- Scripts -->
+</div>
+
     <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+
+        @section('scripts')
+
+        @show
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
@@ -167,9 +176,7 @@
 
     <script src="{{ asset('js/init.js') }}"></script>
 
-@section('scripts')
 
-@show
 
 
 </body>
