@@ -70,6 +70,8 @@
                 </div>
                 <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
             </div>
+
+            {{--
             <div class="card-content">
                 <span class="card-title activator grey-text text-darken-4">MEMES<i class="material-icons right">image</i></span>
             </div>
@@ -82,6 +84,7 @@
                     <img src="{{ asset('images/memes/haha.jpg') }}" width="160px" height="130px">
                 </a>
             </div>
+             --}}
         </div>
     </form>
     @endauth

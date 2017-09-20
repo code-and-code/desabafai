@@ -3,10 +3,11 @@
 
     require.config({
         baseUrl: '/js/',
+        //urlArgs: "bust=v2"+ (new Date()).getTime(),
         paths: {
             jquery: [
-                'https://code.jquery.com/jquery-2.1.1.min',
-                 'vendor/jquery'
+                 //'https://code.jquery.com/jquery-2.1.1.min',
+                 'vendor/jquery/jquery.min'
             ],
             /*
             swal: [
@@ -15,7 +16,8 @@
             ],
             */
             materialize: [
-                'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min',
+                //'https://cdnjs.cloudflare.com/ajax/libs/materialize/0.100.2/js/materialize.min',
+                'vendor/materialize/materialize.min',
             ],
             googlemapkey: [
                 'http://maps.googleapis.com/maps/api/js?key=AIzaSyBOXe8VnXBmjiT0rIjRYIetQyLnG-WUCa4&amp;sensor=false',
@@ -31,14 +33,14 @@
         },
         shim: {
             jquery:         { exports: '$' },
-            hovelocityme:   { deps: ['jquery'] },
+            restful:        { deps: ['jquery']},
             materialize:    { deps: ['jquery','velocity','hammer'] },
-            blockui:        { deps: ['jquery'] },
-            //swal:     { deps: ['jquery'] },
-            jqueryscroll:   { deps: ['jquery'] },
-            jqueryuicustom: { deps: ['jquery'] },
+            blockui:        { deps: ['jquery']},
+            //swal:         { deps: ['jquery'] },
+            jqueryscroll:   { deps: ['jquery']},
+            jqueryuicustom: { deps: ['jquery']},
         },
-        waitSeconds: 15
+        waitSeconds: 25,
     });
         // Chamando módulos principais para iniciar a aplicação
         require(['jquery'], function ($) {
@@ -47,6 +49,11 @@
         });
 
         require(['block']);
+        require(['./controllers/homeController']);
+        require(['./controllers/userController']);
+        //require(['./controllers/mapController']);
+        require(['./controllers/registerController']);
+
 
         requirejs.onError = function (err) {
             console.log(err.requireType);

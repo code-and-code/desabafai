@@ -22,7 +22,8 @@
 @endsection
 
 @section('scripts')
-    <script>
-        require(['./controllers/homeController']);
-    </script>
+
+    <script src="{{ asset('js/vendor/jscroll/jquery.jscroll.js') }}"></script>
+    <script src="{{ asset('js/controllers/homeController.js') }}"></script>
+
 @endsection

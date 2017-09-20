@@ -46,9 +46,6 @@
         </div>
     </div>
 @endsection
-
 @section('scripts')
-    <script>
-        require(['./controllers/userController']);
-    </script>
+    <script src="{{ asset('js/controllers/userController.js') }}"></script>
 @endsection
