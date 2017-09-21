@@ -40,4 +40,24 @@ class Post extends Model implements Transformable,ShareableInterface
         return $this->morphMany(Like::class, 'likeable');
     }
 
+    public function setBodyAttribute($value)
+    {
+        $values = explode(';',$value);
+        $str = null;
+        foreach ($values as $value)
+        {
+            switch ($value) {
+                case str_contains($value, 'link:'):
+                    $str =  $str. str_replace('link:',''," <a href='{$value}'target='_blank' >{$value}</a><br>");
+                    break;
+                case str_contains($value, 'img:'):
+                    $str = $str.str_replace('img:',''," <img src='{$value}' width='50%' height='50%'><br>");
+                    break;
+                default:
+                    $str = $str.$value."<br>";
+            }
+        }
+        $this->attributes['body'] = $str;
+    }
+
 }

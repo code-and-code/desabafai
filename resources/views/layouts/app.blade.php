@@ -162,7 +162,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.js"></script>
     <!-- Include a polyfill for ES6 Promises (optional) for IE11 and Android browser -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
-
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js') }}"></script>
     <script src="{{ asset('js/init.js') }}"></script>
     @section('scripts')

@@ -8,7 +8,7 @@
                     <div class="card-content">
                         <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
 <span class="card-title">{{$post->title}}</span>
-<p>{{$post->body}}</p>
+<p>{!! $post->body !!}</p>
 <a href="https://www.google.com.br/maps/search/{{$post->address}}" target="_blank"><small>{{$post->address}}</small></a>
 </div>
 <div class="card-action">
