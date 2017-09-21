@@ -7,19 +7,19 @@
                     </div>
                     <div class="card-content">
                         <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
-<span class="card-title">{{$post->title}}</span>
-<p>{!! $post->body !!}</p>
-<a href="https://www.google.com.br/maps/search/{{$post->address}}" target="_blank"><small>{{$post->address}}</small></a>
-</div>
-<div class="card-action">
+                        <span class="card-title">{{$post->title}}</span>
+                        <p>{!! $post->body !!}</p>
+                        <a href="https://www.google.com.br/maps/search/{{$post->address}}" target="_blank"><small>{{$post->address}}</small></a>
+                        </div>
+                    <div class="card-action">
 
     @auth
-    <a class="tooltipped  waves-effect waves-light like blue-text" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('like.store.post',$post)}}">
+    <a class="tooltipped  waves-effect waves-light like  deep-purple-text " title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('like.store.post',$post)}}">
         <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
     </a>
     @endauth
 
-    <a class="tooltipped red-text waves-effect waves-light show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Conselhos">
+    <a class="tooltipped blue-grey-text waves-effect waves-light show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Conselhos">
         <i class="material-icons">question_answer</i>
     </a>
 
@@ -31,7 +31,9 @@
 </div>
 <div class="card-action">
 
-    <div id="like_count_{{$post->id}}">{{$post->Likes->count()}}</div> Curtidas
+    <span id="like_count_{{$post->id}}">{{$post->Likes->count()}}</span> Curtidas  <span style="padding: 0px 2%"></span>
+
+    {{$post->comments->count()}} Comentários
 
     <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
 </div>
@@ -49,7 +51,7 @@
             <!-- comentarios -->
 
                 <!-- repostas -->
-                <div  style="margin-left: 60px" class="answer" >
+                <div  style="margin-left: 60px" class="answer" id="answer_{{ $comment->id }}" hidden>
                     @foreach($comment->comments->take(3) as $answer)
                         @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
                         <div class="divider"></div>
@@ -60,32 +62,18 @@
     @endforeach
 
     @auth
+    <a href="{{route('post.show',$post)}}" class="right">Leia mais ...</a>
     <form class="form_post_create_comment" method="POST" action="{{route('comment.store.post',$post)}}" data-post="{{$post->id}}">
-        <div class="card">
-            <div class="card-image waves-effect waves-block waves-light container">
-                <div class="input-field ">
-                    <i class="material-icons prefix">speaker_notes</i>
-                    <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
-                    <label for="icon_prefix2">Escreva um conselho...</label>
-                </div>
-                <button type="submit" value="gravar" class="waves-effect waves-light btn "><i class="large material-icons">send</i></button>
-            </div>
 
-            {{--
-            <div class="card-content">
-                <span class="card-title activator grey-text text-darken-4">MEMES<i class="material-icons right">image</i></span>
-            </div>
-            <div class="card-reveal">
-                <span class="card-title activator grey-text text-darken-4">Card Title<i class="material-icons right">close</i></span>
-                <a class="fast" data-params="f.jpg"    data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">
-                    <img src="{{ asset('images/memes/f.jpg') }}" width="160px" height="130px">
-                </a>
-                <a class="fast" data-params="haha.jpg" data-target="new_comment_{{$post->id}}" href="{{route('comment.store.post',$post)}}">
-                    <img src="{{ asset('images/memes/haha.jpg') }}" width="160px" height="130px">
-                </a>
-            </div>
-             --}}
+        <div class="input-field container">
+            <i class="material-icons prefix">speaker_notes</i>
+            <textarea id="icon_prefix2" class="materialize-textarea" name="body"></textarea>
+            <label for="icon_prefix2">Escreva um conselho...</label>
+
         </div>
+
+        <button type="submit" value="gravar" class="waves-effect waves-light btn right" style="margin-bottom: 20px; margin-right: 20px"><i class="large material-icons">send</i></button>
+
     </form>
     @endauth
 </ul>

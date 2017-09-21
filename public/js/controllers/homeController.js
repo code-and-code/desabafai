@@ -126,6 +126,16 @@ $(function ($) {
     });
 
 
+    $(document).on("click", ".link_answer", function (e) {
+
+        e.preventDefault();
+
+        var id = $(this).data('answer');
+        console.log($('#answer_'+id));
+        $('#answer_'+id).toggle();
+
+    });
+
     $(document).on("submit", '.form_comment_create_comment', function (e) {
 
         e.preventDefault();
@@ -180,5 +190,6 @@ $(function ($) {
 
     });
     console.log('Carregou homeController.js');
+
 
 });

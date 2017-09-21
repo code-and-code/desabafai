@@ -12,7 +12,7 @@
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-content">
-                    <div class="card-title center-align">Desabafa Aí</div>
+                    <div class="card-title center-align">DesabafAí</div>
 
                     <div class="row">
                         <form class="col s12" action="{{route('post.store')}}" method="POST" data-remote="true" id="form_post_create">
