@@ -52,6 +52,9 @@
                         {{--<img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px; " class="circle circle_avatar responsive-img">--}}
                     {{--</li>--}}
 
+                    <li><a >Comentários <span class="new badge  purple accent-1">4</span></a></li>
+                    <li><a href="/">Posts <span class="new badge pink">4</span></a></li>
+
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">
                             {{auth()->user()->nickname}}
