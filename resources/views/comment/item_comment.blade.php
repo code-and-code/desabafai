@@ -32,3 +32,4 @@
     </div>
     <p class="secondary-content">{{$comment->created_at->diffForHumans()}}</p>
 </li>
+<div class="divider"></div>
