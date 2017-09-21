@@ -15,8 +15,8 @@ class RegisterRequest extends Request
     public function rules()
     {
         return [
-            'nickname' => 'required|string|max:20|unique:users',
-            'email'    => 'required|string|email|max:255|unique:users',
+            'nickname' => 'required|string|max:20|min:5|unique:users',
+            'email'    => 'required|string|email|max:50|unique:users',
             'term_use' => 'required',
             'password' => 'required|string|min:6|confirmed',
         ];

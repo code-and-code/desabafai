@@ -15,8 +15,8 @@ class UserUpdateRequest extends Request
     public function rules()
     {
         return [
-            'nickname' => 'required|string|alpha_num|max:20|unique:users,nickname,'.$this->user->id,
-            'email'    => 'required|string|email|max:255|unique:users,email,'.$this->user->id,
+            'nickname' => 'required|string|max:20|min:5|unique:users,nickname,'.$this->user->id,
+            'email'    => 'required|string|email|max:50|unique:users,email,'.$this->user->id,
         ];
     }
 }

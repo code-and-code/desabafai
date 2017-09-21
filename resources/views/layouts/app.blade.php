@@ -48,9 +48,9 @@
                     <!-- Dropdown Structure -->
                 <ul class="right hide-on-med-and-down">
 
-                    <li>
-                        <img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px; " class="circle circle_avatar responsive-img">
-                    </li>
+                    {{--<li>--}}
+                        {{--<img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px; " class="circle circle_avatar responsive-img">--}}
+                    {{--</li>--}}
 
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">
