@@ -24,8 +24,6 @@
                     <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light "> <span class="new badge" data-badge-caption="Respostas"> {{ $comment->comments->count() }} </span>  </a>
                 @endif
 
-
-
                 @if($answer)
                     @include('comment.create_answer', ['comment' => $comment])
                 @endif
