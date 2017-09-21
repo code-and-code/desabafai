@@ -21,6 +21,15 @@ class Comment extends Model
         return $this->morphTo();
     }
 
+    //delete Cascade
+    function delete()
+    {
+        $this->Comments()->delete();
+        $this->Denunciations()->delete();
+        $this->Likes()->delete();
+        parent::delete();
+    }
+
     public function Comments()
     {
         return $this->morphMany(Comment::class, 'commentable');
