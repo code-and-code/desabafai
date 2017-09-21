@@ -25,6 +25,15 @@ class Post extends Model implements Transformable,ShareableInterface
         return $this->belongsTo(User::class);
     }
 
+    //delete Cascade
+    function delete()
+    {
+        $this->Comments()->delete();
+        $this->Denunciations()->delete();
+        $this->Likes()->delete();
+        parent::delete();
+    }
+
     public function Comments()
     {
         return $this->morphMany(Comment::class, 'commentable')->orderBy('created_at','DESC');

@@ -1,13 +1,10 @@
 @extends('layouts.app')
 
-
 @section('css')
         <link href="{{ asset('css/maps.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
     @show
 
 @section('content')
-
-
     <div class="row">
         <div class="col s12 m12">
             <div class="card">
