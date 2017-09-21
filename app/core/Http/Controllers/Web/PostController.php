@@ -46,7 +46,7 @@ class PostController extends Controller
 
     public function show(Post $post)
     {
-        return view('post.show')->with(['post'=> $post, 'show' => true]);
+        return view('post.show')->with(['post'=> $post]);
     }
 
     public function edit(Post $post){
