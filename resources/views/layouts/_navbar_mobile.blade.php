@@ -30,6 +30,10 @@
     <li>
         <div class="divider"></div>
     </li>
-    <li><a class="waves-effect" href="#!"><i class="material-icons">exit_to_app</i>Sair</a></li>
+
+    <li> <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('logout-form').submit();">
+        <i class="material-icons">exit_to_app</i>Sair
+        </a>
+    </li>
 </ul>
 <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>

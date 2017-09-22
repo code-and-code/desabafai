@@ -5,30 +5,38 @@
     <div class="row " id="respostas">
         <div class="col s11">
             <p> <span class="teal-text accent-3"></span>{!! $comment->body !!}</p>
+            @auth
             <div class="row">
-                @auth
-                <a class="deep-purple-text tooltipped like" href="{{route('like.store.comment',$comment)}}" data-remote="true" data-type="json" data-method="POST"  data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons ">thumb_up</i></a>
+                <a class="no-padding deep-purple-text like" href="{{route('like.store.comment',$comment)}}" data-remote="true" data-type="json" data-method="POST" >{{ $comment->Likes->count() }} <i class=" material-icons ">thumb_up</i></a>
+
+                <span style="padding: 0px 5px"></span>
 
                 @if($answer)
-                    <a href="#" class="reply_comment blue-grey-text tooltipped" data-form="form_replay_comment_{{$comment->id}}" data-position="bottom" data-delay="50" data-tooltip="Responder"><i class=" material-icons ">chat_bubble</i></a>
+                    <a href="#" class="reply_comment blue-grey-text " data-form="form_replay_comment_{{$comment->id}}" ><i class=" material-icons ">chat_bubble</i></a>
                 @endif
 
-                <a href="{{route('denunciation.store.comment',$comment)}}" data-remote="true" data-confirm="Sério mesmo?" data-method="POST" class="red-text tooltipped" data-position="bottom" data-delay="50" data-tooltip="Denunciar"><i class="material-icons ">do_not_disturb_alt</i></a>
+                <span style="padding: 0px 5px"></span>
+
+                <a href="{{route('denunciation.store.comment',$comment)}}" data-remote="true" data-confirm="Sério mesmo?" data-method="POST" class="red-text " ><i class="material-icons ">do_not_disturb_alt</i></a>
+
+                <span style="padding: 0px 5px"></span>
 
                 @if($comment->User->id === auth()->user()->id)
-                    <a href="{{route('comment.destroy',$comment)}}" data-remove="comment_id_{{$comment->id}}" data-confirm="Tem certeza?" class="grey-text tooltipped destroy" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons ">delete_sweep</i></a>
-                @endif
-            </div>
-                @if($answer)
-                    <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light right"> <span class="new badge" data-badge-caption="Respostas"> {{ $comment->comments->count() }} </span>  </a>
+                    <a href="{{route('comment.destroy',$comment)}}" data-remove="comment_id_{{$comment->id}}" data-confirm="Tem certeza?" class="grey-text  destroy" ><i class="material-icons ">delete_sweep</i></a>
                 @endif
 
-                    <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light right"> <span class="new badge purple" data-badge-caption="Curtidas"> {{ $comment->Likes->count() }} </span>  </a>
+                @if($answer)
+                    <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light right">{{ $comment->comments->count() }} <small>Comentarios</small>  </a>
+                @endif
+
+                <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light right"> <small>Curtidas</small>  </a>
 
                 @if($answer)
                     @include('comment.create_answer', ['comment' => $comment])
                 @endif
-                @endauth
+            </div>
+
+            @endauth
 
                 {{--<a class="waves-effect waves-light btn modal-trigger" href="#modal_comment_{{ $comment->id }}">Modal</a>--}}
 
