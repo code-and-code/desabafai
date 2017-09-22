@@ -77,7 +77,7 @@
 
                         {{$post->comments->count()}} Comentários
 
-                        <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top"
+                        <a class="modal-trigger right " href="#post_modal_{{$post->id}}" data-position="top"
                            data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
                     </div>
 
@@ -94,7 +94,7 @@
                     @include('comment.comment_mobile')
                 @elsemobile
                     {{--@include('comment.comment')--}}
-                    @include('comment.comment_mobile')
+                    @include('comment.comment')
                 @endmobile
 
                 @auth

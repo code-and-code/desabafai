@@ -4,7 +4,7 @@
     <p></p>
     <div class="row " id="respostas">
         <div class="col s11">
-            <p hi> <span class="teal-text accent-3"></span>{!! $comment->body !!}</p>
+            <p> <span class="teal-text accent-3"></span>{!! $comment->body !!}</p>
             <div class="row">
                 @auth
                 <a class="deep-purple-text tooltipped like" href="{{route('like.store.comment',$comment)}}" data-remote="true" data-type="json" data-method="POST"  data-position="bottom" data-delay="50" data-tooltip="Curtir"><i class=" material-icons ">thumb_up</i></a>
@@ -38,14 +38,4 @@
 </li>
 <div class="divider"></div>
 
-<div id="modal_comment_{{ $comment->id }}" class="modal">
-    <div class="modal-content">
-
-
-
-    </div>
-    <div class="modal-footer">
-        <a href="#!" class="modal-action modal-close waves-effect waves-green btn-flat">Agree</a>
-    </div>
-</div>
 
