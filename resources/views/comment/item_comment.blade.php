@@ -18,11 +18,11 @@
                         <a href="{{route('comment.destroy',$comment)}}" data-remove="comment_id_{{$comment->id}}" data-confirm="Tem certeza?" class="grey-text tooltipped destroy" data-position="bottom" data-delay="50" data-tooltip="Excluir"><i class="material-icons tiny">delete_sweep</i></a>
                     @endif
 
-                <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light "> <span class="new badge purple" data-badge-caption="Curtidas"> {{ $comment->Likes->count() }} </span>  </a>
-
-                @if($answer)
+               @if($answer)
                     <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light "> <span class="new badge" data-badge-caption="Respostas"> {{ $comment->comments->count() }} </span>  </a>
                 @endif
+
+                <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light "> <span class="new badge purple" data-badge-caption="Curtidas"> {{ $comment->Likes->count() }} </span>  </a>
 
                 @if($answer)
                     @include('comment.create_answer', ['comment' => $comment])

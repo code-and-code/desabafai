@@ -9,8 +9,24 @@
             <a href="#!email"><span class="white-text email">{{auth()->user()->Likes->count()}} Curtidas | {{auth()->user()->Comments->count()}} Concelhos | {{auth()->user()->Posts->count()}} Desabafos</span></a>
         </div>
     </li>
-    <li><a href="{{ route('user.edit', auth()->user()) }}"><i class="material-icons">account_circle</i>Perfil</a></li>
-    <li><a href="/{{auth()->user()->nickname}}"><i class="material-icons">burst_mode</i> Meus Posts</a></li>
+    <li>
+        <a href="/">
+            <i class="material-icons">blur_on</i>
+            Pagina Inicial
+        </a>
+    </li>
+    <li>
+        <a href="{{ route('user.edit', auth()->user()) }}">
+            <i class="material-icons">account_circle</i>
+            Perfil
+        </a>
+    </li>
+    <li>
+        <a href="/{{auth()->user()->nickname}}">
+            <i class="material-icons">burst_mode</i>
+            Meus Posts
+        </a>
+    </li>
     <li>
         <div class="divider"></div>
     </li>

@@ -15,62 +15,87 @@
                         <small>{{$post->address}}</small>
                     </a>
                 </div>
-                <div class="card-action">
 
-                    @auth
-                    <a class="tooltipped  waves-effect waves-light like  deep-purple-text " title="Curtir"
-                       data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50"
-                       href="{{route('like.store.post',$post)}}">
-                        <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
-                    </a>
-                    @endauth
+                @mobile
 
-                    <a class="tooltipped blue-grey-text waves-effect waves-light show_comments" title="Conselhos"
-                       id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50"
-                       data-tooltip="Conselhos">
-                        <i class="material-icons">question_answer</i>
-                    </a>
+                    <div class="card-action">
 
-                    <div class="chip right">
-                        <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
-                        <a href="/{{$post->User->nickname}}" class="black-text"> {{$post->User->nickname}}</a>
+                        @auth
+                        <a href="{{route('like.store.post',$post)}}" class="waves-effect waves-light like  deep-purple-text " title="Curtir" data-like="like_{{$post->id}}">
+                            <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
+                        </a>
+                        @endauth
+
+                        <a class="blue-grey-text waves-effect waves-light show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}">
+                            <i class="material-icons">question_answer</i>
+                        </a>
+
+                        <div class="chip right">
+                            <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
+                            <a href="/{{$post->User->nickname}}" class="black-text"> {{$post->User->nickname}}</a>
+                        </div>
+
+                    </div>
+                    <div class="card-action">
+
+                        <span id="like_count_{{$post->id}}">{{$post->Likes->count()}}</span> Curtidas <span
+                                style="padding: 0px 2%"></span>
+
+                        {{$post->comments->count()}} Comentários
+
+                        <a class="modal-trigger right" href="#post_modal_{{$post->id}}" title="Mais Ações"><i class="material-icons">more_vert</i></a>
                     </div>
 
-                </div>
-                <div class="card-action">
+                @elsemobile
 
-                    <span id="like_count_{{$post->id}}">{{$post->Likes->count()}}</span> Curtidas <span
-                            style="padding: 0px 2%"></span>
+                    <div class="card-action">
 
-                    {{$post->comments->count()}} Comentários
+                        @auth
+                        <a class="tooltipped  waves-effect waves-light like  deep-purple-text " title="Curtir"
+                           data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50"
+                           href="{{route('like.store.post',$post)}}">
+                            <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
+                        </a>
+                        @endauth
 
-                    <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top"
-                       data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
-                </div>
+                        <a class="tooltipped blue-grey-text waves-effect waves-light show_comments" title="Conselhos"
+                           id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50"
+                           data-tooltip="Conselhos">
+                            <i class="material-icons">question_answer</i>
+                        </a>
+
+                        <div class="chip right">
+                            <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
+                            <a href="/{{$post->User->nickname}}" class="black-text"> {{$post->User->nickname}}</a>
+                        </div>
+
+                    </div>
+                    <div class="card-action">
+
+                        <span id="like_count_{{$post->id}}">{{$post->Likes->count()}}</span> Curtidas <span
+                                style="padding: 0px 2%"></span>
+
+                        {{$post->comments->count()}} Comentários
+
+                        <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top"
+                           data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
+                    </div>
+
+                @endmobile
             </div>
             <!-- form create comment -->
             <!-- and form create comment -->
 
             <ul class="collection" id="comments_{{$post->id}}" hidden>
 
-                <div id="new_comment_{{$post->id}}"></div>
-                @foreach($post->comments->take(3) as $comment)
+               <div id="new_comment_{{$post->id}}"></div>
 
-                        <!-- comentarios -->
-                @include('comment.item_comment', ['comment' => $comment, 'answer' => true])
-                        <!-- comentarios -->
-
-                <!-- repostas -->
-                <div style="margin-left: 60px" class="answer" id="answer_{{ $comment->id }}" hidden>
-                    <div id="new_answer_{{ $comment->id }}"></div>
-
-                    @foreach($comment->comments->take(3) as $answer)
-                        @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
-                    @endforeach
-                </div>
-                <!-- repostas -->
-
-                @endforeach
+                @mobile
+                    @include('comment.comment_mobile')
+                @elsemobile
+                    {{--@include('comment.comment')--}}
+                    @include('comment.comment_mobile')
+                @endmobile
 
                 @auth
                 <a href="{{route('post.show',$post)}}" class="right">Leia mais ...</a>

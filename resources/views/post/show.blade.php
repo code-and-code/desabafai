@@ -15,15 +15,17 @@
                     <p>{!! $post->body !!}</p>
                     <a href="https://www.google.com.br/maps/search/{{$post->address}}" target="_blank"><small>{{$post->address}}</small></a>
                 </div>
+                @mobile
+
                 <div class="card-action">
 
                     @auth
-                    <a class="tooltipped  waves-effect waves-light like deep-purple-text" title="Curtir" data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50" href="{{route('like.store.post',$post)}}">
+                    <a href="{{route('like.store.post',$post)}}" class="waves-effect waves-light like  deep-purple-text " title="Curtir" data-like="like_{{$post->id}}">
                         <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
                     </a>
                     @endauth
 
-                    <a class="tooltipped blue-grey-text waves-effect waves-light show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50" data-tooltip="Conselhos">
+                    <a class="blue-grey-text waves-effect waves-light show_comments" title="Conselhos" id="{{$post->id}}" data-comments="comments_{{$post->id}}">
                         <i class="material-icons">question_answer</i>
                     </a>
 
@@ -35,13 +37,50 @@
                 </div>
                 <div class="card-action">
 
-
-                    <span id="like_count_{{$post->id}}">{{$post->Likes->count()}}</span> Curtidas  <span style="padding: 0px 2%"></span>
+                    <span id="like_count_{{$post->id}}">{{$post->Likes->count()}}</span> Curtidas <span
+                            style="padding: 0px 2%"></span>
 
                     {{$post->comments->count()}} Comentários
 
-                    <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top" data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
+                    <a class="modal-trigger right" href="#post_modal_{{$post->id}}" title="Mais Ações"><i class="material-icons">more_vert</i></a>
                 </div>
+
+                @elsemobile
+
+                <div class="card-action">
+
+                    @auth
+                    <a class="tooltipped  waves-effect waves-light like  deep-purple-text " title="Curtir"
+                       data-tooltip="Curtir" data-like="like_{{$post->id}}" data-position="bottom" data-delay="50"
+                       href="{{route('like.store.post',$post)}}">
+                        <i class="material-icons" id="like_{{$post->id}}">thumb_up</i>
+                    </a>
+                    @endauth
+
+                    <a class="tooltipped blue-grey-text waves-effect waves-light show_comments" title="Conselhos"
+                       id="{{$post->id}}" data-comments="comments_{{$post->id}}" data-position="right" data-delay="50"
+                       data-tooltip="Conselhos">
+                        <i class="material-icons">question_answer</i>
+                    </a>
+
+                    <div class="chip right">
+                        <img src="{{ config('avatar.150')}}{{$post->User->nickname}}" alt="">
+                        <a href="/{{$post->User->nickname}}" class="black-text"> {{$post->User->nickname}}</a>
+                    </div>
+
+                </div>
+                <div class="card-action">
+
+                    <span id="like_count_{{$post->id}}">{{$post->Likes->count()}}</span> Curtidas <span
+                            style="padding: 0px 2%"></span>
+
+                    {{$post->comments->count()}} Comentários
+
+                    <a class="modal-trigger right tooltipped" href="#post_modal_{{$post->id}}" data-position="top"
+                       data-delay="50" data-tooltip="Mais Ações"><i class="material-icons">more_vert</i></a>
+                </div>
+
+                @endmobile
             </div>
             <!-- form create comment -->
             <!-- and form create comment -->
