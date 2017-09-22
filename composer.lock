@@ -758,16 +758,16 @@
         },
         {
             "name": "laravel/framework",
-            "version": "v5.5.4",
+            "version": "v5.5.12",
             "source": {
                 "type": "git",
                 "url": "https://github.com/laravel/framework.git",
-                "reference": "d3e0493bead126cf7fb9a005c64e6b58a9190e51"
+                "reference": "74f5831447817034838b3539c644303036df3d8e"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/laravel/framework/zipball/d3e0493bead126cf7fb9a005c64e6b58a9190e51",
-                "reference": "d3e0493bead126cf7fb9a005c64e6b58a9190e51",
+                "url": "https://api.github.com/repos/laravel/framework/zipball/74f5831447817034838b3539c644303036df3d8e",
+                "reference": "74f5831447817034838b3539c644303036df3d8e",
                 "shasum": ""
             },
             "require": {
@@ -886,7 +886,7 @@
                 "framework",
                 "laravel"
             ],
-            "time": "2017-09-13T13:36:29+00:00"
+            "time": "2017-09-22T13:33:35+00:00"
         },
         {
             "name": "laravel/passport",
@@ -2335,16 +2335,16 @@
         },
         {
             "name": "sassnowski/laravel-shareable-models",
-            "version": "1.3.0",
+            "version": "1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ksassnowski/laravel-shareable-models.git",
-                "reference": "cb1a2da60e9cd25234c17dc9c972c11f74f35669"
+                "reference": "60eba8d02390dd128203111cecee4f45f6d7c845"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ksassnowski/laravel-shareable-models/zipball/cb1a2da60e9cd25234c17dc9c972c11f74f35669",
-                "reference": "cb1a2da60e9cd25234c17dc9c972c11f74f35669",
+                "url": "https://api.github.com/repos/ksassnowski/laravel-shareable-models/zipball/60eba8d02390dd128203111cecee4f45f6d7c845",
+                "reference": "60eba8d02390dd128203111cecee4f45f6d7c845",
                 "shasum": ""
             },
             "require": {
@@ -2385,7 +2385,7 @@
                 }
             ],
             "description": "Create shareable links from your eloquent models.",
-            "time": "2017-09-07T11:22:12+00:00"
+            "time": "2017-09-14T23:30:39+00:00"
         },
         {
             "name": "swiftmailer/swiftmailer",
