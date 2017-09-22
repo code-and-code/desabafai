@@ -1,6 +1,6 @@
 <ul class="right hide-on-med-and-down">
 
-    <li><a href="/">Posts <span class="new badge pink">4</span></a></li>
+    <li id="news_post_show" hidden><a href="/">Posts <span class="new badge pink" id="news_post"></span></a></li>
 
     <li>
         <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">

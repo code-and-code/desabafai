@@ -117,12 +117,39 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
 <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js') }}"></script>
 <script src="{{ asset('js/init.js') }}"></script>
+<script src="{{ asset('js/vendor/blockui.js') }}"></script>
+<script src="{{ asset('js/block.js') }}"></script>
 @section('scripts')
 
 @show
-<script src="{{ asset('js/vendor/blockui.js') }}"></script>
-<script src="{{ asset('js/block.js') }}"></script>
+
 <script src="{{ asset('js/vendor/restful.js') }}"></script>
+
+<script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+<script>
+
+    // Enable pusher logging - don't include this in production
+    Pusher.logToConsole = true;
+
+    var pusher = new Pusher('bf326e34306875ff98e3', {
+        cluster: 'us2',
+        encrypted: true
+    });
+
+    var channel = pusher.subscribe('post_channel');
+
+    channel.bind('desabafai\\domains\\Post\\Events\\PostCreate', function(data) {
+
+        var old = $('#news_post').html();
+        if(old === '')
+        {
+            old = 0;
+        }
+        $('#news_post').html(parseInt(old)+1);
+        $('#news_post_show').show();
+    });
+</script>
 
 </body>
 </html>
