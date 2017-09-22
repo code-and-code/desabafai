@@ -2,7 +2,7 @@
 
 @section('css')
         <link href="{{ asset('css/maps.css') }}" type="text/css" rel="stylesheet" media="screen,projection" />
-    @show
+@show
 
 @section('content')
     <div class="row">

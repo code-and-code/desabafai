@@ -4,10 +4,15 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-
-    <!-- CSRF Token -->
-    <meta name="csrf-token" content="{{ csrf_token() }}">
     <title>Desabafaí</title>
+    <meta name="description" content="Desabafaí">
+    <meta name="keywords" content="desabafo, estressado, estress, tempo ruim">
+    <link rel="canonical" href="https://desabafai.com.br/"/>
+    <meta property="og:description" content="Está estressado, desabafaí" />
+    <meta property="og:title" content="Desabafaí" />
+    <meta property="og:url" content="https://desabafai.com.br/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="pt-br" />
 
     <!-- Styles -->
     @section('css')
@@ -19,10 +24,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.css">
     <link href="{{ asset('css/loading.css') }}" type="text/css" rel="stylesheet" />
 
+
 </head>
 <body class="grey lighten-4">
 <div id="app" >
-
 
         <div @desktop class="navbar-fixed" @enddesktop>
 
@@ -52,8 +57,7 @@
                         {{--<img src="{{config('avatar.200')}} {{auth()->user()->nickname}}" alt="" width="50" height="50" style="margin-top:7px; " class="circle circle_avatar responsive-img">--}}
                     {{--</li>--}}
 
-                    <li><a >Comentários <span class="new badge  purple accent-1">4</span></a></li>
-                    <li><a href="/">Posts <span class="new badge pink">4</span></a></li>
+                    <li hidden id="news_post_li"><a href="/">Posts <span class="badge pink new" id="news_post"></span></a></li>
 
                     <li>
                         <a class="dropdown-button" href="#!" data-activates="dropdown_desktop">
@@ -151,16 +155,6 @@
         </div>
     </div>
     @endmobile
-
-    {{--<footer class="page-footer blue lighten-2">--}}
-        {{--<h6 class="center-align"><span>Desabafaí?<span> <a href="" class="pink-text">TERMOS DE USO</a></h6>--}}
-        {{--<div class="footer-copyright">--}}
-            {{--<div class="container center-align">--}}
-                {{--Made by <a class="grey-text text-lighten-3" href="http://materializecss.com"> Desenvolvido por Code&Code</a>--}}
-            {{--</div>--}}
-        {{--</div>--}}
-    {{--</footer>--}}
-
     <!-- Scripts -->
 </div>
 
@@ -170,12 +164,40 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/core-js/2.4.1/core.js"></script>
     <script src="{{ asset('https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.1/js/materialize.min.js') }}"></script>
     <script src="{{ asset('js/init.js') }}"></script>
+    <script src="{{ asset('js/vendor/blockui.js') }}"></script>
+    <script src="{{ asset('js/block.js') }}"></script>
+
     @section('scripts')
 
     @show
-    <script src="{{ asset('js/vendor/blockui.js') }}"></script>
-    <script src="{{ asset('js/block.js') }}"></script>
     <script src="{{ asset('js/vendor/restful.js') }}"></script>
+
+    <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
+
+    <script>
+
+        // Enable pusher logging - don't include this in production
+        Pusher.logToConsole = true;
+
+        var pusher = new Pusher('bf326e34306875ff98e3', {
+            cluster: 'us2',
+            encrypted: true
+        });
+
+        var channel = pusher.subscribe('post_channel');
+
+        channel.bind('desabafai\\domains\\Post\\Events\\PostCreate', function(data) {
+
+            var old = $('#news_post').html();
+            if(old === '')
+            {
+               old = 0;
+            }
+            $('#news_post').html(parseInt(old)+1);
+            $('#news_post_li').show();
+        });
+    </script>
+
 
 </body>
 </html>

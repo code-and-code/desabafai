@@ -5,6 +5,7 @@ namespace desabafai\domains\Post;
 use desabafai\domains\Comment\Comment;
 use desabafai\domains\Denunciation\Denunciation;
 use desabafai\domains\Like\Like;
+use desabafai\domains\Post\Events\PostCreate;
 use desabafai\domains\User\User;
 use Illuminate\Database\Eloquent\Model;
 use Prettus\Repository\Contracts\Transformable;
@@ -18,6 +19,11 @@ class Post extends Model implements Transformable,ShareableInterface
 
     protected $fillable = [
         'title','body','img','user_from_id','user_id', 'address','latitude','longitude',
+    ];
+
+    
+    protected $dispatchesEvents = [
+        'saved' => PostCreate::class,
     ];
 
     public function User()

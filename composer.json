@@ -13,9 +13,10 @@
         "laravelcollective/html": "^5.4.0",
         "league/fractal": "^0.17.0",
         "prettus/l5-repository": "^2.6",
+        "prettus/laravel-validation": "1.1.*",
+        "pusher/pusher-php-server": "~3.0",
         "riverskies/laravel-mobile-detect": "^1.3",
-        "sassnowski/laravel-shareable-models": "^1.3",
-        "prettus/laravel-validation": "1.1.*"
+        "sassnowski/laravel-shareable-models": "^1.3"
     },
     "require-dev": {
         "filp/whoops": "~2.0",

@@ -173,7 +173,7 @@ return [
          */
         desabafai\core\Providers\AppServiceProvider::class,
         desabafai\core\Providers\AuthServiceProvider::class,
-        // desabafai\Providers\BroadcastServiceProvider::class,
+        //desabafai\core\Providers\BroadcastServiceProvider::class,
         desabafai\core\Providers\EventServiceProvider::class,
         desabafai\core\Providers\RouteServiceProvider::class,
 
