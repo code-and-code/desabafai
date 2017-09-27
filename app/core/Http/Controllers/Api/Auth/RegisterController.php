@@ -6,6 +6,7 @@ use desabafai\core\Http\Controllers\Controller;
 use desabafai\domains\User\Requests\RegisterRequest;
 use desabafai\domains\User\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Auth\Events\Registered;
 
 
@@ -53,9 +54,11 @@ class RegisterController extends Controller
 
             event(new Registered($user));
 
+            $this->guard()->login($user);
+
             return response()
                 ->json([
-                    'message' => 'Success',
+                    'data' =>  ['url' => $this->redirectTo],
                     'status' => 200
                 ], 200);
         } else {
@@ -81,5 +84,15 @@ class RegisterController extends Controller
             'term_use'  => $data['term_use'],
             'password'  => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Get the guard to be used during registration.
+     *
+     * @return \Illuminate\Contracts\Auth\StatefulGuard
+     */
+    protected function guard()
+    {
+        return Auth::guard();
     }
 }

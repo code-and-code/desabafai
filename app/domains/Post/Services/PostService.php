@@ -33,4 +33,9 @@ class PostService
          }
          throw new \Exception('Could not delete');
      }
+
+    public function searchBySlug($titleSlug)
+    {
+        return $this->postRepository->findByField('slug',$titleSlug)->first();
+    }
 }

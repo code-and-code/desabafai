@@ -21,13 +21,15 @@ Route::group(['prefix' => 'user', 'as' =>'user.'], function () {
     Route::post('/{user}/update','UserController@update')->name('update');
 });
 
-Route::group(['prefix' => 'post', 'as' =>'post.'], function () {
-    Route::get('/create',           'PostController@create')->name('create');
+Route::group(['prefix' => 'desabafo', 'as' =>'post.'], function () {
+
+    Route::get('/oque-foi',           'PostController@create')->name('create');
     Route::post('/store',           'PostController@store')->name('store');
     Route::get('/show/{post}',      'PostController@show')->name('show');
     Route::get('/edit/{post}',      'PostController@edit')->name('edit');
-    Route::get('/update/{post}',      'PostController@update')->name('update');
+    Route::get('/update/{post}',    'PostController@update')->name('update');
     Route::delete('/destroy/{post}','PostController@destroy')->name('destroy');
+    Route::get('/{slu}','PostController@index')->name('slug');
 });
 
 Route::group(['prefix' => 'like', 'as' =>'like.'], function () {
