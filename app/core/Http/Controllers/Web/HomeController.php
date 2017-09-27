@@ -3,11 +3,10 @@
 namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
-use desabafai\domains\Post\PostPresenter;
 use desabafai\domains\Post\PostRepository;
-use desabafai\domains\Post\Post;
-use Illuminate\Support\Facades\View;
-use Sassnowski\LaravelShareableModel\Shareable\ShareableLink;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
+
 class HomeController extends Controller
 {
     /**
@@ -28,6 +27,18 @@ class HomeController extends Controller
 
     public function index()
     {
+        SEOMeta::setTitle('Desabafaí', false);
+        SEOMeta::setDescription('Está estrassado? desabafai');
+        SEOMeta::setCanonical('https://desabafaai.com.br');
+        SEOMeta::addKeyword(['Desabafaí', '']);
+
+        OpenGraph::setTitle('Desabafaí',false);
+        OpenGraph::setDescription('Está estrassado? desabafaí');
+        OpenGraph::setUrl('https://desabafai.com.br');
+        OpenGraph::addProperty('type', 'articles');
+        OpenGraph::addProperty('locale', 'pt-br');
+
+
         $posts  = $this->postRepository->orderBy('created_at','desk')->paginate(3);
         return view('home',compact('posts'));
     }

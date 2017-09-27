@@ -12,10 +12,11 @@ use Prettus\Repository\Contracts\Transformable;
 use Prettus\Repository\Traits\TransformableTrait;
 use Sassnowski\LaravelShareableModel\Shareable\Shareable;
 use Sassnowski\LaravelShareableModel\Shareable\ShareableInterface;
+use Cviebrock\EloquentSluggable\Sluggable;
 
 class Post extends Model implements Transformable,ShareableInterface
 {
-    use TransformableTrait,Shareable;
+    use TransformableTrait,Shareable,Sluggable;
 
     protected $fillable = [
         'title','body','img','user_from_id','user_id', 'address','latitude','longitude',
@@ -25,6 +26,15 @@ class Post extends Model implements Transformable,ShareableInterface
     protected $dispatchesEvents = [
         'saved' => PostCreate::class,
     ];
+
+    public function sluggable()
+    {
+        return [
+            'slug' => [
+                'source' => 'title'
+            ]
+        ];
+    }
 
     public function User()
     {
@@ -58,21 +68,26 @@ class Post extends Model implements Transformable,ShareableInterface
     public function setBodyAttribute($value)
     {
         $values = explode(';',$value);
-        $str = null;
-        foreach ($values as $value)
+
+        if(is_array($values))
         {
-            switch ($value) {
-                case str_contains($value, 'link:'):
-                    $str =  $str. str_replace('link:',''," <a href='{$value}'target='_blank' >{$value}</a><br>");
-                    break;
-                case str_contains($value, 'img:'):
-                    $str = $str.str_replace('img:',''," <img src='{$value}' width='50%' height='50%'><br>");
-                    break;
-                default:
-                    $str = $str.$value."<br>";
+            $str = null;
+            foreach ($values as $value)
+            {
+                switch ($value) {
+                    case str_contains($value, 'link:'):
+                        $str =  $str. str_replace('link:',''," <a href='{$value}'target='_blank' >{$value}</a><br>");
+                        break;
+                    case str_contains($value, 'img:'):
+                        $str = $str.str_replace('img:',''," <img src='{$value}' width='50%' height='50%'><br>");
+                        break;
+                    default:
+                        $str = $str.$value."<br>";
+                }
             }
+            return $this->attributes['body'] = $str;
         }
-        $this->attributes['body'] = $str;
+        return $this->attributes['body'] = $value;
     }
 
 }

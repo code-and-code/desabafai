@@ -124,7 +124,7 @@
 <div id="post_modal_{{$post->id}}" class="modal">
     <div class="modal-content">
         <div class="collection center-align">
-            <a href="{{route('post.show',$post)}}" class="collection-item">Vizualizar</a>
+            <a href="{{route('post.slug',$post->slug)}}" class="collection-item">Vizualizar</a>
             @auth
             <a href="{{route('denunciation.store.post',$post)}}" data-remote="true" data-confirm="Sério mesmo?"
                data-method="POST" class="collection-item">Denunciar</a>

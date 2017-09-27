@@ -7,7 +7,7 @@
 
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <title>Desabafaí</title>
+    {!! SEO::generate() !!}
 
     <!-- Styles -->
     @section('css')
@@ -19,6 +19,15 @@
     <link href="{{ asset('materialize/css/style.css') }}" type="text/css" rel="stylesheet" media="screen,projection"/>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/limonte-sweetalert2/6.6.10/sweetalert2.min.css">
     <link href="{{ asset('css/loading.css') }}" type="text/css" rel="stylesheet"/>
+
+    <script type="text/javascript">
+        window.smartlook||(function(d) {
+            var o=smartlook=function(){ o.api.push(arguments)},h=d.getElementsByTagName('head')[0];
+            var c=d.createElement('script');o.api=new Array();c.async=true;c.type='text/javascript';
+            c.charset='utf-8';c.src='https://rec.smartlook.com/recorder.js';h.appendChild(c);
+        })(document);
+        smartlook('init', '56fb399535e7068d366bc088bf5d22077f6b6d08');
+    </script>
 
 </head>
 <body class="grey lighten-4">

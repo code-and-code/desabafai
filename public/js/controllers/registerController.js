@@ -15,7 +15,7 @@ $(function($) {
                 'Cadastrado',
                 'success'
             )
-            $(location).attr('href','/login');
+            $(location).attr('href',xhr.data.url);
         })
         .on('ajax:error', function(event, xhr, status, error) {
 
