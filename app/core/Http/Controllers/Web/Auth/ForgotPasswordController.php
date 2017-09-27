@@ -4,6 +4,7 @@ namespace desabafai\core\Http\Controllers\Web\Auth;
 
 use desabafai\core\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class ForgotPasswordController extends Controller
 {
@@ -28,5 +29,16 @@ class ForgotPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    /**
+     * Display the form to request a password reset link.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showLinkRequestForm()
+    {
+        SEOMeta::setTitle('Desabafaí', false);
+        return view('auth.passwords.email');
     }
 }
