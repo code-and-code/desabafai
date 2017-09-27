@@ -9,27 +9,25 @@
             <div class="row">
                 <a class="no-padding deep-purple-text like" href="{{route('like.store.comment',$comment)}}" data-remote="true" data-type="json" data-method="POST" >{{ $comment->Likes->count() }} <i class=" material-icons ">thumb_up</i></a>
 
-                <span style="padding: 0px 5px"></span>
+                <span style="padding: 0px 2px"></span>
 
                 @if($answer)
-                    <a href="#" class="reply_comment blue-grey-text " data-form="form_replay_comment_{{$comment->id}}" ><i class=" material-icons ">chat_bubble</i></a>
+                    <a href="#" id="read_answer" class="reply_comment blue-grey-text " data-form="form_replay_comment_{{$comment->id}}" > <i class=" material-icons ">chat_bubble</i></a>
                 @endif
 
                 <span style="padding: 0px 5px"></span>
 
                 <a href="{{route('denunciation.store.comment',$comment)}}" data-remote="true" data-confirm="Sério mesmo?" data-method="POST" class="red-text " ><i class="material-icons ">do_not_disturb_alt</i></a>
 
-                <span style="padding: 0px 5px"></span>
+                <span style="padding: 0px 2px"></span>
 
                 @if($comment->User->id === auth()->user()->id)
                     <a href="{{route('comment.destroy',$comment)}}" data-remove="comment_id_{{$comment->id}}" data-confirm="Tem certeza?" class="grey-text  destroy" ><i class="material-icons ">delete_sweep</i></a>
                 @endif
 
                 @if($answer)
-                    <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light right">{{ $comment->comments->count() }} <small>Comentarios</small>  </a>
+                    <a id="" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light right">{{ $comment->comments->count() }}  <i class="material-icons">remove_red_eye</i> </a>
                 @endif
-
-                <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light right"> <small>Curtidas</small>  </a>
 
                 @if($answer)
                     @include('comment.create_answer', ['comment' => $comment])
@@ -37,8 +35,6 @@
             </div>
 
             @endauth
-
-                {{--<a class="waves-effect waves-light btn modal-trigger" href="#modal_comment_{{ $comment->id }}">Modal</a>--}}
 
         </div>
     </div>
