@@ -1,5 +1,6 @@
 @auth
-<div class="row" hidden id="form_replay_comment_{{$comment->id}}">
+
+<div class="" hidden id="form_replay_comment_{{$comment->id}}">
     <form class="form_comment_create_comment" method="POST" action="{{route('comment.store.comment',$comment)}}" data-comment="{{$comment->id}}">
         <div class="input-field ">
             <i class="material-icons prefix">speaker_notes</i>

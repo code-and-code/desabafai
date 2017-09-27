@@ -41,19 +41,26 @@
             <div class="nav-wrapper container"><a id="logo-container" href="/" class="brand-logo">DesabafAÍ</a>
 
                 @guest
-                <ul class="right hide-on-med-and-down">
-                    <li>
-                        <a href="{{ route('login') }}">Login</a>
-                    </li>
-                    <li>
-                        <a href="{{ route('register') }}">Register</a>
-                    </li>
-                </ul>
 
-                <ul id="nav-mobile" class="side-nav">
-                    <li><a href="{{ route('login') }}">Login</a></li>
-                    <li><a href="{{ route('register') }}">Register</a></li>
-                </ul>
+                    @mobile
+                        <ul id="slide-out" class="side-nav">
+                            <li><a href="{{ route('login') }}">Login</a></li>
+                            <li><a href="{{ route('register') }}">Cadastrar</a></li>
+                            <li><div class="divider"></div></li>
+                            <li><a class="waves-effect" href="#!">Sobre</a></li>
+                        </ul>
+                        <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+                    @elsemobile
+
+                        <ul class="right hide-on-med-and-down">
+                            <li>
+                                <a href="{{ route('login') }}">Login</a>
+                            </li>
+                            <li>
+                                <a href="{{ route('register') }}">Cadastrar</a>
+                            </li>
+                        </ul>
+                    @endmobile
 
                 @else
 
