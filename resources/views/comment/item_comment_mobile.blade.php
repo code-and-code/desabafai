@@ -10,7 +10,7 @@
                 <a class="deep-purple-text like" href="{{route('like.store.comment',$comment)}}" data-remote="true" data-type="json" data-method="POST" >{{ $comment->Likes->count() }} <i class=" material-icons ">thumb_up</i></a>
 
                 @if($answer)
-                    <a href="#" id="read_answer" class="reply_comment blue-grey-text " data-form="form_replay_comment_{{$comment->id}}" > <i class=" material-icons ">reply </i></a>
+                    <a href="#"  class="reply_comment blue-grey-text " data-form="form_replay_comment_{{$comment->id}}" > <i class=" material-icons ">reply </i></a>
                 @endif
 
                 <span style="padding: 0px 2px"></span>
@@ -26,7 +26,7 @@
                 <span style="padding: 0px 2px"></span>
 
                 @if($answer)
-                    <a id="" data-answer="{{ $comment->id }}" class="">{{ $comment->comments->count() }}  <i class="material-icons">chat_bubble</i> </a>
+                    <a id="read_answer" data-answer="{{ $comment->id }}" class="link_answer waves-effect waves-light">{{ $comment->comments->count() }}  <i class="material-icons">chat_bubble</i> </a>
                 @endif
 
                 @if($answer)

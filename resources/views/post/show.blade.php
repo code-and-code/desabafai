@@ -7,7 +7,7 @@
         <div class="col s12 m12">
             <div class="card">
                 <div class="card-image">
-                    <img src="{{$post->img}}">
+                    {{--<img src="{{$post->img}}">--}}
                 </div>
                 <div class="card-content">
                     <p class="secondary-content"> <span class="teal-text">{{$post->created_at->diffForHumans()}}</span></p>
@@ -88,20 +88,47 @@
             <ul class="collection" id="comments_{{$post->id}}" >
 
                 <div id="new_comment_{{$post->id}}"></div>
-                @foreach($post->comments as $comment)
 
-                        <!-- comentarios -->
-                @include('comment.item_comment', ['comment' => $comment, 'answer' => true])
+                @mobile
 
-                <div  style="margin-left: 60px" class="answer" id="answer_{{ $comment->id }}" hidden>
-                    @foreach($comment->comments as $answer)
-                        @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
-                        <div class="divider"></div>
+                    @foreach($post->comments as $comment)
+
+                            <!-- comentarios -->
+                    @include('comment.item_comment_mobile', ['comment' => $comment, 'answer' => true])
+
+                    <div  style="margin-left: 60px" class="answer" id="answer_{{ $comment->id }}" hidden>
+
+                        @foreach($comment->comments as $answer)
+                            @include('comment.item_comment_mobile', ['comment' => $answer, 'answer' => false])
+                            <div class="divider"></div>
+                        @endforeach
+                    </div>
+                    <!-- repostas -->
+                    <div id="new_answer_{{ $comment->id }}"></div>
                     @endforeach
-                </div>
-                <!-- repostas -->
-                <div id="new_answer_{{ $comment->id }}"></div>
-                @endforeach
+
+                @elsemobile
+
+                    @foreach($post->comments as $comment)
+                            <!-- comentarios -->
+                    @include('comment.item_comment', ['comment' => $comment, 'answer' => true])
+
+                    <div  style="margin-left: 60px" class="answer" id="answer_{{ $comment->id }}" hidden>
+
+                        @foreach($comment->comments as $answer)
+                            @include('comment.item_comment', ['comment' => $answer, 'answer' => false])
+                            <div class="divider"></div>
+                        @endforeach
+
+                    </div>
+                    <!-- repostas -->
+                    <div id="new_answer_{{ $comment->id }}"></div>
+                    @endforeach
+
+                @endmobile
+
+
+
 
                 @auth
 
