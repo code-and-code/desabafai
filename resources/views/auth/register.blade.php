@@ -4,7 +4,7 @@
     <div class="row">
         <div class="col s12 m12">
             <div class="card">
-                <div class="card-content">
+                <div @desktop class="card-content" @enddesktop>
                     <div class="card-title center-align">Cadastrar</div>
                     <form class="" method="POST" action="{{ route('api.register') }}" id="form_register" data-remote="true">
 
@@ -74,13 +74,14 @@
                         </div>
 
                         <div class="form-group">
-                            <div class="col-md-8 col-md-offset-4">
+                            <div class="center" >
                                 <button type="submit" class="btn btn-primary ">
                                     Cadastrar
                                 </button>
                             </div>
                         </div>
                     </form>
+                    @mobile <br> @endmobile
                 </div>
                 <div class="card-action ">
                     <a class="" href="{{ route('login') }}">
