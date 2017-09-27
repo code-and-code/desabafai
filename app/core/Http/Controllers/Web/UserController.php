@@ -3,13 +3,11 @@
 namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
-use desabafai\domains\Post\Post;
-use desabafai\domains\Post\PostRepository;
 use desabafai\domains\User\Requests\UserUpdateRequest;
 use desabafai\domains\User\Services\UserService;
 use desabafai\domains\User\User;
 use desabafai\domains\User\UserRepository;
-use Illuminate\Http\Request;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 class UserController extends Controller
 {
@@ -27,6 +25,7 @@ class UserController extends Controller
         $user   = $this->userService->getUserProfile($nickname);
         if($user)
         {
+            SEOMeta::setTitle($user->nickname, false);
             $posts  = $user->posts()->paginate(10);
             return view('home',compact('posts','user'));
         }
@@ -35,6 +34,7 @@ class UserController extends Controller
 
     public function edit(User $user)
     {
+        SEOMeta::setTitle($user->nickname, false);
         if (\Gate::forUser(auth()->user())->allows('authorize-user', $user)) {
             return view('user.edit',compact('user'));
         }

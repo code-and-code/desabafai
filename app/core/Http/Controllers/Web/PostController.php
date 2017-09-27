@@ -35,6 +35,7 @@ class PostController extends Controller
 
     public function create()
     {
+        SEOMeta::setTitle('Desabafaí', false);
         return view('post.create');
     }
 
