@@ -7,6 +7,7 @@ use desabafai\domains\User\Requests\RegisterRequest;
 use desabafai\domains\User\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Auth\Events\Registered;
+use Artesaos\SEOTools\Facades\SEOMeta;
 
 
 class RegisterController extends Controller
@@ -56,5 +57,16 @@ class RegisterController extends Controller
             'term_use'  => $data['term_use'],
             'password'  => bcrypt($data['password']),
         ]);
+    }
+
+    /**
+     * Show the application registration form.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function showRegistrationForm()
+    {
+        SEOMeta::setTitle('Desabafaí', false);
+        return view('auth.register');
     }
 }
