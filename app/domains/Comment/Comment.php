@@ -77,13 +77,7 @@ class Comment extends Model
 
     public function getBody(Int $int){
 
-        $frases = explode('.', $this->body);
-
-        foreach($frases as $frase){
-            $txt[] = $frase.'<br>';
-        }
-
-        return chunk_split(implode($txt), $int);
+        return chunk_split($this->body, $int);
 
     }
 
