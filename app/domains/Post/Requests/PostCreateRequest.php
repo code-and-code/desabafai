@@ -15,7 +15,8 @@ class PostCreateRequest extends Request
     public function rules()
     {
         return [
-            'title' => 'required',
+            'title' => 'required|max:100',
+            'body' =>  'max:145',
         ];
     }
 }

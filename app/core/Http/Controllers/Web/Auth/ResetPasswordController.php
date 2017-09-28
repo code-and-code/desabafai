@@ -4,6 +4,8 @@ namespace desabafai\core\Http\Controllers\Web\Auth;
 
 use desabafai\core\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
+use Artesaos\SEOTools\Facades\SEOMeta;
+use Illuminate\Http\Request;
 
 class ResetPasswordController extends Controller
 {
@@ -35,5 +37,14 @@ class ResetPasswordController extends Controller
     public function __construct()
     {
         $this->middleware('guest');
+    }
+
+    public function showResetForm(Request $request, $token = null)
+    {
+        SEOMeta::setTitle('Desabafaí', false);
+        
+        return view('auth.passwords.reset')->with(
+            ['token' => $token, 'email' => $request->email]
+        );
     }
 }
