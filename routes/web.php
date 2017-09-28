@@ -33,6 +33,7 @@ Route::group(['prefix' => 'desabafo', 'as' =>'post.'], function () {
 });
 
 Route::group(['prefix' => 'like', 'as' =>'like.'], function () {
+   
     Route::post('/store/user/{user}',       'LikeController@storeForUser')->name('store.user');
     Route::post('/store/post/{post}',       'LikeController@storeForPost')->name('store.post');
     Route::post('/store/comment/{comment}', 'LikeController@storeForComment')->name('store.comment');
