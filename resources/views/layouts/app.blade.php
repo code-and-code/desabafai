@@ -60,7 +60,8 @@
                                 <a href="{{ route('register') }}">Cadastrar</a>
                             </li>
                         </ul>
-                    @endmobile
+
+                @endmobile
 
                 @else
 

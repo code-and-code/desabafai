@@ -5,7 +5,7 @@
         <!-- comentarios -->
 
 <!-- repostas -->
-<div style="margin-left: 60px" class="answer" id="answer_{{ $comment->id }}" hidden>
+<div style="margin-left: 10px" class="answer" id="answer_{{ $comment->id }}" hidden>
     <div id="new_answer_{{ $comment->id }}"></div>
 
     @foreach($comment->comments->take(3) as $answer)

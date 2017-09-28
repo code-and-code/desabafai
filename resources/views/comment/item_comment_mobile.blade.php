@@ -4,7 +4,7 @@
     <p></p>
     <div class="row " id="respostas">
         <div class="col s11">
-            <p> <span class="teal-text accent-3"></span>{!! $comment->body !!}</p>
+            <p> {!! $comment->getBody(20) !!}</p>
             @auth
             <div class="row">
                 <a class="deep-purple-text like" href="{{route('like.store.comment',$comment)}}" data-remote="true" data-type="json" data-method="POST" >{{ $comment->Likes->count() }} <i class=" material-icons ">thumb_up</i></a>
