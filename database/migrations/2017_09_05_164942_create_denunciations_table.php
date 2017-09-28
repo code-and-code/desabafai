@@ -16,7 +16,7 @@ class CreateDenunciationsTable extends Migration
         Schema::create('denunciations', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id')->unsigned();
-            $table->morphs('denunciationable');
+            $table->morphs('denunciationable',255);
             $table->timestamps();
         });
     }
