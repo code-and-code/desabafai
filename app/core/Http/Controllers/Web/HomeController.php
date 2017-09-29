@@ -53,4 +53,10 @@ class HomeController extends Controller
                 'status' => 200
             ], 200);
     }
+
+    public function about()
+    {
+        return view('welcome');
+    }
+
 }

@@ -13,6 +13,7 @@
 
 Route::get('/',     'HomeController@index')->name('home');
 Route::get('/more', 'HomeController@posts')->name('more');
+Route::get('/about', 'HomeController@about')->name('about');
 
 
 Route::group(['prefix' => 'user', 'as' =>'user.'], function () {
