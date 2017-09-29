@@ -3,17 +3,13 @@
 namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
-use desabafai\domains\Like\Services\LikeService;
 use desabafai\domains\Post\Post;
 use desabafai\domains\Post\Requests\PostCreateRequest;
 use desabafai\domains\Post\Services\PostService;
 use Artesaos\SEOTools\Facades\SEOMeta;
-use Artesaos\SEOTools\Facades\OpenGraph;
-use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-
     protected $postService;
 
     public function __construct(PostService $postService)
@@ -25,12 +21,7 @@ class PostController extends Controller
     public function index($slug = null)
     {
         $post   = $this->postService->searchBySlug($slug);
-        if($post)
-        {
-            return $this->show($post);
-        }
-        abort(404);
-
+        return ($post) ? $this->show($post) : abort(404);
    }
 
     public function create()
