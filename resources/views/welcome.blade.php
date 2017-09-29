@@ -6,7 +6,7 @@
     -->
 <html>
 <head>
-    <title>Hyperspace by HTML5 UP</title>
+    <title>Desabafaí</title>
     <meta charset="{{ app()->getLocale() }}" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <!--[if lte IE 8]><script src="{{asset('hyperspace/assets/js/ie/html5shiv.js') }}"></script><![endif]-->

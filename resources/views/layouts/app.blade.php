@@ -47,7 +47,7 @@
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Cadastrar</a></li>
                             <li><div class="divider"></div></li>
-                            <li><a class="waves-effect" href="#!">Sobre</a></li>
+                            <li><a class="waves-effect" href="{{ route('about') }}">Sobre</a></li>
                         </ul>
                         <a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
                     @elsemobile
@@ -58,6 +58,9 @@
                             </li>
                             <li>
                                 <a href="{{ route('register') }}">Cadastrar</a>
+                            </li>
+                            <li>
+                                <a class="" href="{{ route('about') }}">Sobre</a>
                             </li>
                         </ul>
 
