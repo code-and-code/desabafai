@@ -7,6 +7,7 @@ use desabafai\domains\Post\Post;
 use desabafai\domains\Post\Requests\PostCreateRequest;
 use desabafai\domains\Post\Services\PostService;
 use Artesaos\SEOTools\Facades\SEOMeta;
+use Artesaos\SEOTools\Facades\OpenGraph;
 
 class PostController extends Controller
 {

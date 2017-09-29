@@ -34,4 +34,5 @@
     <script src="{{ asset('js/vendor/jquery/jquery.min.js') }}"></script>
     <script src="{{ asset('js/vendor/maps/jquery-ui.custom.min.js') }}"></script>
     <script src="{{ asset('js/controllers/mapController.js') }}"></script>
+
 @endsection
