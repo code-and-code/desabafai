@@ -35,6 +35,7 @@ class UserController extends Controller
     public function edit(User $user)
     {
         SEOMeta::setTitle($user->nickname, false);
+
         if (\Gate::forUser(auth()->user())->allows('authorize-user', $user)) {
             return view('user.edit',compact('user'));
         }

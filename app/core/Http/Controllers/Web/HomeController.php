@@ -38,7 +38,6 @@ class HomeController extends Controller
         OpenGraph::addProperty('type', 'articles');
         OpenGraph::addProperty('locale', 'pt-br');
 
-
         $posts  = $this->postRepository->orderBy('created_at','desk')->paginate(3);
         return view('home',compact('posts'));
     }

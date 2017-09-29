@@ -138,9 +138,7 @@
 @section('scripts')
 
 @show
-
 <script src="{{ asset('js/vendor/restful.js') }}"></script>
-
 <script src="https://js.pusher.com/4.1/pusher.min.js"></script>
 
 <script>

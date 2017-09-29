@@ -25,7 +25,6 @@
         </div>
 
         <div id="mapa"></div>
-
         <input type="hidden" id="txtLatitude"  name="latitude" />
         <input type="hidden" id="txtLongitude" name="longitude" />
 

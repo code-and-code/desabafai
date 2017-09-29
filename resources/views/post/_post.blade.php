@@ -98,7 +98,7 @@
                 @endmobile
 
                 @auth
-                <a href="{{route('post.show',$post)}}" class="right">Leia mais ...</a>
+                <a href="{{route('post.slug',$post->slug)}}" class="right">mais ...</a>
 
                 <form class="form_post_create_comment" method="POST" action="{{route('comment.store.post',$post)}}"
                       data-post="{{$post->id}}">

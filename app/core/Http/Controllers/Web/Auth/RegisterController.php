@@ -3,10 +3,8 @@
 namespace desabafai\core\Http\Controllers\Web\Auth;
 
 use desabafai\core\Http\Controllers\Controller;
-use desabafai\domains\User\Requests\RegisterRequest;
 use desabafai\domains\User\User;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use Illuminate\Auth\Events\Registered;
 use Artesaos\SEOTools\Facades\SEOMeta;
 
 
