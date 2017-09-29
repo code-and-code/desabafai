@@ -81,27 +81,27 @@
     <section id="two" class="wrapper style3 fade-up">
         <div class="inner">
             <h2>O que não faz parte da idéia do Desabafaí</h2>
-            <p>Os usuários podem denunciar qualquer post publicado que o incomode, dessa forma será filtrado os posts saudáveis ou não.</p>
+            <p>Os usuários podem denunciar qualquer desabafo publicado que o incomode como os exemplos abaixo.<br>Sendo assim, a partir de um numero (x) de denuncias poderá será excluído pelo sistema.</p>
             <div class="features">
                 <section>
                     <span class="icon major fa-ban"></span>
                     <h3>Pornografia</h3>
-                    <p>Nossa ideia não é fazer divulgação de pornografia, e caso aconteça o post será denunciado e excluido pelo sistema.</p>
+                    <p>Nossa ideia não é fazer divulgação de pornografi.</p>
                 </section>
                 <section>
                     <span class="icon major fa-street-view"></span>
                     <h3>Ofenças</h3>
-                    <p>Tudo aquilo que ofende a raça, religião, cor, opção sexual caso haja alguma psotagem nesse sentido será denunciado e excluido pelo sistema</p>
+                    <p>Tudo aquilo que ofende a raça, religião, cor, opção sexual.</p>
                 </section>
                 <section>
                     <span class="icon major fa-frown-o"></span>
                     <h3>Ameaças</h3>
-                    <p>Toda publicação que possuir conduta que que cause dano emocional, diminuição da autoestima, humilhação, manipulação, isolamento, ou desagrade aos outros usuários ,  os mesmos poderão denunciar a publicação onde a partir de um numero(x) de denuncias será excluído pelo sistema</p>
+                    <p>Toda publicação que possuir conduta que que cause dano emocional, diminuição da autoestima, humilhação, manipulação, isolamento, ou desagrade aos outros usuários.</p>
                 </section>
                 <section>
                     <span class="icon major fa-users"></span>
                     <h3>Resumindo</h3>
-                    <p>Todos os usuários tem poder de denuncia, e o sistema é inteligente para viabilizar se o post denunciado deve ser excluido ou não.</p>
+                    <p>Todos os usuários tem poder de denuncia, e o sistema é inteligente para viabilizar se o desabafo denunciado deve ser excluido ou não.</p>
                 </section>
             </div>
             <ul class="actions">
@@ -127,7 +127,7 @@
                         <li>
                             <h3>Leia e comente os desabafos dos outros</h3>
                             <span>
-                                É possível commentar os desabafos alheios, opnando e ajudando a sua maneira. <br> Os comentários podem ser excluidos caso denunciados.
+                                É possível comentar os desabafos alheios, opnando e ajudando a sua maneira. <br> Os comentários podem ser excluidos caso denunciados.
                             </span>
                         </li>
                         <li>
