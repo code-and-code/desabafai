@@ -77,6 +77,14 @@ return [
             'charset' => 'utf8',
             'prefix' => '',
         ],
+        'mongodb' => [
+            'driver'   => 'mongodb',
+            'host'     => env('DB_HOST', 'localhost'),
+            'port'     => 27017,
+            'database' => 'desabafai',
+            'options'  => [
+            ]
+        ],
 
     ],
 

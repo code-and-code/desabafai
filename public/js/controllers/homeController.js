@@ -10,8 +10,8 @@ $(function ($) {
         var action = $(this).attr('href');
 
         $.post(action, function () {
-                $('#' + id).addClass("blue-text");
-            })
+            $('#' + id).addClass("blue-text");
+        })
             .done(function (xhr) {
                 $('#like_count_' + xhr.data.id).html(xhr.data.likes);
             })

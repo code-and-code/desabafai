@@ -181,6 +181,8 @@ return [
         Prettus\Repository\Providers\RepositoryServiceProvider::class,
         Sassnowski\LaravelShareableModel\ShareableLinkServiceProvider::class,
         Artesaos\SEOTools\Providers\SEOToolsServiceProvider::class,
+        Barryvdh\Cors\ServiceProvider::class,
+        Jenssegers\Mongodb\MongodbServiceProvider::class,
 
     ],
 

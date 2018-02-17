@@ -3,6 +3,7 @@
 namespace desabafai\core\Http\Controllers\Web;
 
 use desabafai\core\Http\Controllers\Controller;
+use desabafai\domains\Post\Post;
 use desabafai\domains\Post\PostRepository;
 use Artesaos\SEOTools\Facades\SEOMeta;
 use Artesaos\SEOTools\Facades\OpenGraph;
@@ -39,6 +40,7 @@ class HomeController extends Controller
         OpenGraph::addProperty('locale', 'pt-br');
 
         $posts  = $this->postRepository->orderBy('created_at','desk')->paginate(3);
+
         return view('home',compact('posts'));
     }
 

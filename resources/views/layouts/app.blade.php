@@ -81,7 +81,7 @@
     </div>
 
 
-    @mobile
+    {{--@mobile--}}
     <div class="section">
         @yield('content')
 
@@ -96,27 +96,27 @@
             @endauth
         @show
     </div>
-    @elsemobile
-    <div class="container">
-        <div class="section">
-            <div class="container">
+    {{--@elsemobile--}}
+    {{--<div class="container">--}}
+        {{--<div class="section">--}}
+            {{--<div class="container">--}}
 
-                @yield('content')
+                {{--@yield('content')--}}
 
-                @section('add')
-                    @auth
-                    <div class="fixed-action-btn">
-                        <a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse"
-                           href="{{ route('post.create') }}">
-                            <i class="large material-icons">add</i>
-                        </a>
-                    </div>
-                    @endauth
-                @show
-            </div>
-        </div>
-    </div>
-    @endmobile
+                {{--@section('add')--}}
+                    {{--@auth--}}
+                    {{--<div class="fixed-action-btn">--}}
+                        {{--<a class="btn-floating btn-large red waves-effect waves-light btn modal-trigger pulse"--}}
+                           {{--href="{{ route('post.create') }}">--}}
+                            {{--<i class="large material-icons">add</i>--}}
+                        {{--</a>--}}
+                    {{--</div>--}}
+                    {{--@endauth--}}
+                {{--@show--}}
+            {{--</div>--}}
+        {{--</div>--}}
+    {{--</div>--}}
+    {{--@endmobile--}}
 
     {{--<footer class="page-footer blue lighten-2">--}}
     {{--<h6 class="center-align"><span>Desabafaí?<span> <a href="" class="pink-text">TERMOS DE USO</a></h6>--}}

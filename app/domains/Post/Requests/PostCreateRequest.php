@@ -16,7 +16,7 @@ class PostCreateRequest extends Request
     {
         return [
             'title' => 'required|max:100',
-            'body' =>  'max:145',
+            'body' =>  '',
         ];
     }
 }

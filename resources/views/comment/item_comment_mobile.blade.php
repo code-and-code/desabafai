@@ -1,11 +1,12 @@
-<li class="collection-item avatar " id="comment_id_{{$comment->id}}">
-    <img src="{{ config('avatar.150')}}{{$comment->User->nickname}}" alt="" class="circle">
-    <span class="title"><a href="/{{$comment->User->nickname}}"> {{$comment->User->nickname}}</a></span>
-    <p></p>
-    <div class="row " id="respostas">
-        <div class="col s11">
-            <p> {!! $comment->getBody(20) !!}</p>
-            @auth
+<li id="comment_id_{{$comment->id}}">
+    <div class="collapsible-header">
+        <i class="material-icons">account_circle</i>
+        <span class="title"><a href="/{{$comment->User->nickname}}"> {{$comment->User->nickname}}</a></span>
+        <span class="badge">{{$comment->created_at->diffForHumans()}}</span>
+    </div>
+    <div class="collapsible-body">
+        <p>{!! $comment->getBody(20) !!}</p>
+        @auth
             <div class="row">
                 <a class="deep-purple-text like" href="{{route('like.store.comment',$comment)}}" data-remote="true" data-type="json" data-method="POST" >{{ $comment->Likes->count() }} <i class=" material-icons ">thumb_up</i></a>
 
@@ -33,12 +34,8 @@
                     @include('comment.create_answer', ['comment' => $comment])
                 @endif
             </div>
-
-            @endauth
-
-        </div>
+        @endauth
     </div>
-    <p class="secondary-content">{{$comment->created_at->diffForHumans()}}</p>
 </li>
 <div class="divider"></div>
 

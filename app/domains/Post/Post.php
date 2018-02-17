@@ -22,7 +22,7 @@ class Post extends Model implements Transformable,ShareableInterface
         'title','body','img','user_from_id','user_id', 'address','latitude','longitude',
     ];
 
-    
+
     protected $dispatchesEvents = [
         'saved' => PostCreate::class,
     ];

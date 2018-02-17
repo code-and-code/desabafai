@@ -20,8 +20,11 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 });
 
 
-Route::middleware('auth:api')->get('/post',      'PostController@index')->name('post.index');
-Route::middleware('auth:api')->post('/post/store','PostController@store')->name('post.store');
+Route::get('/post',                 'PostController@index');
+Route::post('/post',                'PostController@store');
+Route::put('/post/{id}',            'PostController@update');
+Route::delete('/post/{id}',         'PostController@destroy');
+Route::get('/post/toggleLike/{id}',      'PostController@toggleLike');
 
 Route::post('/register','Auth\RegisterController@register')->name('api.register');
 

@@ -23,7 +23,9 @@ class CommentController extends Controller
     {
         try{
             $comment = $this->commentService->store($request->input(),$post,auth()->user());
+
             $html    = view('comment.item_comment')->with(['comment'=>$comment, 'answer' => true ])->render();
+
             return response()
                 ->json([
                     'data' => $html,
@@ -45,6 +47,7 @@ class CommentController extends Controller
         try{
             $comment = $this->commentService->store($request->input(),$comment,auth()->user());
             $html    = view('comment.item_comment')->with(['comment'=>$comment, 'answer' => false ])->render();
+
             return response()
                 ->json([
                     'data'   => $html,
